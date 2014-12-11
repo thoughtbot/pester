@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211190456) do
+ActiveRecord::Schema.define(version: 20141211215619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,10 @@ ActiveRecord::Schema.define(version: 20141211190456) do
     t.string   "github_url",                               null: false
     t.string   "repo_name",                                null: false
     t.string   "status",          default: "needs review", null: false
+    t.string   "title",                                    null: false
+    t.string   "repo_github_url",                          null: false
+    t.string   "user_name",                                null: false
+    t.string   "user_github_url",                          null: false
   end
 
   add_index "pull_requests", ["status"], name: "index_pull_requests_on_status", using: :btree
