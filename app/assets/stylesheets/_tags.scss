@@ -1,10 +1,49 @@
+$tags: (ember: $red, design: $watermelon, angular: $purple);
+
+.tags {
+  @include display(flex);
+
+  li {
+    margin-right: $base-spacing;
+  }
+}
+
 .tag {
   border-radius: $base-border-radius;
+  border: 1px solid transparent;
+  box-shadow: $base-box-shadow;
+  color: white;
+  display: inline-block;
   font-size: em(12);
-  padding: em(4) em(8);
+  padding: em(4) em(12);
 
-  &.ember {
-    background: $red;
+  &:hover,
+  &:active,
+  &:focus {
     color: white;
   }
+
+  @each $tag, $background-color in $tags {
+    &.#{$tag} {
+      background: $background-color;
+      border-color: darken($background-color, 5%);
+
+      &:hover {
+        background: darken($background-color, 3%);
+      }
+
+      .tag-badge {
+        background-color: darken($background-color, 10%);
+      }
+    }
+  }
+}
+
+.tag-badge {
+  background-color: darken($red, 10%);
+  border-radius: em(12, 12);
+  display: inline-block;
+  font-size: em(10, 12);
+  margin-left: 1em;
+  padding: 0 em(10, 12);
 }

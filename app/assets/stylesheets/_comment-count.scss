@@ -1,0 +1,15 @@
+.comment-count {
+  @include align-items(center);
+  @include display(flex);
+
+  span {
+    color: $light-font-color;
+    font-weight: 800;
+    margin-left: 0.25em;
+  }
+
+  svg {
+    @include size(1em);
+    fill: $light-font-color;
+  }
+}

@@ -3,10 +3,10 @@
     <img src="https://s3.amazonaws.com/uifaces/faces/twitter/csswizardry/128.jpg" alt="creuter" class="avatar dummy">
   </div>
 
-  <div class="table-list-cell description">
-    <%= link_to pull_request.title, pull_request.github_url %>
-    <%= link_to pull_request.repo_name, pull_request.repo_github_url, class: "subtitle" %>
-    <span class="meta">
+  <div class="table-list-cell stacked">
+    <%= link_to pull_request.title, pull_request.github_url, class: "table-list-cell-title" %>
+    <%= link_to pull_request.repo_name, pull_request.repo_github_url, class: "table-list-cell-subtitle" %>
+    <span class="table-list-cell-meta">
       #<%= pull_request.github_issue_id %>
       opened <%= time_ago_in_words pull_request.created_at %> ago by
       <%= link_to pull_request.user_name, pull_request.user_github_url %>
@@ -18,7 +18,9 @@
   </div>
 
   <div class="table-list-cell">
-    <%= embedded_svg "svg/comment.svg" %>
-    <span class="dummy">1</span>
+    <div class="comment-count">
+      <%= embedded_svg "svg/comment.svg" %>
+      <span class="dummy">1</span>
+    </div>
   </div>
 </li>

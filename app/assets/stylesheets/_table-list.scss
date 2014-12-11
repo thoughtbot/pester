@@ -1,10 +1,20 @@
+.table-list {
+  border: $dark-border;
+  box-shadow: $heavy-box-shadow;
+}
+
 .table-list-item {
   @include align-items(space-between);
   @include display(flex);
+  background: white;
   border-left: $base-border;
   border-right: $base-border;
   border-top: $base-border;
   width: 100%;
+
+  &:hover {
+    background: lighten($lighter-gray, 2%);
+  }
 
   &:first-child {
     border-top-left-radius: $base-border-radius;
@@ -19,11 +29,33 @@
 }
 
 .table-list-cell {
+  @include align-items(center);
+  @include display(flex);
   padding: em(8) em(12);
 
-  &.description {
-    @include display(flex);
+  &.stacked {
+    @include align-items(flex-start);
     @include flex(1);
     @include flex-direction(column);
   }
+}
+
+.table-list-cell-title {
+  color: $base-font-color;
+  font-family: $header-font-family;
+  font-size: em(18);
+  font-weight: 800;
+
+  &:hover {
+    color: $base-link-color;
+  }
+}
+
+.table-list-cell-subtitle {
+  @extend %alt-font-style;
+  margin-bottom: $base-spacing / 2;
+}
+
+.table-list-cell-meta {
+  @extend %alt-font-style;
 }

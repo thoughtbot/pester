@@ -1,4 +1,17 @@
-main {
+body {
+  background: $darker-blue;
+}
+
+.page-header {
+  @include padding(1em null);
+}
+
+.slice {
+  @include padding(1em null);
+  background: $dark-blue;
+  margin-bottom: 2em;
+}
+
+.container {
   @include outer-container;
-  padding: 4em 0;
 }

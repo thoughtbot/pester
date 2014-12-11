@@ -5,14 +5,14 @@
   <meta name="ROBOTS" content="NOODP" />
   <meta name="viewport" content="initial-scale=1" />
   <title><%= title %></title>
+  <script src="//use.typekit.net/jax3oxe.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
   <%= stylesheet_link_tag :application, media: "all" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <%= render "flashes" -%>
-  <main>
-    <%= yield %>
-  </main>
+  <%= yield %>
   <%= render "javascript" %>
 </body>
 </html>
