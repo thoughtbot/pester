@@ -14,3 +14,5 @@ RSpec.configure do |config|
 end
 
 WebMock.disable_net_connect!(allow_localhost: true)
+
+$LOAD_PATH.unshift(File.expand_path("../../app", __FILE__))

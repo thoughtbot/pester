@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211190456) do
+ActiveRecord::Schema.define(version: 20141211220550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,10 +37,17 @@ ActiveRecord::Schema.define(version: 20141211190456) do
     t.datetime "updated_at",                               null: false
     t.integer  "github_issue_id",                          null: false
     t.string   "github_url",                               null: false
-    t.string   "repo_name",                                null: false
     t.string   "status",          default: "needs review", null: false
+    t.integer  "repo_id",                                  null: false
   end
 
+  add_index "pull_requests", ["repo_id"], name: "index_pull_requests_on_repo_id", using: :btree
   add_index "pull_requests", ["status"], name: "index_pull_requests_on_status", using: :btree
 
+  create_table "repos", force: true do |t|
+    t.string "full_name"
+    t.string "github_url"
+  end
+
+  add_foreign_key "pull_requests", "repos"
 end
