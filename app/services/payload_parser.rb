@@ -1,10 +1,23 @@
 class PayloadParser
-  def initialize(payload)
+  def initialize(payload, headers)
     @payload = payload
+    @headers = headers
   end
 
   def action
     payload["action"]
+  end
+
+  def event_type
+    headers["X-Github-Event"]
+  end
+
+  def comment
+    payload["comment"] || []
+  end
+
+  def github_issue_id
+    payload["pull_request"]["id"]
   end
 
   def params
@@ -19,11 +32,11 @@ class PayloadParser
     }
   end
 
-  private
+  protected
 
-  def github_issue_id
-    payload["pull_request"]["id"]
-  end
+  attr_reader :headers
+
+  private
 
   def github_url
     payload["pull_request"]["html_url"]

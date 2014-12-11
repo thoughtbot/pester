@@ -1,20 +1,24 @@
 class GithubPayloadsController < ApplicationController
   def create
-    if pr_is_new?
-      PullRequest.create(pr_params)
-    end
+    action_matching(parser).call
 
     render nothing: true
   end
 
   private
 
-  def pr_is_new?
-    parser.action == "opened"
+  def action_matching(*args)
+    actions
+      .find { |action| action.matches(*args) }
+      .new(*args)
+  end
+
+  def actions
+    [CreateNewPr, MarkPrInProgress, NoMatchingAction]
   end
 
   def parser
-    @_parser ||= PayloadParser.new(params[:payload])
+    @_parser ||= PayloadParser.new(params[:payload], request.headers)
   end
 
   def pr_params
