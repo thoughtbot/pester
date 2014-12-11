@@ -1,6 +1,7 @@
 class PayloadParser
-  def initialize(payload)
+  def initialize(payload, repo_payload_parser)
     @payload = payload
+    @repo_payload_parser = repo_payload_parser
   end
 
   def action
@@ -11,9 +12,13 @@ class PayloadParser
     {
       github_issue_id: github_issue_id,
       github_url: github_url,
-      repo_name: repo_name,
+      repo_params: repo_params,
     }
   end
+
+  protected
+
+  attr_reader :repo_payload_parser
 
   private
 
@@ -25,8 +30,8 @@ class PayloadParser
     payload["pull_request"]["html_url"]
   end
 
-  def repo_name
-    payload["pull_request"]["head"]["repo"]["full_name"]
+  def repo_params
+    repo_payload_parser.parse(payload["pull_request"]["head"]["repo"])
   end
 
   def payload
