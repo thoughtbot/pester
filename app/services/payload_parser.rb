@@ -13,11 +13,11 @@ class PayloadParser
   end
 
   def comment
-    payload["comment"] || []
+    payload["comment"] || {}
   end
 
   def github_issue_id
-    payload["pull_request"]["id"]
+    pull_request_or_issue_params["id"]
   end
 
   def params
@@ -37,6 +37,10 @@ class PayloadParser
   attr_reader :headers
 
   private
+
+  def pull_request_or_issue_params
+    payload["pull_request"] || payload["issue"]
+  end
 
   def github_url
     payload["pull_request"]["html_url"]
