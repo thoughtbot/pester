@@ -1,0 +1,10 @@
+.tag {
+  border-radius: $base-border-radius;
+  font-size: em(12);
+  padding: em(4) em(8);
+
+  &.ember {
+    background: $red;
+    color: white;
+  }
+}

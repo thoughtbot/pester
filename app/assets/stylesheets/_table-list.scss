@@ -1,0 +1,29 @@
+.table-list-item {
+  @include align-items(space-between);
+  @include display(flex);
+  border-left: $base-border;
+  border-right: $base-border;
+  border-top: $base-border;
+  width: 100%;
+
+  &:first-child {
+    border-top-left-radius: $base-border-radius;
+    border-top-right-radius: $base-border-radius;
+  }
+
+  &:last-child {
+    border-bottom-left-radius: $base-border-radius;
+    border-bottom-right-radius: $base-border-radius;
+    border-bottom: $base-border;
+  }
+}
+
+.table-list-cell {
+  padding: em(8) em(12);
+
+  &.description {
+    @include display(flex);
+    @include flex(1);
+    @include flex-direction(column);
+  }
+}
