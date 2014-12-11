@@ -1,14 +1,12 @@
-<div ng-controller="PullRequestIndexCtrl">
-  <input type="text" ng-model="search" />
-
+<div>
   <ul class="table-list">
-    <li class="table-list-item" ng-repeat="pullRequest in pullRequests | filter:search">
+    <li class="table-list-item">
       <div class="table-list-cell">
         <img src="https://s3.amazonaws.com/uifaces/faces/twitter/csswizardry/128.jpg" alt="creuter" class="avatar">
       </div>
 
       <div class="table-list-cell description">
-        <a class="title" href="#">{{ pullRequest.title }}</a>
+        <a class="title" href="#">Implement Stuff</a>
         <a class="subtitle" href="#">thoughtbot/sportcoat-hypodermic</a>
         <span class="meta">#44 opened 23 hours ago by <a href="#">JoelQ</a></span>
       </div>
