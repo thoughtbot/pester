@@ -1,5 +1,5 @@
 <li>
-  <%= link_to(toggle_tag_on_path(tag.name), class: ["tag-toggle", tag.name]) do %>
+  <%= link_to(toggle_tag_on_path(tag.name), class: tag_classes(tag.name)) do %>
     <%= tag.name.titleize %>
     <span class="tag-badge dummy">3</span>
   <% end %>
