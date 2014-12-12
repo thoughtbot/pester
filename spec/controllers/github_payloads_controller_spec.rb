@@ -90,27 +90,62 @@ describe GithubPayloadsController do
         expect(last_pull_request).to be_nil
       end
     end
+
+    describe "signature verification" do
+      context 'the GitHub secret matches the project correct' do
+        it 'returns a success' do
+          send_pull_request_payload(action: "opened")
+
+          expect(response.status).to eq(200)
+        end
+      end
+
+      context 'the GitHub secret does not match the project' do
+        it 'returns a 401' do
+          post :create, github_payload: JSON.parse(pull_request_payload(action: "opened"))
+
+          expect(response.status).to eq(401)
+        end
+      end
+    end
   end
 
   def send_pull_request_payload(**key_word_args)
-    post :create, github_payload: JSON.parse(pull_request_payload(**key_word_args))
+    send_github_request(pull_request_payload(**key_word_args))
   end
 
   def send_pull_request_review_payload(github_issue_id:)
     request.headers["X-Github-Event"] = "pull_request_review_comment"
-    post :create, github_payload: JSON.parse(
+    send_github_request(
       pull_request_review_comment_payload(github_issue_id: github_issue_id)
     )
   end
 
   def send_issue_comment(body:, github_issue_id:)
     request.headers["X-Github-Event"] = "issue_comment"
-    post :create, github_payload: JSON.parse(
+    send_github_request(
       issue_comment_payload(body: body, github_issue_id: github_issue_id)
     )
   end
 
   def last_pull_request
     PullRequest.last
+  end
+
+  def send_github_request(body)
+    request.env["RAW_POST_DATA"] = body
+    request.env["HTTP_X_HUB_SIGNATURE"] = create_signature(
+      ENV["GITHUB_SECRET_KEY"],
+      body,
+    )
+    post :create, github_payload: JSON.parse(body)
+  end
+
+  def create_signature(secret, body)
+    "sha1=" + OpenSSL::HMAC.hexdigest(hmac_digest, secret, body)
+  end
+
+  def hmac_digest
+    OpenSSL::Digest.new("sha1")
   end
 end
