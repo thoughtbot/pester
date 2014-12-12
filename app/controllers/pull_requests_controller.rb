@@ -1,7 +1,11 @@
 class PullRequestsController < ApplicationController
-  helper_method :pull_requests, :tags, :tags_to_filter_by
+  helper_method :grouped_pull_requests, :tags, :tags_to_filter_by
 
   private
+
+  def grouped_pull_requests
+    pull_requests.group_by(&:status)
+  end
 
   def pull_requests
     @pull_requests ||= PullRequest.for_tags(tags_to_filter_by).active

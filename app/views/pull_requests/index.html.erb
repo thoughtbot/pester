@@ -18,8 +18,18 @@
 
 <main>
   <div class="container">
-    <ol class="table-list">
-      <%= render pull_requests %>
-    </ol>
+    <% if grouped_pull_requests["needs review"].present? %>
+      <h3>Needs Review</h3>
+      <ol class="table-list">
+        <%= render grouped_pull_requests["needs review"] %>
+      </ol>
+    <% end %>
+
+    <% if grouped_pull_requests["in progress"].present? %>
+      <h3>In Progress</h3>
+      <ol class="table-list">
+        <%= render grouped_pull_requests["in progress"] %>
+      </ol>
+    <% end %>
   </div>
 </main>
