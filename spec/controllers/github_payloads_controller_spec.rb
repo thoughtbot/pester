@@ -75,9 +75,9 @@ describe GithubPayloadsController do
       context "when the comment includes 'NRR'" do
         it "updates the PullRequest's status to 'needs review'" do
           pr = create(:pull_request, :in_progress)
-          send_pull_request_review_payload(
+          send_issue_comment(
             github_issue_id: pr.github_issue_id,
-            comment: "YO this PR NRR"
+            body: "YO this PR NRR"
           )
           expect(last_pull_request.status).to eq("needs review")
         end
@@ -96,13 +96,10 @@ describe GithubPayloadsController do
     post :create, github_payload: JSON.parse(pull_request_payload(**key_word_args))
   end
 
-  def send_pull_request_review_payload(github_issue_id:, comment: "do you even lift bro?")
+  def send_pull_request_review_payload(github_issue_id:)
     request.headers["X-Github-Event"] = "pull_request_review_comment"
     post :create, github_payload: JSON.parse(
-      pull_request_review_comment_payload(
-        github_issue_id: github_issue_id,
-        comment: comment,
-      )
+      pull_request_review_comment_payload(github_issue_id: github_issue_id)
     )
   end
 

@@ -45,7 +45,7 @@ def issue_comment_payload(body:, github_issue_id:)
     "created_at": "2014-10-10T00:09:51Z",
     "updated_at": "2014-10-10T00:09:51Z",
     "closed_at": null,
-    "body": "It looks like you accidently spelled 'commit' with two 't's."
+    "body": "do you even lift, bro?"
   },
   "comment": {
     "url": "https://api.github.com/repos/baxterthehacker/public-repo/issues/comments/58596796",

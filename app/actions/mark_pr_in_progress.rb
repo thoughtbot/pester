@@ -5,8 +5,7 @@ class MarkPrInProgress
   end
 
   def self.matches(parser, _pull_request)
-    parser.event_type == "pull_request_review_comment" &&
-    !parser.needs_re_review?
+    parser.event_type == "pull_request_review_comment"
   end
 
   def call

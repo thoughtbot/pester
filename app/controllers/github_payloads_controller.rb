@@ -20,7 +20,7 @@ class GithubPayloadsController < ApplicationController
       CompleteClosedPr,
       MarkPrNeedsReview,
       MarkPrInProgress,
-      NoMatchingAction
+      NoMatchingAction,
     ]
   end
 

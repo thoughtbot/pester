@@ -5,8 +5,8 @@ class MarkPrNeedsReview
   end
 
   def self.matches(parser, _pull_request)
-    parser.event_type == "pull_request_review_comment" &&
-    parser.needs_re_review?
+    parser.event_type == "issue_comment" &&
+      parser.comment["body"] =~ /NRR/
   end
 
   def call

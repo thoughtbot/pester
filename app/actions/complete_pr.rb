@@ -6,7 +6,7 @@ class CompletePr
 
   def self.matches(parser, _pull_request)
     parser.event_type == "issue_comment" &&
-      parser.comment_body =~ /LGTM/
+      parser.comment["body"] =~ /LGTM/
   end
 
   def call
