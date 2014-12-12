@@ -13,4 +13,14 @@ class PullRequest < ActiveRecord::Base
   def self.active
     where(status: ["needs review", "in progress"])
   end
+
+  def self.for_tags(tags)
+    if tags.present?
+      joins(:tags)
+        .where(tags: { name: tags })
+        .uniq
+    else
+      all
+    end
+  end
 end

@@ -5,8 +5,11 @@ if Rails.env.development?
     desc "Seed data for development environment"
     task prime: "db:setup" do
       include FactoryGirl::Syntax::Methods
-      tag = create(:tag, name: "ember")
-      create_list(:pull_request, 5, tags: [tag])
+      ember = create(:tag, name: "ember")
+      rails = create(:tag, name: "rails")
+      create(:pull_request, title: "An Ember PR", tags: [ember])
+      create(:pull_request, title: "A Rails PR", tags: [rails])
+      create(:pull_request, title: "A PR that should probably have been split up", tags: [rails, ember])
     end
   end
 end

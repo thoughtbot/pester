@@ -67,4 +67,53 @@ feature "User views PRs" do
       expect(page).not_to have_content("Ember")
     end
   end
+
+  scenario "Can filter by tags" do
+    create_pull_requests_with_tags
+
+    visit root_path
+    within(".tags") do
+      click_on "Ember"
+    end
+
+    expect(page).to have_content("An Ember PR")
+    expect(page).not_to have_content("A Rails PR")
+    expect(page).to have_content("A PR that should probably have been split up")
+  end
+
+  scenario "Can filter by multiple tags" do
+    create_pull_requests_with_tags
+
+    visit root_path(tags: "ember")
+    within(".tags") do
+      click_on "Rails"
+    end
+
+    expect(page).to have_content("An Ember PR")
+    expect(page).to have_content("A Rails PR")
+    expect(page).to have_content("A PR that should probably have been split up")
+  end
+
+  scenario "Can remove a tag from filtered tags" do
+    create_pull_requests_with_tags
+
+    visit root_path(tags: "ember,rails")
+    within(".tags") do
+      click_on "Ember"
+    end
+
+    expect(page).not_to have_content("An Ember PR")
+    expect(page).to have_content("A Rails PR")
+    expect(page).to have_content("A PR that should probably have been split up")
+  end
+
+  private
+
+  def create_pull_requests_with_tags
+    ember = create(:tag, name: "ember")
+    rails = create(:tag, name: "rails")
+    create(:pull_request, title: "An Ember PR", tags: [ember])
+    create(:pull_request, title: "A Rails PR", tags: [rails])
+    create(:pull_request, title: "A PR that should probably have been split up", tags: [rails, ember])
+  end
 end
