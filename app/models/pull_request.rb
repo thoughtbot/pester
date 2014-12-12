@@ -1,6 +1,5 @@
 class PullRequest < ActiveRecord::Base
-  validates :github_issue_id, presence: true, numericality: { only_integer: true }, uniqueness: true
-  validates :github_url, presence: true
+  validates :github_url, presence: true, uniqueness: true
   validates :repo_name, presence: true
   validates :repo_github_url, presence: true
   validates :status, presence: true, inclusion: { in: ["needs review", "in progress", "completed"] }
@@ -24,11 +23,15 @@ class PullRequest < ActiveRecord::Base
     end
   end
 
-  def webhook_urls
-    tags.map(&:webhook_url).compact
+  def number
+    github_url.split("/").last
   end
 
   def tag_names
     tags.map(&:name)
+  end
+
+  def webhook_urls
+    tags.map(&:webhook_url).compact
   end
 end

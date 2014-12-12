@@ -1,4 +1,4 @@
-def issue_comment_payload(body:, github_issue_id:)
+def issue_comment_payload(body:, github_url:)
 <<-EOS
 {
   "action": "created",
@@ -7,8 +7,8 @@ def issue_comment_payload(body:, github_issue_id:)
     "labels_url": "https://api.github.com/repos/baxterthehacker/public-repo/issues/51/labels{/name}",
     "comments_url": "https://api.github.com/repos/baxterthehacker/public-repo/issues/51/comments",
     "events_url": "https://api.github.com/repos/baxterthehacker/public-repo/issues/51/events",
-    "html_url": "https://github.com/baxterthehacker/public-repo/issues/51",
-    "id": #{github_issue_id},
+    "html_url": "#{github_url}",
+    "id": 1234,
     "number": 51,
     "title": "Spelling error in the README file",
     "user": {

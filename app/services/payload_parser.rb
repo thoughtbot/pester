@@ -21,13 +21,12 @@ class PayloadParser
     payload["comment"] || {}
   end
 
-  def github_issue_id
-    pull_request_or_issue_params["id"]
+  def github_url
+    pull_request_or_issue_params["html_url"].gsub("issues", "pulls")
   end
 
   def params
     {
-      github_issue_id: github_issue_id,
       github_url: github_url,
       repo_name: repo_name,
       repo_github_url: repo_github_url,
@@ -45,10 +44,6 @@ class PayloadParser
 
   def pull_request_or_issue_params
     payload["pull_request"] || payload["issue"] || {}
-  end
-
-  def github_url
-    payload["pull_request"]["html_url"]
   end
 
   def repo_name

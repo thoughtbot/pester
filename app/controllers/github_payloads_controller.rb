@@ -35,6 +35,6 @@ class GithubPayloadsController < ApplicationController
   end
 
   def pull_request
-    PullRequest.find_by(github_issue_id: parser.github_issue_id) || NullPullRequest.new
+    PullRequest.find_by(github_url: parser.github_url) || NullPullRequest.new
   end
 end

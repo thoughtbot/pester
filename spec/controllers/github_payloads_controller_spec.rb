@@ -5,16 +5,24 @@ describe GithubPayloadsController do
     describe "for issue comments" do
       describe "when the comment has 'LGTM'" do
         it "completes the pull request" do
-          create(:pull_request, github_issue_id: 123, status: "in progress")
-          send_issue_comment(body: "This LGTM :poop:", github_issue_id: 123)
+          pr_url = "https://github.com/org/repo/pulls/123"
+          issue_url = pr_url.gsub("pulls", "issues")
+          create(:pull_request, github_url: pr_url, status: "in progress")
+
+          send_issue_comment(body: "This LGTM :poop:", github_url: issue_url)
+
           expect(last_pull_request.status).to eq("completed")
         end
       end
 
       describe "when the comment does not contain 'LGTM'" do
         it "does not modify the pull request" do
-          create(:pull_request, github_issue_id: 234, status: "in progress")
-          send_issue_comment(body: "This is :poop:", github_issue_id: 234)
+          pr_url = "https://github.com/org/repo/pulls/123"
+          issue_url = pr_url.gsub("pulls", "issues")
+          create(:pull_request, github_url: pr_url, status: "in progress")
+
+          send_issue_comment(body: "This is :poop:", github_url: issue_url)
+
           expect(last_pull_request.status).to eq("in progress")
         end
       end
@@ -22,8 +30,11 @@ describe GithubPayloadsController do
 
     describe "when the action is 'closed'" do
       it "moves the pull request to 'completed'" do
-        create(:pull_request, github_issue_id: 123, status: "needs review")
-        send_pull_request_payload(action: "closed", github_issue_id: 123)
+        pr_url = "https://github.com/org/repo/pulls/123"
+        create(:pull_request, github_url: pr_url, status: "needs review")
+
+        send_pull_request_payload(action: "closed", github_url: pr_url)
+
         expect(last_pull_request.status).to eq("completed")
       end
     end
@@ -68,26 +79,27 @@ describe GithubPayloadsController do
 
     describe "when the action is 'created'" do
       it "it updates the PullRequest's status to 'in progress'" do
-        pr = create(:pull_request)
-        send_pull_request_review_payload(
-          github_issue_id: pr.github_issue_id
-        )
+        pr_url = "https://github.com/org/repo/pulls/123"
+        create(:pull_request, github_url: pr_url)
+
+        send_pull_request_review_payload(github_url: pr_url)
+
         expect(last_pull_request.status).to eq("in progress")
       end
 
       it "does not throw an exception when there is no matching pr" do
         expect {
-          send_pull_request_review_payload(github_issue_id: 1234)
+          send_pull_request_review_payload(github_url: "http://example.com")
         }.not_to raise_exception
       end
 
       context "when the comment includes 'NRR'" do
         it "updates the PullRequest's status to 'needs review'" do
-          pr = create(:pull_request, :in_progress)
-          send_issue_comment(
-            github_issue_id: pr.github_issue_id,
-            body: "YO this PR NRR"
-          )
+          pr_url = "https://github.com/org/repo/pulls/123"
+          create(:pull_request, :in_progress, github_url: pr_url)
+
+          send_issue_comment(github_url: pr_url, body: "YO this PR NRR")
+
           expect(last_pull_request.status).to eq("needs review")
         end
       end
@@ -123,17 +135,17 @@ describe GithubPayloadsController do
     send_github_request(pull_request_payload(**key_word_args))
   end
 
-  def send_pull_request_review_payload(github_issue_id:)
+  def send_pull_request_review_payload(github_url:)
     request.headers["X-Github-Event"] = "pull_request_review_comment"
     send_github_request(
-      pull_request_review_comment_payload(github_issue_id: github_issue_id)
+      pull_request_review_comment_payload(github_url: github_url)
     )
   end
 
-  def send_issue_comment(body:, github_issue_id:)
+  def send_issue_comment(body:, github_url:)
     request.headers["X-Github-Event"] = "issue_comment"
     send_github_request(
-      issue_comment_payload(body: body, github_issue_id: github_issue_id)
+      issue_comment_payload(body: body, github_url: github_url)
     )
   end
 

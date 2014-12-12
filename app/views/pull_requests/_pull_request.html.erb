@@ -6,7 +6,7 @@
   <div class="table-list-cell stacked">
     <%= link_to pull_request.title, pull_request.github_url, class: "table-list-cell-title" %>
     <span class="table-list-cell-subtitle">
-      #<%= pull_request.github_issue_id %>
+      #<%= pull_request.number %>
       opened <%= time_ago_in_words pull_request.created_at %> ago by
       <%= link_to pull_request.user_name, pull_request.user_github_url %>
       in

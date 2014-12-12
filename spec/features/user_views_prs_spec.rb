@@ -30,10 +30,10 @@ feature "User views PRs" do
   scenario "Sees metadata" do
     create(
       :pull_request,
-       github_issue_id: 123,
        created_at: 1.hour.ago,
        user_name: "JoelQ",
        user_github_url: "https://github.com/joelq",
+       github_url: "https://github.com/org/repo/pulls/123",
     )
 
     visit root_path

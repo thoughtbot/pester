@@ -1,4 +1,4 @@
-def pull_request_review_comment_payload(github_issue_id:)
+def pull_request_review_comment_payload(github_url:)
 <<-EOS
 {
   "action": "created",
@@ -49,8 +49,8 @@ def pull_request_review_comment_payload(github_issue_id:)
   },
   "pull_request": {
     "url": "https://api.github.com/repos/baxterthehacker/public-repo/pulls/50",
-    "id": #{github_issue_id},
-    "html_url": "https://github.com/baxterthehacker/public-repo/pull/50",
+    "id": 1234,
+    "html_url": "#{github_url}",
     "diff_url": "https://github.com/baxterthehacker/public-repo/pull/50.diff",
     "patch_url": "https://github.com/baxterthehacker/public-repo/pull/50.patch",
     "issue_url": "https://api.github.com/repos/baxterthehacker/public-repo/issues/50",

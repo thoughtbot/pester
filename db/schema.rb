@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20141212221130) do
   create_table "pull_requests", force: true do |t|
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
-    t.integer  "github_issue_id",                          null: false
     t.string   "github_url",                               null: false
     t.string   "repo_name",                                null: false
     t.string   "status",          default: "needs review", null: false
