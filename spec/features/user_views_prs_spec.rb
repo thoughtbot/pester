@@ -41,4 +41,30 @@ feature "User views PRs" do
     expect(page).to have_content("#123 opened about 1 hour ago by JoelQ")
     expect(page).to have_link("JoelQ", href: "https://github.com/joelq")
   end
+
+  scenario "Does not see completed PRs" do
+    create(:pull_request, title: "Implement Stuff", status: "needs review")
+    create(:pull_request, title: "Review Stuff", status: "in progress")
+    create(:pull_request, title: "Design Stuff", status: "completed")
+
+    visit root_path
+
+    expect(page).to have_content("Implement Stuff")
+    expect(page).to have_content("Review Stuff")
+    expect(page).not_to have_content("Design Stuff")
+  end
+
+  scenario "Sees tags with active pull requests" do
+    ember = create(:tag, name: "ember")
+    rails = create(:tag, name: "rails")
+    create(:pull_request, title: "An Ember PR", tags: [ember], status: "completed")
+    create(:pull_request, title: "A Rails PR", tags: [rails], status: "needs review")
+
+    visit root_path
+
+    within(".tags") do
+      expect(page).to have_content("Rails")
+      expect(page).not_to have_content("Ember")
+    end
+  end
 end
