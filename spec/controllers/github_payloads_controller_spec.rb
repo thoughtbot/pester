@@ -55,6 +55,15 @@ describe GithubPayloadsController do
         send_pull_request_payload(action: "opened", body: "A request with no tags")
         expect(last_pull_request.tags.map(&:name)).to eq(["code"])
       end
+
+      it "posts to slack" do
+        create(:tag, name: "rails", webhook_url: "https://google.com/")
+        request_stub = stub_request(:post, "https://google.com/").with(body: /.*/)
+
+        send_pull_request_payload(action: "opened", body: "A request #rails")
+
+        expect(request_stub).to have_been_requested
+      end
     end
 
     describe "when the action is 'created'" do

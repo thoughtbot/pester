@@ -8,17 +8,29 @@ class CreateNewPr
   end
 
   def call
-    tag_names = TagParser.new.parse(payload_parser.body)
-
-    if tag_names.empty?
-      tag_names = ["code"]
-    end
-
-    tags = tag_names.map(&Tag.method(:with_name))
-    PullRequest.create(payload_parser.params.merge(tags: tags))
+    pull_request = PullRequest.create(payload_parser.params.merge(tags: tags))
+    post_to_slack(pull_request)
   end
 
   protected
 
   attr_reader :payload_parser
+
+  private
+
+  def tags
+    @tags ||= begin
+      tag_names = TagParser.new.parse(payload_parser.body)
+
+      if tag_names.empty?
+        tag_names = ["code"]
+      end
+
+      tag_names.map(&Tag.method(:with_name))
+    end
+  end
+
+  def post_to_slack(pull_request)
+    WebhookNotifier.new(pull_request).send_notification
+  end
 end

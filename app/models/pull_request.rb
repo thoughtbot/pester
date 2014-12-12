@@ -23,4 +23,12 @@ class PullRequest < ActiveRecord::Base
       all
     end
   end
+
+  def webhook_urls
+    tags.map(&:webhook_url).compact
+  end
+
+  def tag_names
+    tags.map(&:name)
+  end
 end
