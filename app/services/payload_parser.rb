@@ -22,7 +22,7 @@ class PayloadParser
   end
 
   def github_url
-    pull_request_or_issue_params["html_url"].gsub("issues", "pulls")
+    html_url.gsub("issues", "pulls")
   end
 
   def params
@@ -41,6 +41,10 @@ class PayloadParser
   attr_reader :headers, :payload
 
   private
+
+  def html_url
+    pull_request_or_issue_params["html_url"] || ""
+  end
 
   def pull_request_or_issue_params
     payload["pull_request"] || payload["issue"] || {}
