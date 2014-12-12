@@ -49,9 +49,6 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.6)
-    airbrake (4.1.0)
-      builder
-      multi_json
     arel (6.0.0)
     awesome_print (1.2.0)
     bourbon (4.0.2)
@@ -119,6 +116,8 @@ GEM
     high_voltage (2.2.1)
     highline (1.6.21)
     hike (1.2.3)
+    honeybadger (1.16.6)
+      json
     i18n (0.7.0.beta1)
     i18n-tasks (0.7.8)
       activesupport
@@ -259,7 +258,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  airbrake
   awesome_print
   bourbon (~> 4.0.2)
   bundler-audit
@@ -274,6 +272,7 @@ DEPENDENCIES
   flutie
   formulaic
   high_voltage
+  honeybadger
   i18n-tasks
   jquery-rails
   launchy
