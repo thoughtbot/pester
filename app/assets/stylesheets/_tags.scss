@@ -1,4 +1,4 @@
-$tags: (ember: $red, design: $watermelon, angular: $purple);
+$tags: (ember: $red, design: $pink, angular: $purple);
 
 .tags {
   @include display(flex);
@@ -8,27 +8,54 @@ $tags: (ember: $red, design: $watermelon, angular: $purple);
   }
 }
 
-.tag {
+.tag-badge {
+  @include padding(null em(10, 12));
+  background-color: $darker-blue;
+  border-radius: 1em;
+  display: inline-block;
+  font-size: em(10, 12);
+  margin-left: 1em;
+}
+
+%tag-base {
   border-radius: $base-border-radius;
   border: 1px solid transparent;
-  box-shadow: $base-box-shadow;
   color: white;
   display: inline-block;
   font-size: em(12);
+  font-weight: 600;
   padding: em(4) em(12);
+}
 
-  &:hover,
-  &:active,
-  &:focus {
-    color: white;
-  }
+.tag {
+  @extend %tag-base;
 
   @each $tag, $background-color in $tags {
     &.#{$tag} {
       background: $background-color;
-      border-color: darken($background-color, 5%);
+    }
+  }
+}
 
-      &:hover {
+.tag-toggle {
+  @extend %tag-base;
+  border-color: $darker-blue;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: lighten($dark-blue, 2%);
+    color: white;
+  }
+
+  @each $tag, $background-color in $tags {
+    &.#{$tag}.is-active {
+      background: $background-color;
+      border-color: transparent;
+      box-shadow: $base-box-shadow;
+
+      &:hover,
+      &:focus {
         background: darken($background-color, 3%);
       }
 
@@ -37,13 +64,4 @@ $tags: (ember: $red, design: $watermelon, angular: $purple);
       }
     }
   }
-}
-
-.tag-badge {
-  background-color: darken($red, 10%);
-  border-radius: em(12, 12);
-  display: inline-block;
-  font-size: em(10, 12);
-  margin-left: 1em;
-  padding: 0 em(10, 12);
 }

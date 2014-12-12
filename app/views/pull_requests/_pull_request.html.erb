@@ -5,11 +5,12 @@
 
   <div class="table-list-cell stacked">
     <%= link_to pull_request.title, pull_request.github_url, class: "table-list-cell-title" %>
-    <%= link_to pull_request.repo_name, pull_request.repo_github_url, class: "table-list-cell-subtitle" %>
-    <span class="table-list-cell-meta">
+    <span class="table-list-cell-subtitle">
       #<%= pull_request.github_issue_id %>
       opened <%= time_ago_in_words pull_request.created_at %> ago by
       <%= link_to pull_request.user_name, pull_request.user_github_url %>
+      in
+      <%= link_to pull_request.repo_name, pull_request.repo_github_url %>
     </span>
   </div>
 

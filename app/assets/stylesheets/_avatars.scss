@@ -1,5 +1,5 @@
 .avatar {
-  @include size(em(64));
+  @include size(em(48));
   border-radius: $base-border-radius;
   display: block;
 }

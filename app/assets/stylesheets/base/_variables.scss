@@ -1,8 +1,8 @@
 // Typography
-$sans-serif: $helvetica;
+$sans-serif: "proxima-nova-soft", $helvetica;
 $serif: $georgia;
 $base-font-family: $sans-serif;
-$header-font-family: "proxima-nova-soft", $base-font-family;
+$header-font-family: $base-font-family;
 
 // Font Sizes
 $base-font-size: 1em;
@@ -38,7 +38,7 @@ $red: #cf5C60;
 $purple: #717ecd;
 $green: #4ab471;
 $yellow: #f3ae4e;
-$watermelon: #d96383;
+$pink: #d96383;
 
 // Background Color
 $base-background-color: white;

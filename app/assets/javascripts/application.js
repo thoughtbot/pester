@@ -13,3 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$( document ).ready(function() {
+  $(".tag-toggle").click(function() {
+      $(this).toggleClass("is-active");
+  });
+});

@@ -52,10 +52,15 @@
 }
 
 .table-list-cell-subtitle {
-  @extend %alt-font-style;
-  margin-bottom: $base-spacing / 2;
-}
+  color: $light-font-color;
+  font-size: em(12);
 
-.table-list-cell-meta {
-  @extend %alt-font-style;
+  a {
+    color: $base-font-color;
+
+    &:hover,
+    &:focus {
+      color: $base-link-color;
+    }
+  }
 }
