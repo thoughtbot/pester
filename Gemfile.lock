@@ -211,9 +211,6 @@ GEM
     sass (3.4.9)
     shoulda-matchers (2.7.0)
       activesupport (>= 3.0.0)
-    simple_form (3.1.0)
-      actionpack (~> 4.0)
-      activemodel (~> 4.0)
     slop (3.6.0)
     spring (1.2.0)
     spring-commands-rspec (1.0.3)
@@ -287,7 +284,6 @@ DEPENDENCIES
   rspec-rails (~> 3.0.0)
   sass-rails!
   shoulda-matchers
-  simple_form
   spring
   spring-commands-rspec
   timecop
