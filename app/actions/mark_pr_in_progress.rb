@@ -4,7 +4,8 @@ class MarkPrInProgress
   end
 
   def self.matches(parser)
-    parser.event_type == "pull_request_review_comment"
+    parser.event_type == "pull_request_review_comment" &&
+    parser.comment_user != "hound"
   end
 
   def call

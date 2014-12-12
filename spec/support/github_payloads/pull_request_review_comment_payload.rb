@@ -1,4 +1,4 @@
-def pull_request_review_comment_payload(github_issue_id:)
+def pull_request_review_comment_payload(github_issue_id:, comment_user: "mr_t" )
 <<-EOS
 {
   "action": "created",
@@ -12,7 +12,7 @@ def pull_request_review_comment_payload(github_issue_id:)
     "commit_id": "05c588ba8cd510ecbe112d020f215facb17817a6",
     "original_commit_id": "05c588ba8cd510ecbe112d020f215facb17817a6",
     "user": {
-      "login": "baxterthehacker",
+      "login": "#{comment_user}",
       "id": 6752317,
       "avatar_url": "https://avatars.githubusercontent.com/u/6752317?v=2",
       "gravatar_id": "",
