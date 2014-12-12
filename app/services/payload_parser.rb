@@ -12,6 +12,10 @@ class PayloadParser
     headers["X-Github-Event"]
   end
 
+  def body
+    pull_request_or_issue_params["body"]
+  end
+
   def comment
     payload["comment"] || {}
   end

@@ -33,6 +33,22 @@ describe GithubPayloadsController do
         send_pull_request_payload(action: "opened")
         expect(last_pull_request.status).to eq("needs review")
       end
+
+      it "creates tags for the pull request" do
+        send_pull_request_payload(action: "opened", body: "A request #code #rails")
+        expect(Tag.pluck(:name).sort).to eq(["code", "rails"])
+      end
+
+      it "uses existing tags if they exist" do
+        tag = Tag.create!(name: "rails")
+        send_pull_request_payload(action: "opened", body: "A request #rails")
+        expect(Tag.pluck(:id)).to eq ([tag.id])
+      end
+
+      it "defaults to tagging with #code" do
+        send_pull_request_payload(action: "opened", body: "A request with no tags")
+        expect(last_pull_request.tags.map(&:name)).to eq(["code"])
+      end
     end
 
     describe "when the action is 'created'" do
@@ -53,10 +69,8 @@ describe GithubPayloadsController do
     end
   end
 
-  def send_pull_request_payload(action:, github_issue_id: 99999)
-    post :create, github_payload: JSON.parse(
-      pull_request_payload(action: action, github_issue_id: github_issue_id)
-    )
+  def send_pull_request_payload(**key_word_args)
+    post :create, github_payload: JSON.parse(pull_request_payload(**key_word_args))
   end
 
   def send_pull_request_review_payload(github_issue_id:)

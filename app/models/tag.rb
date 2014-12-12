@@ -6,4 +6,8 @@ class Tag < ActiveRecord::Base
   def self.with_active_pull_requests
     joins(:active_pull_requests).uniq
   end
+
+  def self.with_name(name)
+    find_or_create_by!(name: name)
+  end
 end

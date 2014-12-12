@@ -1,4 +1,4 @@
-def pull_request_payload(action:, github_issue_id:)
+def pull_request_payload(action:, github_issue_id: 99999, body: "A body")
 <<-EOS
 {
    "action":"#{action}",
@@ -14,7 +14,7 @@ def pull_request_payload(action:, github_issue_id:)
       "state":"open",
       "locked":false,
       "title":"Update the README with new information",
-      "user":{  
+      "user":{
          "login":"baxterthehacker",
          "id":6752317,
          "avatar_url":"https://avatars.githubusercontent.com/u/6752317?v=2",
@@ -33,7 +33,7 @@ def pull_request_payload(action:, github_issue_id:)
          "type":"User",
          "site_admin":false
       },
-      "body":"This is a pretty simple change that we need to pull into master.",
+      "body":"#{body}",
       "created_at":"2014-10-10T00:09:50Z",
       "updated_at":"2014-10-10T00:09:50Z",
       "closed_at":null,
@@ -46,11 +46,11 @@ def pull_request_payload(action:, github_issue_id:)
       "review_comment_url":"https://api.github.com/repos/baxterthehacker/public-repo/pulls/comments/{number}",
       "comments_url":"https://api.github.com/repos/baxterthehacker/public-repo/issues/50/comments",
       "statuses_url":"https://api.github.com/repos/baxterthehacker/public-repo/statuses/05c588ba8cd510ecbe112d020f215facb17817a6",
-      "head":{  
+      "head":{
          "label":"baxterthehacker:changes",
          "ref":"changes",
          "sha":"05c588ba8cd510ecbe112d020f215facb17817a6",
-         "user":{  
+         "user":{
             "login":"baxterthehacker",
             "id":6752317,
             "avatar_url":"https://avatars.githubusercontent.com/u/6752317?v=2",
@@ -69,11 +69,11 @@ def pull_request_payload(action:, github_issue_id:)
             "type":"User",
             "site_admin":false
          },
-         "repo":{  
+         "repo":{
             "id":20000106,
             "name":"public-repo",
             "full_name":"baxterthehacker/public-repo",
-            "owner":{  
+            "owner":{
                "login":"baxterthehacker",
                "id":6752317,
                "avatar_url":"https://avatars.githubusercontent.com/u/6752317?v=2",
@@ -157,11 +157,11 @@ def pull_request_payload(action:, github_issue_id:)
             "default_branch":"master"
          }
       },
-      "base":{  
+      "base":{
          "label":"baxterthehacker:master",
          "ref":"master",
          "sha":"69a8b72e2d3d955075d47f03d902929dcaf74033",
-         "user":{  
+         "user":{
             "login":"baxterthehacker",
             "id":6752317,
             "avatar_url":"https://avatars.githubusercontent.com/u/6752317?v=2",
@@ -180,11 +180,11 @@ def pull_request_payload(action:, github_issue_id:)
             "type":"User",
             "site_admin":false
          },
-         "repo":{  
+         "repo":{
             "id":20000106,
             "name":"public-repo",
             "full_name":"baxterthehacker/public-repo",
-            "owner":{  
+            "owner":{
                "login":"baxterthehacker",
                "id":6752317,
                "avatar_url":"https://avatars.githubusercontent.com/u/6752317?v=2",
@@ -268,29 +268,29 @@ def pull_request_payload(action:, github_issue_id:)
             "default_branch":"master"
          }
       },
-      "_links":{  
-         "self":{  
+      "_links":{
+         "self":{
             "href":"https://api.github.com/repos/baxterthehacker/public-repo/pulls/50"
          },
-         "html":{  
+         "html":{
             "href":"https://github.com/baxterthehacker/public-repo/pull/50"
          },
-         "issue":{  
+         "issue":{
             "href":"https://api.github.com/repos/baxterthehacker/public-repo/issues/50"
          },
-         "comments":{  
+         "comments":{
             "href":"https://api.github.com/repos/baxterthehacker/public-repo/issues/50/comments"
          },
-         "review_comments":{  
+         "review_comments":{
             "href":"https://api.github.com/repos/baxterthehacker/public-repo/pulls/50/comments"
          },
-         "review_comment":{  
+         "review_comment":{
             "href":"https://api.github.com/repos/baxterthehacker/public-repo/pulls/comments/{number}"
          },
-         "commits":{  
+         "commits":{
             "href":"https://api.github.com/repos/baxterthehacker/public-repo/pulls/50/commits"
          },
-         "statuses":{  
+         "statuses":{
             "href":"https://api.github.com/repos/baxterthehacker/public-repo/statuses/05c588ba8cd510ecbe112d020f215facb17817a6"
          }
       },
@@ -305,11 +305,11 @@ def pull_request_payload(action:, github_issue_id:)
       "deletions":0,
       "changed_files":1
    },
-   "repository":{  
+   "repository":{
       "id":20000106,
       "name":"public-repo",
       "full_name":"baxterthehacker/public-repo",
-      "owner":{  
+      "owner":{
          "login":"baxterthehacker",
          "id":6752317,
          "avatar_url":"https://avatars.githubusercontent.com/u/6752317?v=2",
@@ -392,7 +392,7 @@ def pull_request_payload(action:, github_issue_id:)
       "watchers":0,
       "default_branch":"master"
    },
-   "sender":{  
+   "sender":{
       "login":"baxterthehacker",
       "id":6752317,
       "avatar_url":"https://avatars.githubusercontent.com/u/6752317?v=2",

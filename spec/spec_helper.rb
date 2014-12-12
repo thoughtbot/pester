@@ -1,3 +1,5 @@
+$LOAD_PATH.unshift(File.expand_path("../../app", __FILE__))
+
 require "webmock/rspec"
 
 # http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
