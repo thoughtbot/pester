@@ -13,7 +13,7 @@ class PayloadParser
   end
 
   def body
-    pull_request_or_issue_params["body"]
+    pull_request_or_issue_params["body"] || ""
   end
 
   def comment

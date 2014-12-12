@@ -34,6 +34,12 @@ describe GithubPayloadsController do
         expect(last_pull_request.status).to eq("needs review")
       end
 
+      it "does not error if the payload has no body" do
+        expect {
+          send_pull_request_payload(action: "opened", body: nil)
+        }.not_to raise_exception
+      end
+
       it "creates tags for the pull request" do
         send_pull_request_payload(action: "opened", body: "A request #code #rails")
         expect(Tag.pluck(:name).sort).to eq(["code", "rails"])

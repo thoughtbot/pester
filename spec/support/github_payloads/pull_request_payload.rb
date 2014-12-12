@@ -33,7 +33,7 @@ def pull_request_payload(action:, github_issue_id: 99999, body: "A body")
          "type":"User",
          "site_admin":false
       },
-      "body":"#{body}",
+      "body":#{body.to_json},
       "created_at":"2014-10-10T00:09:50Z",
       "updated_at":"2014-10-10T00:09:50Z",
       "closed_at":null,
