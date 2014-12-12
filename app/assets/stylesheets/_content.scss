@@ -1,0 +1,25 @@
+.content {
+  color: $light-gray;
+
+  code {
+    background: $dark-blue;
+    border: 1px solid darken($darker-blue, 5%);
+    color: $red;
+    font-weight: 600;
+    margin-right: em(4);
+    padding: em(10);
+  }
+
+  section {
+    margin-bottom: 4em;
+  }
+}
+
+.instructions {
+  @extend %default-ol;
+  color: $light-gray;
+
+  li {
+    margin-bottom: 2em;
+  }
+}

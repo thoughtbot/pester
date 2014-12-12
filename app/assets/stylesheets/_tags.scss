@@ -38,14 +38,19 @@ $tags: (ember: $red, design: $pink, angular: $purple);
 }
 
 .tag-toggle {
+  @include transition(background, 0.15s);
   @extend %tag-base;
   border-color: $darker-blue;
+  position: relative;
 
   &:hover,
-  &:active,
   &:focus {
     background: lighten($dark-blue, 2%);
     color: white;
+  }
+
+  &:active {
+    top: 1px;
   }
 
   @each $tag, $background-color in $tags {

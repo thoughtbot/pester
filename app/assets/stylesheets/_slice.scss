@@ -1,3 +1,14 @@
+.slice {
+  @include padding(1em null);
+  background: $dark-blue;
+  margin-bottom: 2em;
+
+  p {
+    color: white;
+    margin-bottom: 0;
+  }
+}
+
 .slice-title {
   color: rgba(white, 0.5);
   font-weight: 800;

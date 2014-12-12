@@ -26,6 +26,7 @@ h1 {
 
 h2 {
   font-size: $h2-font-size;
+  margin-bottom: 0.5em;
 }
 
 h3 {
@@ -91,4 +92,8 @@ cite {
   &:before {
     content: "\2014 \00A0";
   }
+}
+
+pre code {
+  display: block;
 }

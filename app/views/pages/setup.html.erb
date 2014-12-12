@@ -1,0 +1,35 @@
+<div class="page-header">
+  <h1>Getting Started</h1>
+  <%= link_to root_url do %>
+    Back to Home &rarr;
+  <% end %>
+</div>
+
+<div class="slice">
+  <div class="container">
+    <p>Once configured, all pull requests will post to Beggar with their respective tags.</p>
+  </div>
+</div>
+
+<div class="container content">
+  <section>
+    <h2>Add the Webhook</h2>
+    <ol class="instructions">
+      <li>Visit <code>https://github.com/$ORGANIZATION/$REPO/settings/hooks/new</code>.</li>
+      <li>Enter <code><%= ENV["PAYLOAD"] %></code> for the Payload URL.</li>
+      <li>Enter <code><%= ENV["SECRET"] %></code> for the secret.</li>
+      <li>Select <code>Send me everything</code>, and submit.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Add a Pull Request</h2>
+    <p>You can open a PR as normally, just include a <code>#tag</code> in the description, e.g.,</p>
+    <pre>
+    <code>
+      Implemented the Tags controller<br>
+      Users can now tag things. #rails
+    </code>
+    </pre>
+  </section>
+</div>
