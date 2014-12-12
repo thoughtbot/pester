@@ -34,7 +34,7 @@ class PayloadParser
 
   protected
 
-  attr_reader :headers
+  attr_reader :headers, :payload
 
   private
 
@@ -64,15 +64,5 @@ class PayloadParser
 
   def user_github_url
     payload["pull_request"]["head"]["user"]["html_url"]
-  end
-
-  def payload
-    @_payload ||= parse_payload
-  end
-
-  def parse_payload
-    JSON.parse(@payload).tap do |parsed_payload|
-      Rails.logger.ap(parsed_payload, :info)
-    end
   end
 end

@@ -46,17 +46,17 @@ describe GithubPayloadsController do
   end
 
   def send_pull_request_payload(action:)
-    post :create, payload: pull_request_payload(action: action)
+    post :create, github_payload: JSON.parse(pull_request_payload(action: action))
   end
 
   def send_pull_request_review_payload(github_issue_id:)
     request.headers["X-Github-Event"] = "pull_request_review_comment"
-    post :create, payload: pull_request_review_comment_payload(github_issue_id: github_issue_id)
+    post :create, github_payload: JSON.parse(pull_request_review_comment_payload(github_issue_id: github_issue_id))
   end
 
   def send_issue_comment(body:, github_issue_id:)
     request.headers["X-Github-Event"] = "issue_comment"
-    post :create, payload: issue_comment_payload(body: body, github_issue_id: github_issue_id)
+    post :create, github_payload: JSON.parse(issue_comment_payload(body: body, github_issue_id: github_issue_id))
   end
 
   def last_pull_request

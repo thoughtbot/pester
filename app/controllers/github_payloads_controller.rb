@@ -18,7 +18,7 @@ class GithubPayloadsController < ApplicationController
   end
 
   def parser
-    @_parser ||= PayloadParser.new(params[:payload], request.headers)
+    @_parser ||= PayloadParser.new(params[:github_payload], request.headers)
   end
 
   def pr_params
