@@ -8,6 +8,10 @@ class PayloadParser
     payload["action"]
   end
 
+  def comment_body
+    payload["comment"]["body"] || []
+  end
+
   def event_type
     headers["X-Github-Event"]
   end
@@ -72,10 +76,6 @@ class PayloadParser
 
   def user_github_url
     payload["pull_request"]["head"]["user"]["html_url"]
-  end
-
-  def comment_body
-    payload["comment"]["body"] || []
   end
 
   def sanitized_comment
