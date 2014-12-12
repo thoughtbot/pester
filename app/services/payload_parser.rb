@@ -43,7 +43,7 @@ class PayloadParser
   private
 
   def pull_request_or_issue_params
-    payload["pull_request"] || payload["issue"]
+    payload["pull_request"] || payload["issue"] || {}
   end
 
   def github_url
