@@ -1,12 +1,11 @@
-class CompletePr
+class CompleteClosedPr
   def initialize(parser, pull_request)
     @parser = parser
     @pull_request = pull_request
   end
 
   def self.matches(parser, _pull_request)
-    parser.event_type == "issue_comment" &&
-      parser.comment["body"] =~ /LGTM/
+    parser.action == "closed"
   end
 
   def call

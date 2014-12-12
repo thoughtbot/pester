@@ -1,9 +1,9 @@
 class CreateNewPr
-  def initialize(parser)
+  def initialize(parser, _pull_request)
     @parser = parser
   end
 
-  def self.matches(parser)
+  def self.matches(parser, _pull_request)
     parser.action == "opened"
   end
 

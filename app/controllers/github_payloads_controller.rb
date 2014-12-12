@@ -1,6 +1,6 @@
 class GithubPayloadsController < ApplicationController
   def create
-    action_matching(parser).call
+    action_matching(parser, pull_request).call
 
     render nothing: true
   end
@@ -14,7 +14,7 @@ class GithubPayloadsController < ApplicationController
   end
 
   def actions
-    [CreateNewPr, MarkPrInProgress, CompletePr, NoMatchingAction]
+    [CreateNewPr, MarkPrInProgress, CompletePr, CompleteClosedPr, NoMatchingAction]
   end
 
   def parser
@@ -23,5 +23,9 @@ class GithubPayloadsController < ApplicationController
 
   def pr_params
     parser.params
+  end
+
+  def pull_request
+    PullRequest.find_by(github_issue_id: parser.github_issue_id)
   end
 end

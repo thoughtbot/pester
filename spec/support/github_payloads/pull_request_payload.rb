@@ -1,11 +1,11 @@
-def pull_request_payload(action:)
+def pull_request_payload(action:, github_issue_id:)
 <<-EOS
 {
    "action":"#{action}",
    "number":50,
-   "pull_request":{  
+   "pull_request":{
       "url":"https://api.github.com/repos/baxterthehacker/public-repo/pulls/50",
-      "id":22532849,
+      "id":#{github_issue_id},
       "html_url":"https://github.com/baxterthehacker/public-repo/pull/50",
       "diff_url":"https://github.com/baxterthehacker/public-repo/pull/50.diff",
       "patch_url":"https://github.com/baxterthehacker/public-repo/pull/50.patch",

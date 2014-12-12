@@ -20,6 +20,14 @@ describe GithubPayloadsController do
       end
     end
 
+    describe "when the action is 'closed'" do
+      it "moves the pull request to 'completed'" do
+        create(:pull_request, github_issue_id: 123, status: "needs review")
+        send_pull_request_payload(action: "closed", github_issue_id: 123)
+        expect(last_pull_request.status).to eq("completed")
+      end
+    end
+
     describe "when the action is 'opened'" do
       it "creates a new PullRequest" do
         send_pull_request_payload(action: "opened")
@@ -45,18 +53,24 @@ describe GithubPayloadsController do
     end
   end
 
-  def send_pull_request_payload(action:)
-    post :create, github_payload: JSON.parse(pull_request_payload(action: action))
+  def send_pull_request_payload(action:, github_issue_id: 99999)
+    post :create, github_payload: JSON.parse(
+      pull_request_payload(action: action, github_issue_id: github_issue_id)
+    )
   end
 
   def send_pull_request_review_payload(github_issue_id:)
     request.headers["X-Github-Event"] = "pull_request_review_comment"
-    post :create, github_payload: JSON.parse(pull_request_review_comment_payload(github_issue_id: github_issue_id))
+    post :create, github_payload: JSON.parse(
+      pull_request_review_comment_payload(github_issue_id: github_issue_id)
+    )
   end
 
   def send_issue_comment(body:, github_issue_id:)
     request.headers["X-Github-Event"] = "issue_comment"
-    post :create, github_payload: JSON.parse(issue_comment_payload(body: body, github_issue_id: github_issue_id))
+    post :create, github_payload: JSON.parse(
+      issue_comment_payload(body: body, github_issue_id: github_issue_id)
+    )
   end
 
   def last_pull_request
