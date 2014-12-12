@@ -27,7 +27,7 @@ class WebhookNotifier
   private
 
   def title_text
-    "#{title_link} - @PR (#{tags_string})"
+    "@PR Needs Review - #{title_link} - (#{tags_string})"
   end
 
   def send_webook_post(webhook_url)

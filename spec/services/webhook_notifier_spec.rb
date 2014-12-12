@@ -36,7 +36,7 @@ describe WebhookNotifier do
       notifier = WebhookNotifier.new(pull_request)
 
       expect(JSON.parse(notifier.body)['text']).to eq(
-        "<https://github.com/thoughtbot/pr-tool/pulls/1|Add Slack Integration> - @PR (#code, #rails)"
+        "@PR Needs Review - <https://github.com/thoughtbot/pr-tool/pulls/1|Add Slack Integration> - (#code, #rails)"
       )
     end
   end
