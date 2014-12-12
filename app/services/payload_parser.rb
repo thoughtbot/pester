@@ -63,6 +63,12 @@ class PayloadParser
   end
 
   def payload
-    @_payload ||= JSON.parse(@payload)
+    @_payload ||= parse_payload
+  end
+
+  def parse_payload
+    JSON.parse(@payload).tap do |parsed_payload|
+      Rails.logger.ap(parsed_payload, :info)
+    end
   end
 end
