@@ -5,7 +5,7 @@ if Rails.env.development?
     desc "Seed data for development environment"
     task prime: "db:setup" do
       include FactoryGirl::Syntax::Methods
-      tag = create(:tag, name: "Ember")
+      tag = create(:tag, name: "ember")
       create_list(:pull_request, 5, tags: [tag])
     end
   end

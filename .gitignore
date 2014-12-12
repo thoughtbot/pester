@@ -1,4 +1,5 @@
 !.keep
+!/app/views/tags
 *.DS_Store
 *.swo
 *.swp
