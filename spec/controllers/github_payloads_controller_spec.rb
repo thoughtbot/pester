@@ -65,6 +65,12 @@ describe GithubPayloadsController do
         )
         expect(last_pull_request.status).to eq("in progress")
       end
+
+      it "does not throw an exception when there is no matching pr" do
+        expect {
+          send_pull_request_review_payload(github_issue_id: 1234)
+        }.not_to raise_exception
+      end
     end
 
     describe "when the action is not 'opened'" do
