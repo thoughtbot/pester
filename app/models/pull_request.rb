@@ -32,6 +32,6 @@ class PullRequest < ActiveRecord::Base
   end
 
   def webhook_urls
-    tags.map(&:webhook_url).compact
+    tags.map(&:webhook_url).compact.uniq
   end
 end
