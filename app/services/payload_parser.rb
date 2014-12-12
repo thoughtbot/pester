@@ -1,7 +1,6 @@
 class PayloadParser
   def initialize(payload, headers)
     Rails.logger.ap(payload, :info)
-    Rails.logger.ap(headers, :info)
     @payload = payload
     @headers = headers
   end
@@ -11,7 +10,7 @@ class PayloadParser
   end
 
   def event_type
-    headers["X-Github-Event"]
+    headers["HTTP_X_GITHUB_EVENT"]
   end
 
   def body
