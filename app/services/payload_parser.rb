@@ -1,5 +1,7 @@
 class PayloadParser
   def initialize(payload, headers)
+    Rails.logger.ap(payload, :info)
+    Rails.logger.ap(headers, :info)
     @payload = payload
     @headers = headers
   end

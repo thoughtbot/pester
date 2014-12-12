@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 ruby "2.1.5"
 
+gem "awesome_print"
 gem "bourbon", "~> 4.0.2"
 gem "coffee-rails"
 gem "delayed_job_active_record"
@@ -30,7 +31,6 @@ group :development do
 end
 
 group :development, :test do
-  gem "awesome_print"
   gem "byebug"
   gem "dotenv-rails"
   gem "factory_girl_rails"
@@ -49,4 +49,5 @@ group :test do
 end
 
 group :staging, :production do
+  gem "rails_12factor"
 end
