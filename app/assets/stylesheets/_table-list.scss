@@ -1,8 +1,3 @@
-.table-list {
-  border: $dark-border;
-  box-shadow: $heavy-box-shadow;
-}
-
 .table-list-item {
   @include align-items(space-between);
   @include display(flex);
@@ -12,7 +7,7 @@
   border-top: $base-border;
   width: 100%;
 
-  &:hover {
+  &:not(.header):hover {
     background: lighten($lighter-gray, 2%);
   }
 

@@ -1,13 +1,15 @@
 .content {
-  color: $light-gray;
-
   code {
-    background: $dark-blue;
-    border: 1px solid darken($darker-blue, 5%);
+    background: $light-gray;
+    border-radius: $base-border-radius;
+    border: $base-border;
     color: $red;
-    font-weight: 600;
     margin-right: em(4);
-    padding: em(10);
+    padding: em(5);
+  }
+
+  pre code {
+    padding: em(1);
   }
 
   section {
@@ -17,7 +19,6 @@
 
 .instructions {
   @extend %default-ol;
-  color: $light-gray;
 
   li {
     margin-bottom: 2em;

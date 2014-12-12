@@ -30,7 +30,8 @@ h2 {
 }
 
 h3 {
-  font-size: $h3-font-size;
+  @include padding(0.5em null);
+  font-weight: 400;
 }
 
 h4 {

@@ -1,6 +1,8 @@
 <header class="page-header">
-  <h1>PRs</h1>
-  <%= link_to "Getting Started?", page_path("setup") %>
+  <div class="container">
+    <h1>Beggar</h1>
+    <%= link_to "Getting Started?", page_path("setup") %>
+  </div>
 </header>
 
 <section class="slice">
@@ -19,15 +21,29 @@
 <main>
   <div class="container">
     <% if grouped_pull_requests["needs review"].present? %>
-      <h3>Needs Review</h3>
       <ol class="table-list">
+        <li class="table-list-item header">
+          <div class="table-list-cell stacked">
+            <h3>Needs Review</h3>
+          </div>
+          <div class="table-list-cell">
+            <span class="table-list-cell-subtitle">Pull Requests waiting for feedback</span>
+          </div>
+        </li>
         <%= render grouped_pull_requests["needs review"] %>
       </ol>
     <% end %>
 
     <% if grouped_pull_requests["in progress"].present? %>
-      <h3>In Progress</h3>
       <ol class="table-list">
+        <li class="table-list-item header">
+          <div class="table-list-cell stacked">
+            <h3>In Progress</h3>
+          </div>
+          <div class="table-list-cell">
+            <span class="table-list-cell-subtitle">Pull Requests with some feedback</span>
+          </div>
+        </li>
         <%= render grouped_pull_requests["in progress"] %>
       </ol>
     <% end %>
