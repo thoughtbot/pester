@@ -32,6 +32,10 @@ class PayloadParser
     }
   end
 
+  def comment_user
+    comment["user"]["login"]
+  end
+
   protected
 
   attr_reader :headers
