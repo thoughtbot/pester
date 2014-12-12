@@ -8,6 +8,10 @@ FactoryGirl.define do
     title "Doing Stuff"
     user_name "sgrif"
     user_github_url "https://github.com/thoughtbot/sgrif"
+
+    trait :in_progress do
+      status "in progress"
+    end
   end
 
   factory :tag do

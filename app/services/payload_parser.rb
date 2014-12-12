@@ -24,6 +24,10 @@ class PayloadParser
     pull_request_or_issue_params["id"]
   end
 
+  def needs_re_review?
+    sanitized_comment.include?("nrr")
+  end
+
   def params
     {
       github_issue_id: github_issue_id,
@@ -68,5 +72,13 @@ class PayloadParser
 
   def user_github_url
     payload["pull_request"]["head"]["user"]["html_url"]
+  end
+
+  def comment_body
+    payload["comment"]["body"] || []
+  end
+
+  def sanitized_comment
+    comment_body.downcase.split
   end
 end

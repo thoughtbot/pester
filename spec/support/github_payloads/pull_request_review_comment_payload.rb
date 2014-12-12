@@ -1,4 +1,4 @@
-def pull_request_review_comment_payload(github_issue_id:)
+def pull_request_review_comment_payload(github_issue_id:, comment: "do you even lift bro?")
 <<-EOS
 {
   "action": "created",
@@ -30,7 +30,7 @@ def pull_request_review_comment_payload(github_issue_id:)
       "type": "user",
       "site_admin": false
     },
-    "body": "maybe you should use more emojji on this line.",
+    "body": "#{comment}",
     "created_at": "2014-10-10t00:09:50z",
     "updated_at": "2014-10-10t00:09:50z",
     "html_url": "https://github.com/baxterthehacker/public-repo/pull/50#discussion_r18682909",

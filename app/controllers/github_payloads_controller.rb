@@ -14,7 +14,14 @@ class GithubPayloadsController < ApplicationController
   end
 
   def actions
-    [CreateNewPr, MarkPrInProgress, CompletePr, CompleteClosedPr, NoMatchingAction]
+    [
+      CreateNewPr,
+      CompletePr,
+      CompleteClosedPr,
+      MarkPrNeedsReview,
+      MarkPrInProgress,
+      NoMatchingAction
+    ]
   end
 
   def parser
