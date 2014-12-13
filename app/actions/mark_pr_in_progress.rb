@@ -1,11 +1,14 @@
 class MarkPrInProgress
+  EXCLUDED_USERS = ['houndci']
+
   def initialize(parser, pull_request)
     @parser = parser
     @pull_request = pull_request
   end
 
   def self.matches(parser, _pull_request)
-    parser.event_type == "pull_request_review_comment"
+    parser.event_type == "pull_request_review_comment" &&
+      EXCLUDED_USERS.exclude?(parser.comment_user_login)
   end
 
   def call

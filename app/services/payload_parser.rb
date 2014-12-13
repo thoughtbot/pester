@@ -25,6 +25,10 @@ class PayloadParser
     html_url.gsub("issues", "pulls")
   end
 
+  def comment_user_login
+    comment["user"]["login"]
+  end
+
   def params
     {
       github_url: github_url,
