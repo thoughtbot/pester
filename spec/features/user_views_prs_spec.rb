@@ -44,6 +44,18 @@ feature "User views PRs" do
     expect(page).to have_avatar("http://myavatar.com")
   end
 
+  scenario "viewing tags for the current pr" do
+    create(
+      :pull_request,
+      tags: [tag("Rails"), tag("Ember")]
+    )
+
+    visit root_path
+
+    expect(page).to have_tag("Rails")
+    expect(page).to have_tag("Ember")
+  end
+
   scenario "Does not see completed PRs" do
     create(:pull_request, title: "Implement Stuff", status: "needs review")
     create(:pull_request, title: "Review Stuff", status: "in progress")
@@ -57,8 +69,8 @@ feature "User views PRs" do
   end
 
   scenario "Sees tags with active pull requests" do
-    ember = create(:tag, name: "ember")
-    rails = create(:tag, name: "rails")
+    rails = tag("rails")
+    ember = tag("ember")
     create(:pull_request, title: "An Ember PR", tags: [ember], status: "completed")
     create(:pull_request, title: "A Rails PR", tags: [rails], status: "needs review")
 
@@ -112,8 +124,8 @@ feature "User views PRs" do
   private
 
   def create_pull_requests_with_tags
-    ember = create(:tag, name: "ember")
-    rails = create(:tag, name: "rails")
+    ember = tag("ember")
+    rails = tag("rails")
     create(:pull_request, title: "An Ember PR", tags: [ember])
     create(:pull_request, title: "A Rails PR", tags: [rails])
     create(:pull_request, title: "A PR that should probably have been split up", tags: [rails, ember])
@@ -121,5 +133,13 @@ feature "User views PRs" do
 
   def have_avatar(url)
     have_css("img[src='#{url}']")
+  end
+
+  def have_tag(tag_name)
+    have_css("[data-role='tag']", text: tag_name)
+  end
+
+  def tag(name)
+    create(:tag, name: name)
   end
 end

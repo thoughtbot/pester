@@ -18,8 +18,10 @@
     </span>
   </div>
 
-  <div class="table-list-cell dummy hide-mobile">
-    <span class="tag ember">Ember</span>
+  <div class="table-list-cell hide-mobile">
+    <% pull_request.tags.each do |tag| %>
+      <span class="tag <%= tag.name %>" data-role="tag"><%= tag.name %></span>
+    <% end %>
   </div>
 
   <div class="table-list-cell hide-mobile">

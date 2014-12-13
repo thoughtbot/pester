@@ -1,4 +1,17 @@
-$tags: (ember: $red, design: $pink, angular: $purple);
+$tags: (
+  ember: $red,
+  rails: $light-blue,
+  design: $pink,
+  angular: $purple,
+  ruby: $red,
+  javascript: $yellow,
+  ios: $darker-blue,
+  objective-c: $darker-blue,
+  swift: $darker-blue,
+  haskell: $pink,
+  android: $pink,
+  code: $medium-gray,
+);
 
 .tags {
   @include display(flex);
@@ -36,6 +49,8 @@ $tags: (ember: $red, design: $pink, angular: $purple);
 
 .tag {
   @extend %tag-base;
+  background: $tag-fallback-color;
+  margin-right: 1em;
 
   @each $tag, $background-color in $tags {
     &.#{$tag} {
@@ -60,11 +75,19 @@ $tags: (ember: $red, design: $pink, angular: $purple);
     top: 1px;
   }
 
+  &.is-active {
+    background: $tag-fallback-color;
+    box-shadow: $base-box-shadow;
+
+    .tag-badge {
+      background: darken($tag-fallback-color, 3%);
+    }
+  }
+
   @each $tag, $background-color in $tags {
     &.#{$tag}.is-active {
       background: $background-color;
       border-color: transparent;
-      box-shadow: $base-box-shadow;
 
       &:hover,
       &:focus {

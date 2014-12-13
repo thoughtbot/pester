@@ -5,11 +5,19 @@ if Rails.env.development?
     desc "Seed data for development environment"
     task prime: "db:setup" do
       include FactoryGirl::Syntax::Methods
-      ember = create(:tag, name: "ember")
-      rails = create(:tag, name: "rails")
-      create(:pull_request, title: "An Ember PR", tags: [ember])
-      create(:pull_request, title: "A Rails PR", tags: [rails])
-      create(:pull_request, title: "A PR that should probably have been split up", tags: [rails, ember])
+      all_tags = Tag::SUPPORTED_TAGS.map do |tag_name|
+        tag = create(:tag, name: tag_name)
+        create(:pull_request, title: "A '#{tag_name}' PR", tags: [tag])
+        tag
+      end
+
+      (2..5).each do |number|
+        create(
+          :pull_request,
+          title: "A PR with multiple tags",
+          tags: all_tags.sample(number),
+        )
+      end
     end
   end
 end
