@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141212221130) do
+ActiveRecord::Schema.define(version: 20141213171104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,15 +33,16 @@ ActiveRecord::Schema.define(version: 20141212221130) do
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "pull_requests", force: true do |t|
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-    t.string   "github_url",                               null: false
-    t.string   "repo_name",                                null: false
-    t.string   "status",          default: "needs review", null: false
-    t.string   "title",                                    null: false
-    t.string   "repo_github_url",                          null: false
-    t.string   "user_name",                                null: false
-    t.string   "user_github_url",                          null: false
+    t.datetime "created_at",                                                                          null: false
+    t.datetime "updated_at",                                                                          null: false
+    t.string   "github_url",                                                                          null: false
+    t.string   "repo_name",                                                                           null: false
+    t.string   "status",          default: "needs review",                                            null: false
+    t.string   "title",                                                                               null: false
+    t.string   "repo_github_url",                                                                     null: false
+    t.string   "user_name",                                                                           null: false
+    t.string   "user_github_url",                                                                     null: false
+    t.string   "avatar_url",      default: "https://avatars1.githubusercontent.com/u/6183?v=3&s=200", null: false
   end
 
   add_index "pull_requests", ["status"], name: "index_pull_requests_on_status", using: :btree

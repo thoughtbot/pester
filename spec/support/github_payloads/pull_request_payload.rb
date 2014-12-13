@@ -1,4 +1,10 @@
-def pull_request_payload(action:, github_url: "http://url.com", body: "A body")
+def pull_request_payload(
+  action: "created",
+  github_url: "http://url.com",
+  body: "A body",
+  user_name: "someone_else",
+  avatar_url: "http://avatar.com"
+)
 <<-EOS
 {
    "action":"#{action}",
@@ -15,9 +21,9 @@ def pull_request_payload(action:, github_url: "http://url.com", body: "A body")
       "locked":false,
       "title":"Update the README with new information",
       "user":{
-         "login":"baxterthehacker",
+         "login":"#{user_name}",
          "id":6752317,
-         "avatar_url":"https://avatars.githubusercontent.com/u/6752317?v=2",
+         "avatar_url":"#{avatar_url}",
          "gravatar_id":"",
          "url":"https://api.github.com/users/baxterthehacker",
          "html_url":"https://github.com/baxterthehacker",

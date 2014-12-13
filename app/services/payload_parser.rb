@@ -33,6 +33,7 @@ class PayloadParser
       title: title,
       user_name: user_name,
       user_github_url: user_github_url,
+      avatar_url: avatar_url,
     }
   end
 
@@ -63,10 +64,18 @@ class PayloadParser
   end
 
   def user_name
-    payload["pull_request"]["head"]["user"]["login"]
+    pull_request_user["login"]
   end
 
   def user_github_url
     payload["pull_request"]["head"]["user"]["html_url"]
+  end
+
+  def avatar_url
+    pull_request_user["avatar_url"]
+  end
+
+  def pull_request_user
+    payload["pull_request"]["user"]
   end
 end
