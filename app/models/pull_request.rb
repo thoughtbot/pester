@@ -6,6 +6,7 @@ class PullRequest < ActiveRecord::Base
   validates :title, presence: true
   validates :user_name, presence: true
   validates :user_github_url, presence: true
+  validates :avatar_url, presence: true
 
   has_and_belongs_to_many :tags
 

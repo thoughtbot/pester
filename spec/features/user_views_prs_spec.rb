@@ -34,12 +34,14 @@ feature "User views PRs" do
        user_name: "JoelQ",
        user_github_url: "https://github.com/joelq",
        github_url: "https://github.com/org/repo/pulls/123",
+       avatar_url: "http://myavatar.com",
     )
 
     visit root_path
 
     expect(page).to have_content("#123 opened about 1 hour ago by JoelQ")
     expect(page).to have_link("JoelQ", href: "https://github.com/joelq")
+    expect(page).to have_avatar("http://myavatar.com")
   end
 
   scenario "Does not see completed PRs" do
@@ -115,5 +117,9 @@ feature "User views PRs" do
     create(:pull_request, title: "An Ember PR", tags: [ember])
     create(:pull_request, title: "A Rails PR", tags: [rails])
     create(:pull_request, title: "A PR that should probably have been split up", tags: [rails, ember])
+  end
+
+  def have_avatar(url)
+    have_css("img[src='#{url}']")
   end
 end
