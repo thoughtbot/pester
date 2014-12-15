@@ -1,8 +1,39 @@
-Pr-tool
-=======
+# Beggar
 
-Getting Started
----------------
+### What is beggar?
+
+Beggar is a tool to help with getting pull request reviews. Once you have set up
+beggar on your repo, any new pull request will automatically be added to beggar.
+It will also automatically be posted to the correct Slack room based on the tags
+you've provided.
+
+To make sure your PR goes to the correct place, your PR description should
+include tags like #rails #javascript #design. Beggar will parse and send to all
+the appropriate rooms!
+
+Tags you can use currently:
+
+* android
+* angular
+* code
+* design
+* ember
+* haskell
+* ios
+* javascript
+* objective-c
+* rails
+* ruby
+* swift
+
+We have a web ui that will allow you to view open PRs. You can filter this by
+tag: https://tbot.io/beggar
+
+### How to use beggar for your project
+
+Follow these instructions: http://tbot-beggar.herokuapp.com/pages/setup
+
+### Getting Started
 
 After you have cloned this repo, run this setup script to set up your machine
 with the necessary dependencies to run and test this app:
@@ -24,8 +55,7 @@ is [purposefully excluded from the project's `Gemfile`][exclude].
 [foreman]: https://github.com/ddollar/foreman
 [exclude]: https://github.com/ddollar/foreman/pull/437#issuecomment-41110407
 
-Guidelines
-----------
+### Guidelines
 
 Use the following guides for getting things done, programming well, and
 programming in style.
