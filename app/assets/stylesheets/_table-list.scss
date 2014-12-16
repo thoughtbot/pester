@@ -48,7 +48,6 @@
   color: $base-font-color;
   font-family: $header-font-family;
   font-size: em(14);
-  font-weight: 800;
 
   @include media($medium-screen-up) {
     font-size: em(18)
