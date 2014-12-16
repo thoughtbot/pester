@@ -28,6 +28,7 @@ describe WebhookNotifier do
       pull_request = double(
         :pull_request,
         github_url: "https://github.com/thoughtbot/pr-tool/pulls/1",
+        repo_name: "thoughtbot/pr-tool",
         title: "Add Slack Integration",
         tag_names: ["code", "rails"],
         webhook_urls: [],
@@ -36,7 +37,7 @@ describe WebhookNotifier do
       notifier = WebhookNotifier.new(pull_request)
 
       expect(JSON.parse(notifier.body)['text']).to eq(
-        "@PR Needs Review - <https://github.com/thoughtbot/pr-tool/pulls/1|Add Slack Integration> - (#code, #rails)"
+        "@PR thoughtbot/pr-tool (#code, #rails) - <https://github.com/thoughtbot/pr-tool/pulls/1|Add Slack Integration>"
       )
     end
   end

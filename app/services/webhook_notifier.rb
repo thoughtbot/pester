@@ -27,12 +27,16 @@ class WebhookNotifier
   private
 
   def title_text
-    "@PR Needs Review - #{title_link} - (#{tags_string})"
+    "@PR #{repo_name} (#{tags_string}) - #{title_link}"
   end
 
   def send_webook_post(webhook_url)
     uri = URI(webhook_url)
-    Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == "https") do |http|
+    Net::HTTP.start(
+      uri.host,
+      uri.port,
+      use_ssl: uri.scheme == "https"
+    ) do |http|
       http.post(uri.path, body)
     end
   end
@@ -41,11 +45,16 @@ class WebhookNotifier
     "<#{pull_request.github_url}|#{pull_request.title}>"
   end
 
+  def repo_name
+    pull_request.repo_name
+  end
+
   def tags_string
-    pull_request
-      .tag_names
-      .map { |s| "##{s}" }
-      .join(", ")
+    tag_names.join(", ")
+  end
+
+  def tag_names
+    pull_request.tag_names.map { |name| "##{name}" }
   end
 
   def webhook_urls
