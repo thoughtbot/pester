@@ -1,32 +1,41 @@
+.table-list {
+  @extend %margin-bottom;
+  background: white;
+  border-radius: $base-border-radius;
+  border: $base-border;
+  box-shadow: 0 1px 2px rgba(black, 0.075);
+  overflow: hidden;
+}
+
 .table-list-item {
   @include align-items(space-between);
   @include display(flex);
-  background: white;
-  border-left: $base-border;
-  border-right: $base-border;
-  border-top: $base-border;
-  width: 100%;
-
-  &:not(.header):hover {
-    background: lighten($lighter-gray, 2%);
-  }
 
   &:first-child {
-    border-top-left-radius: $base-border-radius;
-    border-top-right-radius: $base-border-radius;
+    @include padding(1em 0);
   }
 
-  &:last-child {
-    border-bottom-left-radius: $base-border-radius;
-    border-bottom-right-radius: $base-border-radius;
-    border-bottom: $base-border;
+  &:not(:last-child) {
+    border-bottom: $light-border;
+  }
+
+  &:not(:first-child):hover {
+    background: lighten($lighter-gray, 2%);
   }
 }
 
 .table-list-cell {
   @include align-items(center);
   @include display(flex);
-  padding: em(8) em(12);
+  padding: 1em em(12);
+
+  &:first-child {
+    padding-left: em(24);
+  }
+
+  &:last-child {
+    padding-right: em(24);
+  }
 
   &.stacked {
     @include align-items(flex-start);
@@ -38,8 +47,12 @@
 .table-list-cell-title {
   color: $base-font-color;
   font-family: $header-font-family;
-  font-size: em(18);
+  font-size: em(14);
   font-weight: 800;
+
+  @include media($medium-screen-up) {
+    font-size: em(18)
+  }
 
   &:hover {
     color: $base-link-color;

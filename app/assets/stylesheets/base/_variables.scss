@@ -61,6 +61,8 @@ $notice-color: lighten($base-accent-color, 40);
 $success-color: $light-green;
 
 // Border color
+$light-border-color: $light-gray;
+$light-border: 1px solid $light-border-color;
 $base-border-color: darken($light-gray, 10%);
 $base-border: 1px solid $base-border-color;
 $dark-border-color: $dark-gray;

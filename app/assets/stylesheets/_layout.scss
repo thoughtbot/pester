@@ -4,4 +4,9 @@ body {
 
 .container {
   @include outer-container;
+  @include padding(null 0.5em);
+
+  @include media($medium-screen-up) {
+    @include padding(null 1em);
+  }
 }

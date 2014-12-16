@@ -1,5 +1,9 @@
 .avatar {
-  @include size(em(48));
+  @include size(em(32));
   border-radius: $base-border-radius;
   display: block;
+
+  @include media($medium-screen-up) {
+    @include size(em(48));
+  }
 }

@@ -22,11 +22,9 @@
   <div class="container">
     <% if grouped_pull_requests["needs review"].present? %>
       <ol class="table-list">
-        <li class="table-list-item header">
+        <li class="table-list-item">
           <div class="table-list-cell stacked">
             <h3>Needs Review</h3>
-          </div>
-          <div class="table-list-cell">
             <span class="table-list-cell-subtitle">Pull Requests waiting for feedback</span>
           </div>
         </li>
@@ -36,11 +34,9 @@
 
     <% if grouped_pull_requests["in progress"].present? %>
       <ol class="table-list">
-        <li class="table-list-item header">
-          <div class="table-list-cell stacked">
-            <h3>In Progress</h3>
-          </div>
+        <li class="table-list-item">
           <div class="table-list-cell">
+            <h3>In Progress</h3>
             <span class="table-list-cell-subtitle">Pull Requests with some feedback</span>
           </div>
         </li>

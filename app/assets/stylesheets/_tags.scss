@@ -2,9 +2,16 @@ $tags: (ember: $red, design: $pink, angular: $purple);
 
 .tags {
   @include display(flex);
+  @include flex-wrap(wrap);
+  margin-bottom: -0.5em;
 
   li {
-    margin-right: $base-spacing;
+    @include margin(null 0.5em 0.5em null);
+    white-space: nowrap;
+
+    @include media($medium-screen-up) {
+      margin-right: 1.5em;
+    }
   }
 }
 

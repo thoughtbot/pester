@@ -1,7 +1,7 @@
 .slice {
+  @extend %margin-bottom;
   @include padding(1em null);
   background: $dark-blue;
-  margin-bottom: 2em;
 
   p {
     color: white;
