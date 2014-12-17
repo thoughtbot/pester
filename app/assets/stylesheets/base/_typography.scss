@@ -94,6 +94,12 @@ cite {
   }
 }
 
-pre code {
-  display: block;
+code {
+  background: $lighter-gray;
+  border-radius: $base-border-radius;
+  border: $base-border;
+  color: $red;
+  font-size: em(14);
+  margin-right: em(4);
+  padding: em(5);
 }

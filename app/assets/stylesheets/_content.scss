@@ -1,26 +1,39 @@
 .content {
-  code {
-    background: $light-gray;
-    border-radius: $base-border-radius;
-    border: $base-border;
-    color: $red;
-    margin-right: em(4);
-    padding: em(5);
+  @include margin(null auto 2em);
+  background: white;
+  border-radius: $base-border-radius;
+  border: $base-border;
+  box-shadow: $base-box-shadow;
+  max-width: em(720);
+  overflow: auto;
+  padding: 1.5em;
+
+  @include media($medium-screen-up) {
+    padding: 3em;
   }
 
-  pre code {
-    padding: em(1);
+  ul {
+    @extend %default-ul;
   }
 
-  section {
+  h2 {
+    border-bottom: $light-border;
+    font-size: em(18);
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+  }
+
+  section:not(:last-child) {
     margin-bottom: 4em;
   }
-}
 
-.instructions {
-  @extend %default-ol;
+  ol {
+    @extend %default-ol;
 
-  li {
-    margin-bottom: 2em;
+    li {
+      margin-bottom: 1em;
+    }
   }
 }

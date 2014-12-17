@@ -1,7 +1,9 @@
 <div class="page-header">
   <div class="container">
-    <h1>Getting Started</h1>
-    <%= link_to root_url do %>
+    <h1 class="page-header-logo">
+      <%= link_to "Beggar", root_url %>
+    </h1>
+    <%= link_to root_url, class: "page-header-nav-link" do %>
       Back to Home &rarr;
     <% end %>
   </div>
@@ -9,29 +11,60 @@
 
 <div class="slice">
   <div class="container">
-    <p>Once configured, all pull requests will post to Beggar with their respective tags.</p>
+    <p>Getting Started</p>
   </div>
 </div>
 
-<div class="container content">
-  <section>
-    <h2>Add the Webhook</h2>
-    <ol class="instructions">
-      <li>Visit <code>https://github.com/$ORGANIZATION/$REPO/settings/hooks/new</code>.</li>
-      <li>Enter <code><%= ENV["PAYLOAD"] %></code> for the Payload URL.</li>
-      <li>Enter <code><%= ENV["GITHUB_SECRET_KEY"] %></code> for the secret.</li>
-      <li>Select <code>Send me everything</code>, and submit.</li>
-    </ol>
-  </section>
+<div class="container">
+  <div class="content">
+    <section>
+      <h2>What is Beggar?</h2>
+      <p>Beggar is a tool to help with getting pull request reviews. Once you have set up Beggar on your repo, any new pull request will automatically be added to Beggar. It will also automatically be posted to the correct Slack room based on the tags you've provided.</p>
+      <p>To make sure your PR goes to the correct place, your PR description should include tags like #rails #javascript #design. Beggar will parse and send to all the appropriate rooms!</p>
+      <p>Tags you can use currently:</p>
 
-  <section>
-    <h2>Add a Pull Request</h2>
-    <p>You can open a PR as normally, just include a <code>#tag</code> in the description, e.g.,</p>
-    <pre>
-    <code>
-      Implemented the Tags controller<br>
-      Users can now tag things. #rails
-    </code>
-    </pre>
-  </section>
+      <ul>
+        <li>android</li>
+        <li>angular</li>
+        <li>code</li>
+        <li>design</li>
+        <li>ember</li>
+        <li>haskell</li>
+        <li>ios</li>
+        <li>javascript</li>
+        <li>objective-c</li>
+        <li>rails</li>
+        <li>ruby</li>
+        <li>swift</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Setup: Add the Webhook</h2>
+      <ol>
+        <li>Visit <code>https://github.com/$ORGANIZATION/$REPO/settings/hooks/new</code>.</li>
+        <li>Enter <code><%= ENV["PAYLOAD"] %></code> for the Payload URL.</li>
+        <li>Enter <code><%= ENV["GITHUB_SECRET_KEY"] %></code> for the secret.</li>
+        <li>Select <code>Send me everything</code>, and submit.</li>
+        <li>Submit a PR! It will be added to the Beggar UI, and if given a <code>#tag</code> in the description, will be posted to the appropriate Slack channel.</li>
+        <p>Any comment containing <code>LGTM</code> will consider the PR closed.</p>
+        <p>Any comment containing <code>NRR</code> (needs re-review) will kick it back to "Needs Review".</p>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Contributing</h2>
+      <ul>
+        <li>
+          Check out the repo on <a href="https://github.com/thoughtbot/Beggar">GitHub</a>.
+        </li>
+        <li>
+          Grab a story on <a href="https://switchitup.herokuapp.com/pr-tool/stories">Switchboard</a>.
+        </li>
+        <li>
+          Join the #pr-tool Slack channel.
+        </li>
+      </ul>
+    </section>
+  </div>
 </div>

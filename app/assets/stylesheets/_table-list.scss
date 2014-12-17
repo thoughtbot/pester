@@ -10,9 +10,14 @@
 .table-list-item {
   @include align-items(space-between);
   @include display(flex);
+  @include padding(null em(12));
 
   &:first-child {
-    @include padding(1em 0);
+    @include padding(0.5em null);
+
+    @include media($medium-screen-up) {
+      @include padding(1em null);
+    }
   }
 
   &:not(:last-child) {
@@ -28,14 +33,6 @@
   @include align-items(center);
   @include display(flex);
   padding: 1em em(12);
-
-  &:first-child {
-    padding-left: em(24);
-  }
-
-  &:last-child {
-    padding-right: em(24);
-  }
 
   &.stacked {
     @include align-items(flex-start);

@@ -7,18 +7,33 @@
     @include display(flex);
     @include justify-content(space-between);
   }
+}
 
-  h1 {
-    @include flex(1);
+.page-header-nav-link {
+  color: rgba(white, 0.5);
+  font-size: em(14);
+  font-weight: 600;
+  position: relative;
+  text-transform: uppercase;
+
+  &:hover,
+  &:focus {
+    color: white;
   }
 
+  &:active {
+    top: 1px;
+  }
+}
+
+.page-header-logo {
+  @include position(relative, -0.2em null null null);
+
   a {
-    @include transition(background, 0.15s);
-    color: rgba(white, 0.5);
-    font-size: em(14);
-    font-weight: 600;
+    color: rgba(white, 0.9);
+    font-family: $decorative-font-family;
     position: relative;
-    text-transform: uppercase;
+    text-shadow: 0 2px 0px rgba(black, 0.15);
 
     &:hover,
     &:focus {
@@ -26,6 +41,7 @@
     }
 
     &:active {
+      text-shadow: none;
       top: 1px;
     }
   }
