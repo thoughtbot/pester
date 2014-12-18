@@ -1,6 +1,6 @@
 class WebhookNotifier
   BOT_NAME = 'Beggar'
-  ICON_URL = 'https://pr-tool.herokuapp.com/logo.svg'
+  ICON_URL = 'http://tbot-beggar.herokuapp.com/beggar-logo.svg'
 
   def initialize(pull_request)
     @pull_request = pull_request
