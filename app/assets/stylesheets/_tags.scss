@@ -77,6 +77,7 @@ $tags: (
 
   &.is-active {
     background: $tag-fallback-color;
+    border-color: transparent;
     box-shadow: $base-box-shadow;
 
     .tag-badge {
