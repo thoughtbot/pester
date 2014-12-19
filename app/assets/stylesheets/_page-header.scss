@@ -11,7 +11,7 @@
 
 .page-header-nav-link {
   color: rgba(white, 0.5);
-  font-size: em(14);
+  font-size: $medium-font-size;
   font-weight: 600;
   position: relative;
   text-transform: uppercase;
@@ -30,13 +30,15 @@
   @include position(relative, -0.2em null null null);
 
   a {
-    color: rgba(white, 0.9);
+    color: white;
+    display: inline-block;
     font-family: $decorative-font-family;
     position: relative;
     text-shadow: 0 2px 0px rgba(black, 0.15);
 
     &:hover,
     &:focus {
+      @include transform(scale(1.025));
       color: white;
     }
 

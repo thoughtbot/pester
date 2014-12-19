@@ -44,10 +44,10 @@
 .table-list-cell-title {
   color: $base-font-color;
   font-family: $header-font-family;
-  font-size: em(14);
+  font-size: $base-font-size;
 
   @include media($medium-screen-up) {
-    font-size: em(18)
+    font-size: $large-font-size;
   }
 
   &:hover {
@@ -57,7 +57,7 @@
 
 .table-list-cell-subtitle {
   color: $light-font-color;
-  font-size: em(12);
+  font-size: $small-font-size;
 
   a {
     color: $base-font-color;

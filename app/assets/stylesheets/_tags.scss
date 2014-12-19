@@ -1,7 +1,7 @@
 $tags: (
   android: $brown,
-  angular: $purple,
-  code: $lavendar,
+  angular: $green,
+  code: $purple,
   design: $pink,
   ember: $hot-pink,
   haskell: $teal,
@@ -28,23 +28,14 @@ $tags: (
   }
 }
 
-.tag-badge {
-  @include padding(null em(10, 12));
-  background-color: $darker-blue;
-  border-radius: 1em;
-  display: inline-block;
-  font-size: em(10, 12);
-  margin-left: 1em;
-}
-
 %tag-base {
   border-radius: $base-border-radius;
   border: 1px solid transparent;
   color: white;
   display: inline-block;
-  font-size: em(12);
+  font-size: $small-font-size;
   font-weight: 600;
-  padding: em(4) em(12);
+  padding: 0.25em 0.75em;
 }
 
 .tag {
@@ -100,4 +91,13 @@ $tags: (
       }
     }
   }
+}
+
+.tag-badge {
+  @include padding(null em(10, 12));
+  background-color: $darker-blue;
+  border-radius: 1em;
+  display: inline-block;
+  font-size: em($xsmall-font-size, $small-font-size);
+  margin-left: 1em;
 }
