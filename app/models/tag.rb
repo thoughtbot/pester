@@ -23,6 +23,8 @@ class Tag < ActiveRecord::Base
   end
 
   def self.with_name(name)
-    find_or_create_by!(name: name)
+    if SUPPORTED_TAGS.include?(name.downcase)
+      find_or_create_by!(name: name.downcase)
+    end
   end
 end

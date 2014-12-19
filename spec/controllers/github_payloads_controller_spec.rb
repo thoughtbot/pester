@@ -52,7 +52,9 @@ describe GithubPayloadsController do
       end
 
       it "creates tags for the pull request" do
-        send_pull_request_payload(action: "opened", body: "A request #code #rails")
+        send_pull_request_payload(
+          action: "opened", body: "A request #code #rails #poop"
+        )
         expect(Tag.pluck(:name).sort).to eq(["code", "rails"])
       end
 

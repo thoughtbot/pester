@@ -21,7 +21,7 @@ class CreateNewPr
   def tags
     @tags ||= begin
       tag_names = TagParser.new.parse(payload_parser.body)
-      tag_names.map(&Tag.method(:with_name))
+      tag_names.map(&Tag.method(:with_name)).compact
     end
   end
 
