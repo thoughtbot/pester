@@ -21,11 +21,6 @@ class CreateNewPr
   def tags
     @tags ||= begin
       tag_names = TagParser.new.parse(payload_parser.body)
-
-      if tag_names.empty?
-        tag_names = ["code"]
-      end
-
       tag_names.map(&Tag.method(:with_name))
     end
   end

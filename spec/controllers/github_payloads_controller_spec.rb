@@ -62,9 +62,9 @@ describe GithubPayloadsController do
         expect(Tag.pluck(:id)).to eq ([tag.id])
       end
 
-      it "defaults to tagging with #code" do
+      it "does not default to any tags" do
         send_pull_request_payload(action: "opened", body: "A request with no tags")
-        expect(last_pull_request.tags.map(&:name)).to eq(["code"])
+        expect(last_pull_request.tags.map(&:name)).to eq([])
       end
 
       it "posts to slack" do
