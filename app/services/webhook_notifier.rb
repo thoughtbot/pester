@@ -31,7 +31,7 @@ class WebhookNotifier
   end
 
   def statistics_strings
-    "#{pull_request.additions}, #{pull_request.deletions}"
+    "+#{pull_request.additions}, -#{pull_request.deletions}"
   end
 
   def send_webook_post(webhook_url)

@@ -33,13 +33,13 @@ describe WebhookNotifier do
         tag_names: ["code", "rails"],
         webhook_urls: [],
         additions: 20,
-        deletions: -2,
+        deletions: 2,
       )
 
       notifier = WebhookNotifier.new(pull_request)
 
       expect(JSON.parse(notifier.body)['text']).to eq(
-        "@PR thoughtbot/pr-tool (#code, #rails) (20, -2) - <https://github.com/thoughtbot/pr-tool/pulls/1|Add Slack Integration>"
+        "@PR thoughtbot/pr-tool (#code, #rails) (+20, -2) - <https://github.com/thoughtbot/pr-tool/pulls/1|Add Slack Integration>"
       )
     end
   end
