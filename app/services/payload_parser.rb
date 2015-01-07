@@ -38,6 +38,8 @@ class PayloadParser
       user_name: user_name,
       user_github_url: user_github_url,
       avatar_url: avatar_url,
+      additions: additions,
+      deletions: deletions,
     }
   end
 
@@ -52,19 +54,31 @@ class PayloadParser
   end
 
   def pull_request_or_issue_params
-    payload["pull_request"] || payload["issue"] || {}
+    pull_request || payload["issue"] || {}
   end
 
   def repo_name
-    payload["pull_request"]["head"]["repo"]["full_name"]
+    pull_request["head"]["repo"]["full_name"]
   end
 
   def repo_github_url
-    payload["pull_request"]["head"]["repo"]["html_url"]
+    pull_request["head"]["repo"]["html_url"]
   end
 
   def title
-    payload["pull_request"]["title"]
+    pull_request["title"]
+  end
+
+  def additions
+    pull_request["additions"]
+  end
+
+  def deletions
+    pull_request["deletions"]
+  end
+
+  def pull_request
+    @_pull_request ||= payload["pull_request"]
   end
 
   def user_name
@@ -72,7 +86,7 @@ class PayloadParser
   end
 
   def user_github_url
-    payload["pull_request"]["head"]["user"]["html_url"]
+    pull_request["head"]["user"]["html_url"]
   end
 
   def avatar_url
@@ -80,6 +94,6 @@ class PayloadParser
   end
 
   def pull_request_user
-    payload["pull_request"]["user"]
+    pull_request["user"]
   end
 end

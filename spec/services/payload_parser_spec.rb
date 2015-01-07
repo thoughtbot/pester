@@ -14,7 +14,7 @@ describe PayloadParser do
   end
 
   describe "#params" do
-    it "extras the proper username from pull request params" do
+    it "user_name" do
       payload = JSON.parse(pull_request_payload(user_name: "spiderman"))
 
       parser = PayloadParser.new(payload, nil)
@@ -22,7 +22,7 @@ describe PayloadParser do
       expect(parser.params[:user_name]).to eq("spiderman")
     end
 
-    it "extracts the proper avatar_url" do
+    it "avatar_url" do
       payload = JSON.parse(
         pull_request_payload(avatar_url: "http://example.com")
       )
@@ -30,6 +30,17 @@ describe PayloadParser do
       parser = PayloadParser.new(payload, nil)
 
       expect(parser.params[:avatar_url]).to eq("http://example.com")
+    end
+
+    it "additions and deletions" do
+      payload = JSON.parse(
+        pull_request_payload(additions: 1, deletions: 20)
+      )
+
+      parser = PayloadParser.new(payload, nil)
+
+      expect(parser.params[:additions]).to eq(1)
+      expect(parser.params[:deletions]).to eq(20)
     end
   end
 end

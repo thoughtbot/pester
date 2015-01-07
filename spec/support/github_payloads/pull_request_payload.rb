@@ -3,7 +3,9 @@ def pull_request_payload(
   github_url: "http://url.com",
   body: "A body",
   user_name: "someone_else",
-  avatar_url: "http://avatar.com"
+  avatar_url: "http://avatar.com",
+  additions: 5,
+  deletions: 10
 )
 <<-EOS
 {
@@ -307,8 +309,8 @@ def pull_request_payload(
       "comments":0,
       "review_comments":1,
       "commits":1,
-      "additions":2,
-      "deletions":0,
+      "additions":#{additions},
+      "deletions":#{deletions},
       "changed_files":1
    },
    "repository":{
