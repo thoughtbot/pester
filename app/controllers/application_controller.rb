@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session
   before_filter :ensure_thoughtbot_team
+  force_ssl if: :ssl_configured?
+
 
   private
 
@@ -14,5 +16,9 @@ class ApplicationController < ActionController::Base
 
   def github_username
     session[:github_username]
+  end
+
+  def ssl_configured?
+    !Rails.env.development? && !Rails.env.test?
   end
 end
