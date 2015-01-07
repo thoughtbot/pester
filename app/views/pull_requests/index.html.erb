@@ -3,7 +3,10 @@
     <h1 class="page-header-logo">
       <%= link_to "Beggar", root_url %>
     </h1>
-    <%= link_to "Getting Started?", page_path("setup"), class: "page-header-nav-link" %>
+    <nav class="page-header-nav">
+      <%= link_to "Getting Started?", page_path("setup"), class: "page-header-nav-link" %>
+      <%= link_to "Sign Out", session_path, method: :delete, class: "page-header-nav-link" %>
+    </nav>
   </div>
 </header>
 

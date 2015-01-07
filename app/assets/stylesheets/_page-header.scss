@@ -1,6 +1,6 @@
 .page-header {
   @include padding(1em null);
-  background: $blue;
+  background-color: $blue;
 
   .container {
     @include align-items(center);
@@ -28,6 +28,7 @@
 
 .page-header-logo {
   @include position(relative, -0.2em null null null);
+  font-family: $decorative-font-family;
 
   a {
     color: white;
@@ -46,5 +47,14 @@
       text-shadow: none;
       top: 1px;
     }
+  }
+}
+
+.page-header-nav {
+  text-align: right;
+
+  a {
+    margin-left: 2em;
+    white-space: nowrap;
   }
 }

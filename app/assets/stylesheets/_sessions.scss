@@ -1,0 +1,51 @@
+.sessions {
+  @include align-items(center);
+  @include display(flex);
+  @include flex-direction(column);
+  @include justify-content(center);
+  @include size(100vw 100vh);
+  background-color: $dark-blue;
+  font-size: 1.25em;
+}
+
+.sessions-logo {
+  font-family: $decorative-font-family;
+  font-size: em(72);
+  margin-bottom: 0.5em;
+  text-shadow: 0 2px 0px rgba(black, 0.15);
+}
+
+.sign-in-link {
+  @include align-items(center);
+  @include display(flex);
+  @include transition;
+  background-color: $base-link-color;
+  border-radius: $base-border-radius;
+  border: 1px solid $darker-blue;
+  box-shadow: 0 1px 2px rgba(black, 0.25), inset 0 1px rgba(white, 0.15);
+  color: $dark-blue;
+  font-weight: 800;
+  padding: 1em 2em;
+  position: relative;
+
+  &:hover,
+  &:focus {
+    color: $darker-blue;
+    background-color: lighten($base-link-color, 2%);
+
+    svg {
+      fill: $darker-blue;
+    }
+  }
+
+  &:active {
+    box-shadow: none;
+    top: 2px;
+  }
+
+  svg {
+    @include transition;
+    fill: $dark-blue;
+    margin-right: 1em;
+  }
+}
