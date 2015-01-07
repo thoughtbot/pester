@@ -1,15 +1,3 @@
-GIT
-  remote: git://github.com/rails/sass-rails.git
-  revision: a3a6183fda5a823cdc1afc7994efbb90aa58e1f6
-  branch: master
-  specs:
-    sass-rails (5.0.0.beta1)
-      railties (>= 4.0.0, < 5.0)
-      sass (~> 3.1)
-      sprockets (>= 2.8, < 4.0)
-      sprockets-rails (>= 2.0, < 4.0)
-      tilt (~> 1.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -214,6 +202,12 @@ GEM
     rspec-support (3.0.4)
     safe_yaml (1.0.4)
     sass (3.4.9)
+    sass-rails (5.0.1)
+      railties (>= 4.0.0, < 5.0)
+      sass (~> 3.1)
+      sprockets (>= 2.8, < 4.0)
+      sprockets-rails (>= 2.0, < 4.0)
+      tilt (~> 1.1)
     shoulda-matchers (2.7.0)
       activesupport (>= 3.0.0)
     slop (3.6.0)
@@ -288,7 +282,7 @@ DEPENDENCIES
   rails_12factor
   recipient_interceptor
   rspec-rails (~> 3.0.0)
-  sass-rails!
+  sass-rails
   shoulda-matchers
   spring
   spring-commands-rspec
