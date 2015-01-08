@@ -1,4 +1,6 @@
 class PullRequest < ActiveRecord::Base
+  REPOST_THRESHOLD = 30
+
   validates :github_url, presence: true, uniqueness: true
   validates :repo_name, presence: true
   validates :repo_github_url, presence: true
@@ -9,6 +11,8 @@ class PullRequest < ActiveRecord::Base
   validates :avatar_url, presence: true
 
   has_and_belongs_to_many :tags
+
+  time_for_a_boolean :reposted
 
   def self.active
     where(status: ["needs review", "in progress"])
@@ -22,6 +26,17 @@ class PullRequest < ActiveRecord::Base
     else
       all
     end
+  end
+
+  def self.needs_reposting
+    timestamp = REPOST_THRESHOLD.minutes.ago
+
+    updated_before(timestamp).
+      where(status: "needs review", reposted_at: nil)
+  end
+
+  def self.updated_before(timestamp)
+    where("updated_at <= ?", timestamp)
   end
 
   def number

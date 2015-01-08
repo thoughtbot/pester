@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107200715) do
+ActiveRecord::Schema.define(version: 20150108191114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20150107200715) do
     t.string   "avatar_url",      default: "https://avatars1.githubusercontent.com/u/6183?v=3&s=200", null: false
     t.integer  "additions",       default: 0,                                                         null: false
     t.integer  "deletions",       default: 0,                                                         null: false
+    t.datetime "reposted_at"
   end
 
   add_index "pull_requests", ["status"], name: "index_pull_requests_on_status", using: :btree

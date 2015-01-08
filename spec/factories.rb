@@ -11,6 +11,14 @@ FactoryGirl.define do
     trait :in_progress do
       status "in progress"
     end
+
+    trait :needs_review do
+      status "needs review"
+    end
+
+    trait :stale do
+      updated_at { 31.minutes.ago }
+    end
   end
 
   factory :tag do
