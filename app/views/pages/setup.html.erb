@@ -43,7 +43,7 @@
       <h2>Setup: Add the Webhook</h2>
       <ol>
         <li>Visit <code>https://github.com/$ORGANIZATION/$REPO/settings/hooks/new</code>.</li>
-        <li>Enter <code><%= ENV["PAYLOAD"] %></code> for the Payload URL.</li>
+        <li>Enter <code><%= ENV["WEBHOOK_URL"] %></code> for the Payload URL.</li>
         <li>Enter <code><%= ENV["GITHUB_SECRET_KEY"] %></code> for the secret.</li>
         <li>Select <code>Send me everything</code>, and submit.</li>
         <li>Submit a PR! It will be added to the Beggar UI, and if given a <code>#tag</code> in the description, will be posted to the appropriate Slack channel.</li>
