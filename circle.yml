@@ -1,0 +1,14 @@
+# https://circleci.com/docs/config-sample
+machine:
+  environment:
+    SECRET_KEY_BASE: secret_key_base
+    GITHUB_SECRET_KEY: github_secret
+  timezone:
+    America/New_York
+deployment:
+  production:
+    branch: master
+    commands:
+      - git push -f git@heroku.com:tbot-beggar.git $CIRCLE_SHA1:master
+      - heroku run rake db:migrate --app tbot-beggar
+      - heroku restart --app tbot-beggar

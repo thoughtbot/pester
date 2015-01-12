@@ -1,5 +1,8 @@
 # Beggar
 
+[![Circle
+CI](https://circleci.com/gh/thoughtbot/beggar.svg?style=svg&circle-token=07d9bd80401d852967891e169b8ef64ef36e649f)](https://circleci.com/gh/thoughtbot/beggar)
+
 ### What is beggar?
 
 Beggar is a tool to help with getting pull request reviews. Once you have set up
