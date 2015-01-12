@@ -37,6 +37,9 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.6)
+    airbrake (4.1.0)
+      builder
+      multi_json
     arel (6.0.0)
     awesome_print (1.2.0)
     bourbon (4.0.2)
@@ -281,6 +284,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrake
   awesome_print
   bourbon (~> 4.0.2)
   bundler-audit

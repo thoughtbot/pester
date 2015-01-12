@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 ruby "2.1.5"
 
+gem "airbrake"
 gem "awesome_print"
 gem "bourbon", "~> 4.0.2"
 gem "coffee-rails"
