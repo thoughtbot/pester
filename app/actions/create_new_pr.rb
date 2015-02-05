@@ -4,7 +4,8 @@ class CreateNewPr
   end
 
   def self.matches(payload_parser, *)
-    payload_parser.action == "opened"
+    payload_parser.action == "opened" &&
+      TagParser.new.parse(payload_parser.body).any?
   end
 
   def call

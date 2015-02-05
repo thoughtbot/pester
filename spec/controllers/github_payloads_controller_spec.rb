@@ -41,7 +41,7 @@ describe GithubPayloadsController do
 
     describe "when the action is 'opened'" do
       it "creates a new PullRequest" do
-        send_pull_request_payload(action: "opened")
+        send_pull_request_payload(action: "opened", body: "#rails")
         expect(last_pull_request.status).to eq("needs review")
       end
 
@@ -62,11 +62,6 @@ describe GithubPayloadsController do
         tag = Tag.create!(name: "rails")
         send_pull_request_payload(action: "opened", body: "A request #rails")
         expect(Tag.pluck(:id)).to eq ([tag.id])
-      end
-
-      it "does not default to any tags" do
-        send_pull_request_payload(action: "opened", body: "A request with no tags")
-        expect(last_pull_request.tags.map(&:name)).to eq([])
       end
 
       it "posts to slack" do
