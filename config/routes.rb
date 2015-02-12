@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :github_payloads, only: [:create]
   resource :session, only: [:new, :create, :destroy]
+  resources :pull_requests, only: [:index, :show]
 
   get "/auth/:provider/callback", to: "sessions#create"
   get "/auth/githubteammember", as: "githubteammember_auth"
+
   root to: "pull_requests#index"
 end
