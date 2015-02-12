@@ -1,17 +1,18 @@
 class Tag < ActiveRecord::Base
   SUPPORTED_TAGS = [
-    "ember",
-    "rails",
-    "design",
-    "angular",
-    "ruby",
-    "javascript",
-    "ios",
-    "objective-c",
-    "swift",
-    "haskell",
     "android",
+    "angular",
     "code",
+    "design",
+    "ember",
+    "haskell",
+    "ios",
+    "javascript",
+    "objective-c",
+    "rails",
+    "react",
+    "ruby",
+    "swift",
   ]
 
   validates :name, presence: true, uniqueness: true

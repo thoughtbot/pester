@@ -26,6 +26,7 @@ Tags you can use currently:
 * javascript
 * objective-c
 * rails
+* react
 * ruby
 * swift
 
