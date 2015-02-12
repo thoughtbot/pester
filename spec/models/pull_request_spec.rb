@@ -27,4 +27,15 @@ describe PullRequest do
       end
     end
   end
+
+  describe "#slug" do
+    it "returns a slug based on organization, repo and PR number" do
+      pr = create(
+        :pull_request,
+        github_url: "https://github.com/org/repo/pulls/456"
+      )
+
+      expect(pr.slug).to eq "org-repo-456"
+    end
+  end
 end

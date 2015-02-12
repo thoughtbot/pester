@@ -50,4 +50,15 @@ class PullRequest < ActiveRecord::Base
   def webhook_urls
     tags.map(&:webhook_url).compact.uniq
   end
+
+  def slug
+    @slug ||= calculate_slug
+  end
+
+  protected
+
+  def calculate_slug
+    github_parts = github_url.split("//").last.split("/")
+    "#{github_parts[1]}-#{github_parts[2]}-#{github_parts[4]}"
+  end
 end
