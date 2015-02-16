@@ -1,6 +1,10 @@
 class PullRequestsController < ApplicationController
   helper_method :grouped_pull_requests, :tags, :tags_to_filter_by
 
+  def show
+    @pull_request = PullRequest.find(params[:id])
+  end
+
   private
 
   def grouped_pull_requests

@@ -1,0 +1,31 @@
+<div class="table-list-cell">
+  <img
+     src="<%= @pull_request.avatar_url %>"
+     alt="<%= @pull_request.user_name %>"
+     class="avatar"
+  >
+</div>
+
+<div class="table-list-cell stacked">
+  <%= link_to @pull_request.title, @pull_request.github_url, class: "table-list-cell-title" %>
+  <span class="table-list-cell-subtitle">
+    #<%= @pull_request.number %>
+    opened <%= time_ago_in_words @pull_request.created_at %> ago by
+    <%= link_to @pull_request.user_name, @pull_request.user_github_url %>
+    in
+    <%= link_to @pull_request.repo_name, @pull_request.repo_github_url %>
+  </span>
+</div>
+
+<div class="table-list-cell hide-mobile">
+  <% @pull_request.tags.each do |tag| %>
+    <span class="tag <%= tag.name %>" data-role="tag"><%= tag.name %></span>
+  <% end %>
+</div>
+
+<div class="table-list-cell hide-mobile">
+  <div class="comment-count">
+    <%= embedded_svg "svg/comment.svg" %>
+    <span class="dummy">1</span>
+  </div>
+</div>
