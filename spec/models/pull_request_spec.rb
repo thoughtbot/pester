@@ -28,6 +28,32 @@ describe PullRequest do
     end
   end
 
+  describe ".find_by_slug_or_id" do
+    it "finds by slug" do
+      pr = create(
+        :pull_request,
+        github_url: "https://github.com/org/repo/pulls/456"
+      )
+
+      retrieve_pr = PullRequest.find_by_slug_or_id(pr.slug)
+
+      expect(retrieve_pr.id).to eq pr.id
+      expect(retrieve_pr.slug).to eq pr.slug
+    end
+
+    it "finds by id" do
+      pr = create(
+        :pull_request,
+        github_url: "https://github.com/org/repo/pulls/456"
+      )
+
+      retrieve_pr = PullRequest.find_by_slug_or_id(pr.id)
+
+      expect(retrieve_pr.id).to eq pr.id
+      expect(retrieve_pr.slug).to eq pr.slug
+    end
+  end
+
   describe "#slug" do
     it "returns a slug based on organization, repo and PR number" do
       pr = create(

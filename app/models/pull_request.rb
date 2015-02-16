@@ -18,6 +18,10 @@ class PullRequest < ActiveRecord::Base
     where(status: ["needs review", "in progress"])
   end
 
+  def self.find_by_slug_or_id(slug_or_id)
+    find_by(slug: slug_or_id)
+  end
+
   def self.for_tags(tags)
     if tags.present?
       joins(:tags)
