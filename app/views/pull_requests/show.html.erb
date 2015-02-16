@@ -28,6 +28,8 @@
       in
       <%= link_to @pull_request.repo_name, @pull_request.repo_github_url %>
     </span>
+
+    <p data-role="status">Status: <%= @pull_request.status %></p>
   </div>
 
   <div class="table-list-cell hide-mobile">
@@ -49,7 +51,6 @@
     	<li data-role="date-added">Added: <%= @pull_request.created_at %></li>
     	<li data-role="date-updated">Updated: <%= @pull_request.updated_at %></li>
     	<li data-role="date-reposted">Reposted: <%= @pull_request.reposted_at %></li>
-    	<li data-role="status">Status: <%= @pull_request.status %></li>
     </ul>
   </div>
 </main>

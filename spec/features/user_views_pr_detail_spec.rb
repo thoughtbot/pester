@@ -17,7 +17,7 @@ feature "Users views PR detail page" do
     expect(page).to have_css("[data-role='pull-request-detail']", text: "Implement Stuff")
   end
 
-  scenario "User sees History" do
+  scenario "User sees Status and History" do
     pr = create(
       :pull_request,
       title: "Show more detail",
@@ -29,10 +29,11 @@ feature "Users views PR detail page" do
 
     visit pull_request_path(pr)
 
+    expect(page).to have_css("[data-role='status']", text: "needs review")
+
     expect(page).to have_css("[data-role='history'] > h3", text: "History")
     expect(page).to have_css("[data-role='date-added']", text: 2.hours.ago)
     expect(page).to have_css("[data-role='date-updated']", text: 1.hours.ago)
     expect(page).to have_css("[data-role='date-reposted']", text: 90.minutes.ago)
-    expect(page).to have_css("[data-role='status']", text: "needs review")
   end
 end
