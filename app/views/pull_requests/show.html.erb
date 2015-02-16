@@ -20,7 +20,7 @@
   </div>
 
   <div class="table-list-cell stacked">
-    <%= link_to @pull_request.title, @pull_request.github_url, class: "table-list-cell-title" %>
+    <h2><%= link_to @pull_request.title, @pull_request.github_url, class: "table-list-cell-title" %></h2>
     <span class="table-list-cell-subtitle">
       #<%= @pull_request.number %>
       opened <%= time_ago_in_words @pull_request.created_at %> ago by
@@ -41,6 +41,15 @@
       <%= embedded_svg "svg/comment.svg" %>
       <span class="dummy">1</span>
     </div>
+  </div>
+
+  <div data-role="history">
+    <h3>History</h3>
+    <ul>
+    	<li>Added: </li>
+    	<li>Completed:</li>
+    	<li>State</li>
+    </ul>
   </div>
 </main>
 
