@@ -55,10 +55,6 @@ class PullRequest < ActiveRecord::Base
     tags.map(&:webhook_url).compact.uniq
   end
 
-  def slug
-    @slug ||= calculate_slug
-  end
-
   protected
 
   def calculate_slug
