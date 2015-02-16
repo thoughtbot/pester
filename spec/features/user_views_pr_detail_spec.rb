@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "Users views PR detail page" do
-  scenario "Sees link to detail of an open Pull Reqeust" do
+  scenario "Clicking a detail link opens a Pull Request detail page" do
     pr = create(
       :pull_request,
       title: "Implement Stuff",
@@ -12,6 +12,8 @@ feature "Users views PR detail page" do
 
     expect(page).to have_link("Show more detail", href: "#{pull_requests_path}/#{pr.id}")
 
-    click_on "Show more detail"
+    click_link("Show more detail")
+
+    expect(page).to have_css("[data-role='pull-request-detail']", text: "Implement Stuff")
   end
 end
