@@ -32,7 +32,7 @@ feature "Users views PR detail page" do
     expect(page).to have_css("[data-role='history'] > h3", text: "History")
     expect(page).to have_css("[data-role='date-added']", text: 2.hours.ago)
     expect(page).to have_css("[data-role='date-updated']", text: 1.hours.ago)
-    expect(page).to have_css("[data-role='reposted_at']", text: 90.minutes.ago)
+    expect(page).to have_css("[data-role='date-reposted']", text: 90.minutes.ago)
     expect(page).to have_css("[data-role='status']", text: "needs review")
   end
 end

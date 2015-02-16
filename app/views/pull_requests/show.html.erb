@@ -46,9 +46,10 @@
   <div data-role="history">
     <h3>History</h3>
     <ul>
-    	<li>Added: </li>
-    	<li>Completed:</li>
-    	<li>State</li>
+    	<li data-role="date-added">Added: <%= @pull_request.created_at %></li>
+    	<li data-role="date-updated">Updated: <%= @pull_request.updated_at %></li>
+    	<li data-role="date-reposted">Reposted: <%= @pull_request.reposted_at %></li>
+    	<li data-role="status">Status: <%= @pull_request.status %></li>
     </ul>
   </div>
 </main>
