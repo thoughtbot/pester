@@ -18,10 +18,6 @@ class PullRequest < ActiveRecord::Base
     where(status: ["needs review", "in progress"])
   end
 
-  def self.find_by_slug_or_id(slug_or_id)
-    find_by(slug: slug_or_id)
-  end
-
   def self.for_tags(tags)
     if tags.present?
       joins(:tags)
@@ -53,12 +49,5 @@ class PullRequest < ActiveRecord::Base
 
   def webhook_urls
     tags.map(&:webhook_url).compact.uniq
-  end
-
-  protected
-
-  def calculate_slug
-    github_parts = github_url.split("//").last.split("/")
-    "#{github_parts[1]}-#{github_parts[2]}-#{github_parts[4]}"
   end
 end
