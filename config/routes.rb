@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   resources :github_payloads, only: [:create]
   resource :session, only: [:new, :create, :destroy]
 
