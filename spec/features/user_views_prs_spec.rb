@@ -47,7 +47,7 @@ feature "User views PRs" do
   scenario "viewing tags for the current pr" do
     create(
       :pull_request,
-      tags: [tag("Rails"), tag("Ember")]
+      channels: [channel("Rails"), channel("Ember")]
     )
 
     visit root_path
@@ -69,10 +69,20 @@ feature "User views PRs" do
   end
 
   scenario "Sees tags with active pull requests" do
-    rails = tag("rails")
-    ember = tag("ember")
-    create(:pull_request, title: "An Ember PR", tags: [ember], status: "completed")
-    create(:pull_request, title: "A Rails PR", tags: [rails], status: "needs review")
+    rails = channel("rails")
+    ember = channel("ember")
+    create(
+      :pull_request,
+      title: "An Ember PR",
+      channels: [ember],
+      status: "completed"
+    )
+    create(
+      :pull_request,
+      title: "A Rails PR",
+      channels: [rails],
+      status: "needs review"
+    )
 
     visit root_path
 
@@ -92,7 +102,7 @@ feature "User views PRs" do
 
     expect(page).to have_content("An Ember PR")
     expect(page).not_to have_content("A Rails PR")
-    expect(page).to have_content("A PR that should probably have been split up")
+    expect(page).to have_content("A long pr")
   end
 
   scenario "Can filter by multiple tags" do
@@ -105,7 +115,7 @@ feature "User views PRs" do
 
     expect(page).to have_content("An Ember PR")
     expect(page).to have_content("A Rails PR")
-    expect(page).to have_content("A PR that should probably have been split up")
+    expect(page).to have_content("A long pr")
   end
 
   scenario "Can remove a tag from filtered tags" do
@@ -118,17 +128,17 @@ feature "User views PRs" do
 
     expect(page).not_to have_content("An Ember PR")
     expect(page).to have_content("A Rails PR")
-    expect(page).to have_content("A PR that should probably have been split up")
+    expect(page).to have_content("A long pr")
   end
 
   private
 
   def create_pull_requests_with_tags
-    ember = tag("ember")
-    rails = tag("rails")
-    create(:pull_request, title: "An Ember PR", tags: [ember])
-    create(:pull_request, title: "A Rails PR", tags: [rails])
-    create(:pull_request, title: "A PR that should probably have been split up", tags: [rails, ember])
+    ember = channel("ember")
+    rails = channel("rails")
+    create(:pull_request, title: "An Ember PR", channels: [ember])
+    create(:pull_request, title: "A Rails PR", channels: [rails])
+    create(:pull_request, title: "A long pr", channels: [rails, ember])
   end
 
   def have_avatar(url)
@@ -139,7 +149,7 @@ feature "User views PRs" do
     have_css("[data-role='tag']", text: tag_name)
   end
 
-  def tag(name)
-    create(:tag, name: name)
+  def channel(name)
+    create(:channel, name: name, tag_name: name)
   end
 end

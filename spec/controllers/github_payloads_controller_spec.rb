@@ -51,21 +51,13 @@ describe GithubPayloadsController do
         }.not_to raise_exception
       end
 
-      it "creates tags for the pull request" do
-        send_pull_request_payload(
-          action: "opened", body: "A request #code #rails #poop"
-        )
-        expect(Tag.pluck(:name).sort).to eq(["code", "rails"])
-      end
-
-      it "uses existing tags if they exist" do
-        tag = Tag.create!(name: "rails")
-        send_pull_request_payload(action: "opened", body: "A request #rails")
-        expect(Tag.pluck(:id)).to eq ([tag.id])
-      end
-
       it "posts to slack" do
-        create(:tag, name: "rails", webhook_url: "https://google.com/")
+        create(
+          :channel,
+          name: "ruby",
+          webhook_url: "https://google.com/",
+          tag_name: "rails",
+        )
         request_stub = stub_request(:post, "https://google.com/").with(body: /.*/)
 
         send_pull_request_payload(action: "opened", body: "A request #rails")

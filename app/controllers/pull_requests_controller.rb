@@ -12,7 +12,7 @@ class PullRequestsController < ApplicationController
   end
 
   def tags
-    @tags ||= Tag.with_active_pull_requests
+    @tags ||= Channel.with_active_pull_requests.flat_map(&:tags)
   end
 
   def tags_to_filter_by

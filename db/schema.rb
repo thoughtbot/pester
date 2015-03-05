@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150108191114) do
+ActiveRecord::Schema.define(version: 20150304195244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "channels", force: true do |t|
+    t.string "name",        null: false
+    t.string "webhook_url", null: false
+  end
+
+  add_index "channels", ["name"], name: "index_channels_on_name", using: :btree
+
+  create_table "channels_pull_requests", force: true do |t|
+    t.integer "channel_id"
+    t.integer "pull_request_id"
+  end
+
+  add_index "channels_pull_requests", ["channel_id", "pull_request_id"], name: "index_channels_pull_requests_on_channel_id_and_pull_request_id", unique: true, using: :btree
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -50,20 +64,11 @@ ActiveRecord::Schema.define(version: 20150108191114) do
 
   add_index "pull_requests", ["status"], name: "index_pull_requests_on_status", using: :btree
 
-  create_table "pull_requests_tags", force: true do |t|
-    t.integer "pull_request_id"
-    t.integer "tag_id"
-  end
-
-  add_index "pull_requests_tags", ["pull_request_id", "tag_id"], name: "index_pull_requests_tags_on_pull_request_id_and_tag_id", unique: true, using: :btree
-
   create_table "tags", force: true do |t|
-    t.string "name",        null: false
-    t.string "webhook_url"
+    t.string  "name",       null: false
+    t.integer "channel_id", null: false
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", using: :btree
 
-  add_foreign_key "pull_requests_tags", "pull_requests"
-  add_foreign_key "pull_requests_tags", "tags"
 end

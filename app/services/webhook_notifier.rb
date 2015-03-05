@@ -7,16 +7,17 @@ class WebhookNotifier
   end
 
   def send_notification
-    webhook_urls.each do |url|
-      send_webook_post(url)
+    channels.each do |channel|
+      send_webook_post(channel)
     end
   end
 
-  def body
+  def body(channel)
     {
       text: title_text,
       username: BOT_NAME,
       icon_url: ICON_URL,
+      channel: channel.name,
     }.to_json
   end
 
@@ -34,14 +35,14 @@ class WebhookNotifier
     "+#{pull_request.additions}, -#{pull_request.deletions}"
   end
 
-  def send_webook_post(webhook_url)
-    uri = URI(webhook_url)
+  def send_webook_post(channel)
+    uri = URI(channel.webhook_url)
     Net::HTTP.start(
       uri.host,
       uri.port,
       use_ssl: uri.scheme == "https"
     ) do |http|
-      http.post(uri.path, body)
+      http.post(uri.path, body(channel))
     end
   end
 
@@ -61,7 +62,7 @@ class WebhookNotifier
     pull_request.tag_names.map { |name| "##{name}" }
   end
 
-  def webhook_urls
-    pull_request.webhook_urls
+  def channels
+    pull_request.channels
   end
 end

@@ -10,7 +10,7 @@ class PullRequest < ActiveRecord::Base
   validates :user_github_url, presence: true
   validates :avatar_url, presence: true
 
-  has_and_belongs_to_many :tags
+  has_and_belongs_to_many :channels
 
   time_for_a_boolean :reposted
 
@@ -18,11 +18,10 @@ class PullRequest < ActiveRecord::Base
     where(status: ["needs review", "in progress"])
   end
 
-  def self.for_tags(tags)
-    if tags.present?
-      joins(:tags)
-        .where(tags: { name: tags })
-        .uniq
+  def self.for_tags(tag_names)
+    if tag_names.present?
+      joins(channels: :tags).
+        where(tags: { name: tag_names })
     else
       all
     end
@@ -39,15 +38,15 @@ class PullRequest < ActiveRecord::Base
     where("updated_at <= ?", timestamp)
   end
 
-  def number
-    github_url.split("/").last
+  def tags
+    channels.flat_map(&:tags)
   end
 
   def tag_names
     tags.map(&:name)
   end
 
-  def webhook_urls
-    tags.map(&:webhook_url).compact.uniq
+  def number
+    github_url.split("/").last
   end
 end

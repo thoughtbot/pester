@@ -1,4 +1,19 @@
 FactoryGirl.define do
+  factory :channel do
+    sequence(:name) { |n| "channel#{n}" }
+    webhook_url "http://example.com/home"
+
+    transient do
+      tag_name nil
+    end
+
+    after :create do |channel, evaluator|
+      if evaluator.tag_name.present?
+        create(:tag, name: evaluator.tag_name, channel: channel)
+      end
+    end
+  end
+
   factory :pull_request do
     sequence(:github_url) {|n| "https://github.com/thoughtbot/stuff/pulls/#{n}"}
     repo_github_url { "https://github.com/#{repo_name}" }

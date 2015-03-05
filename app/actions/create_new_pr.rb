@@ -9,7 +9,8 @@ class CreateNewPr
   end
 
   def call
-    pull_request = PullRequest.create(payload_parser.params.merge(tags: tags))
+    merged_params = payload_parser.params.merge(channels: channels)
+    pull_request = PullRequest.create(merged_params)
     post_to_slack(pull_request)
   end
 
@@ -19,10 +20,10 @@ class CreateNewPr
 
   private
 
-  def tags
+  def channels
     @tags ||= begin
       tag_names = TagParser.new.parse(payload_parser.body)
-      tag_names.map(&Tag.method(:with_name)).compact
+      tag_names.map(&Channel.method(:with_tag_name)).compact.uniq
     end
   end
 

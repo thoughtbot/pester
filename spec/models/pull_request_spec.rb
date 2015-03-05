@@ -5,6 +5,24 @@ describe PullRequest do
   it { should validate_presence_of(:repo_name) }
   it { should validate_presence_of(:status) }
 
+  it { should have_and_belong_to_many(:channels) }
+
+  describe ".for_tag" do
+    it "returns all the pull requests for a matching tag name" do
+      ruby = create(:channel, tag_name: "ruby")
+      javascript = create(:channel, tag_name: "javascript")
+      osx = create(:channel, tag_name: "osx")
+
+      ruby_pr = create(:pull_request, channels: [ruby])
+      javascript_pr = create(:pull_request, channels: [javascript])
+      _osx_pr = create(:pull_request, channels: [osx])
+
+      matching_prs = PullRequest.for_tags(["ruby", "javascript"])
+
+      expect(matching_prs).to match_array([ruby_pr, javascript_pr])
+    end
+  end
+
   describe ".needs_reposting" do
     it "returns PRs that haven't been reviewed in over 30 minutes nor reposted" do
       pr_to_report = create(:pull_request, :needs_review, reposted: false)
