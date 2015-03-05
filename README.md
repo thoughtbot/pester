@@ -5,7 +5,6 @@ CI](https://circleci.com/gh/thoughtbot/beggar.svg?style=svg&circle-token=07d9bd8
 
 ### What is beggar?
 
-Beggar is a tool to help with getting pull request reviews. Once you have set up
 beggar on your repo, any new pull request will automatically be added to beggar.
 It will also automatically be posted to the correct Slack room based on the tags
 you've provided.
