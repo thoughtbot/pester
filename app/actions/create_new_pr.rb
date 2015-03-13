@@ -5,7 +5,10 @@ class CreateNewPr
 
   def self.matches(payload_parser, *)
     payload_parser.action == "opened" &&
-      TagParser.new.parse(payload_parser.body).any?
+      (
+        tags_matched(payload_parser.body) ||
+        project_matched(payload_parser.repo_github_url)
+      )
   end
 
   def call
@@ -20,14 +23,37 @@ class CreateNewPr
 
   private
 
+  def self.project_matched(repo_github_url)
+    ProjectMatcher.match(repo_github_url).any?
+  end
+
+  def self.tags_matched(body)
+    TagParser.new.parse(body).any?
+  end
+
   def channels
+    [tag_channels, project_channels].flatten.compact
+  end
+
+  def project_channels
+    @projects ||= begin
+      projects = ProjectMatcher.match(payload_parser.repo_github_url)
+      unique_channels(list: projects, method: :default_channel)
+    end
+  end
+
+  def tag_channels
     @tags ||= begin
       tag_names = TagParser.new.parse(payload_parser.body)
-      tag_names.map(&Channel.method(:with_tag_name)).compact.uniq
+      unique_channels(list: tag_names, method: Channel.method(:with_tag_name))
     end
   end
 
   def post_to_slack(pull_request)
     WebhookNotifier.new(pull_request).send_notification
+  end
+
+  def unique_channels(list:, method:)
+    list.map(&method).compact.uniq
   end
 end

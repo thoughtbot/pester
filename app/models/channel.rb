@@ -3,6 +3,7 @@ class Channel < ActiveRecord::Base
   validates :name, uniqueness: { scope: :webhook_url }
   validates :webhook_url, presence: true
 
+  has_many :projects, as: :default_channel, dependent: :destroy
   has_many :tags, dependent: :destroy
   has_and_belongs_to_many :active_pull_requests, -> { active }, class_name: "PullRequest"
 

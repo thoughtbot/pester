@@ -4,6 +4,7 @@ describe Channel do
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:webhook_url) }
 
+  it { should have_many(:projects).dependent(:destroy) }
   it { should have_many(:tags).dependent(:destroy) }
   it { should have_and_belong_to_many(:active_pull_requests) }
 

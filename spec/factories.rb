@@ -14,6 +14,12 @@ FactoryGirl.define do
     end
   end
 
+  factory :project do
+    sequence(:name) { |n| "project#{n}" }
+    sequence(:github_url) { |n| "http://example.com/thoughtbot/project#{n}" }
+    association :default_channel, factory: :channel
+  end
+
   factory :pull_request do
     sequence(:github_url) {|n| "https://github.com/thoughtbot/stuff/pulls/#{n}"}
     repo_github_url { "https://github.com/#{repo_name}" }

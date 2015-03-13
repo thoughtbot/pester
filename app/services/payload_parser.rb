@@ -43,6 +43,10 @@ class PayloadParser
     }
   end
 
+  def repo_github_url
+    pull_request["head"]["repo"]["html_url"]
+  end
+
   protected
 
   attr_reader :headers, :payload
@@ -59,10 +63,6 @@ class PayloadParser
 
   def repo_name
     pull_request["head"]["repo"]["full_name"]
-  end
-
-  def repo_github_url
-    pull_request["head"]["repo"]["html_url"]
   end
 
   def title
