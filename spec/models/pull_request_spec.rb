@@ -9,9 +9,9 @@ describe PullRequest do
 
   describe ".for_tag" do
     it "returns all the pull requests for a matching tag name" do
-      ruby = create(:channel, tag_name: "ruby")
-      javascript = create(:channel, tag_name: "javascript")
-      osx = create(:channel, tag_name: "osx")
+      ruby = create(:channel, tag_names: ["ruby"])
+      javascript = create(:channel, tag_names: ["javascript"])
+      osx = create(:channel, tag_names: ["osx"])
 
       ruby_pr = create(:pull_request, channels: [ruby])
       javascript_pr = create(:pull_request, channels: [javascript])

@@ -150,6 +150,6 @@ feature "User views PRs" do
   end
 
   def channel(name)
-    create(:channel, name: name, tag_name: name)
+    create(:channel, name: name, tag_names: [name])
   end
 end

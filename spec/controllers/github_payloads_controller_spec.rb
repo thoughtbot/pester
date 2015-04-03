@@ -56,7 +56,7 @@ describe GithubPayloadsController do
           :channel,
           name: "ruby",
           webhook_url: "https://google.com/",
-          tag_name: "rails",
+          tag_names: ["rails"],
         )
         request_stub = stub_request(:post, "https://google.com/").with(body: /.*/)
 

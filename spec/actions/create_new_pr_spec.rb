@@ -47,8 +47,8 @@ describe CreateNewPr do
   describe ".channels" do
     context "when there is a project" do
       it "includes the project default channel and any tags" do
-        rails_channel = create(:channel, tag_name: "rails")
-        design_channel = create(:channel, tag_name: "design")
+        rails_channel = create(:channel, tag_names: ["rails", "ruby"])
+        design_channel = create(:channel, tag_names: ["design"])
         project_channel = create(:channel, name: "project")
 
         project_url = "https://github.com/thoughtbot/beggar"
@@ -85,8 +85,8 @@ describe CreateNewPr do
 
     context "when there isn't a project" do
       it "includes channels based on tags" do
-        rails_channel = create(:channel, tag_name: "rails")
-        design_channel = create(:channel, tag_name: "design")
+        rails_channel = create(:channel, tag_names: ["rails"])
+        design_channel = create(:channel, tag_names: ["design"])
         channels_hash = { channels: [rails_channel, design_channel] }
         parser = double(
           :parser,

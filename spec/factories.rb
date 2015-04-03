@@ -4,12 +4,14 @@ FactoryGirl.define do
     webhook_url "http://example.com/home"
 
     transient do
-      tag_name nil
+      tag_names nil
     end
 
     after :create do |channel, evaluator|
-      if evaluator.tag_name.present?
-        create(:tag, name: evaluator.tag_name, channel: channel)
+      if evaluator.tag_names.present?
+        evaluator.tag_names.each do |tag_name|
+          create(:tag, name: tag_name, channel: channel)
+        end
       end
     end
   end
