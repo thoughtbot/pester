@@ -35,6 +35,17 @@ describe PullRequest do
     end
   end
 
+  describe ".tag_names" do
+    it "should show me tag names for channels the PR is going to" do
+      rails_channel = create(:channel, name: "Rails")
+      ruby_tag = create(:tag, name: "#ruby", channel: rails_channel)
+      rails_tag = create(:tag, name: "#rails", channel: rails_channel)
+      pr = create(:pull_request, channels: [rails_channel])
+
+      expect(pr.tag_names).to match_array(["#rails", "#ruby"])
+    end
+  end
+
   describe ".updated_before" do
     it "returns pull requests that have not been updated since a given time" do
       older_pr = create(:pull_request)
