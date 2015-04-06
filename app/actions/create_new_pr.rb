@@ -51,7 +51,8 @@ class CreateNewPr
   end
 
   def provided_tags
-    TagParser.new.parse(payload_parser.body)
+    raw_tags = TagParser.new.parse(payload_parser.body)
+    tags.map
   end
 
   def post_to_slack(pull_request)
