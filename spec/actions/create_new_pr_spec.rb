@@ -104,4 +104,30 @@ describe CreateNewPr do
       end
     end
   end
+
+  describe ".tags" do
+    it "identifies the tags provided in the body" do
+      rails_channel = create(:channel, tag_names: ["rails"])
+      provided_tags = "#rails, #foo, #bar"
+      provided_options = {
+        channels: [rails_channel],
+        provided_tags: provided_tags
+      }
+
+      parser = double(
+        :parser,
+        action: "opened",
+        body: provided_tags,
+        params: spy(Hash.new),
+        repo_github_url: "_"
+      )
+
+      pr_creator = CreateNewPr.new(parser, nil)
+      allow(pr_creator).to receive(:post_to_slack)
+
+      pr_creator.call
+
+      expect(parser.params).to have_received(:merge).with(provided_options)
+    end
+  end
 end

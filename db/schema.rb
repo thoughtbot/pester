@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150313144216) do
+ActiveRecord::Schema.define(version: 20150406171405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20150313144216) do
     t.integer  "additions",       default: 0,                                                         null: false
     t.integer  "deletions",       default: 0,                                                         null: false
     t.datetime "reposted_at"
+    t.string   "provided_tags"
   end
 
   add_index "pull_requests", ["status"], name: "index_pull_requests_on_status", using: :btree

@@ -24,6 +24,7 @@ FactoryGirl.define do
 
   factory :pull_request do
     sequence(:github_url) {|n| "https://github.com/thoughtbot/stuff/pulls/#{n}"}
+    provided_tags "#rails #project"
     repo_github_url { "https://github.com/#{repo_name}" }
     sequence(:repo_name) { |n| "thoughtbot/stuff-#{n}" }
     status "needs review"

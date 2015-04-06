@@ -36,13 +36,30 @@ describe PullRequest do
   end
 
   describe ".tag_names" do
-    it "should show me tag names for channels the PR is going to" do
+    it "shows me all of the tag names for the channels the PR is going to" do
       rails_channel = create(:channel, name: "Rails")
       ruby_tag = create(:tag, name: "#ruby", channel: rails_channel)
       rails_tag = create(:tag, name: "#rails", channel: rails_channel)
       pr = create(:pull_request, channels: [rails_channel])
 
       expect(pr.tag_names).to match_array(["#rails", "#ruby"])
+    end
+  end
+
+  describe ".provided_tags" do
+    it "shows me the tags provided in the pull request message" do
+      rails_channel = create(:channel, name: "Rails")
+      ruby_tag = create(:tag, name: "#ruby", channel: rails_channel)
+      rails_tag = create(:tag, name: "#rails", channel: rails_channel)
+      provided_tags = "#rails #javascript #project"
+
+      pr = create(
+        :pull_request,
+        channels: [rails_channel],
+        provided_tags: provided_tags
+      )
+
+      expect(pr.provided_tags).to eq provided_tags
     end
   end
 
