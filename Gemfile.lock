@@ -62,8 +62,8 @@ GEM
       activesupport (>= 3.0.0)
     arel (6.0.0)
     awesome_print (1.2.0)
-    bourbon (4.0.2)
-      sass (~> 3.3)
+    bourbon (4.2.2)
+      sass (~> 3.4)
       thor
     builder (3.2.2)
     bundler-audit (0.3.1)
@@ -333,7 +333,7 @@ DEPENDENCIES
   activeadmin!
   airbrake
   awesome_print
-  bourbon (~> 4.0.2)
+  bourbon
   bundler-audit
   byebug
   capybara-webkit (>= 1.2.0)
