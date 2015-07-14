@@ -12,8 +12,7 @@ class CreateNewPr
   end
 
   def call
-    merged_params = payload_parser.params.merge(channels: channels)
-    pull_request = PullRequest.create(merged_params)
+    pull_request = PullRequest.create(pull_request_params)
     post_to_slack(pull_request)
   end
 
@@ -31,6 +30,13 @@ class CreateNewPr
     TagParser.new.parse(body).any?
   end
 
+  def pull_request_params
+    payload_parser.params.merge(
+      channels: channels,
+      tags: tags,
+    )
+  end
+
   def channels
     [tag_channels, project_channels].flatten.compact
   end
@@ -43,10 +49,18 @@ class CreateNewPr
   end
 
   def tag_channels
-    @tags ||= begin
-      tag_names = TagParser.new.parse(payload_parser.body)
-      unique_channels(list: tag_names, method: Channel.method(:with_tag_name))
-    end
+    @tag_channels ||= unique_channels(
+      list: tag_names,
+      method: Channel.method(:with_tag_name),
+    )
+  end
+
+  def tags
+    @tags ||= tag_names.map { |name| Tag.find_by(name: name) }.compact.uniq
+  end
+
+  def tag_names
+    @tag_names ||= TagParser.new.parse(payload_parser.body)
   end
 
   def post_to_slack(pull_request)

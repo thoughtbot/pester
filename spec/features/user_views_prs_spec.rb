@@ -47,7 +47,7 @@ feature "User views PRs" do
   scenario "viewing tags for the current pr" do
     create(
       :pull_request,
-      channels: [channel("Rails"), channel("Ember")]
+      tags: [tag("Rails"), tag("Ember")],
     )
 
     visit root_path
@@ -151,5 +151,9 @@ feature "User views PRs" do
 
   def channel(name)
     create(:channel, name: name, tag_name: name)
+  end
+
+  def tag(name)
+    create(:tag, name: name)
   end
 end

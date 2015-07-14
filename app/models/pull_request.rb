@@ -11,6 +11,7 @@ class PullRequest < ActiveRecord::Base
   validates :avatar_url, presence: true
 
   has_and_belongs_to_many :channels
+  has_and_belongs_to_many :tags
 
   time_for_a_boolean :reposted
 
@@ -36,10 +37,6 @@ class PullRequest < ActiveRecord::Base
 
   def self.updated_before(timestamp)
     where("updated_at <= ?", timestamp)
-  end
-
-  def tags
-    channels.flat_map(&:tags)
   end
 
   def tag_names
