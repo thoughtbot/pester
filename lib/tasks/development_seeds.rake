@@ -5,17 +5,17 @@ if Rails.env.development?
     desc "Seed data for development environment"
     task prime: "db:setup" do
       include FactoryGirl::Syntax::Methods
-      all_tags = Tag::SUPPORTED_TAGS.map do |tag_name|
+      tag_names = ["Ember", "Rails", "Objective-C", "Swift", "Design"]
+      tag_names.map do |tag_name|
         tag = create(:tag, name: tag_name)
-        create(:pull_request, title: "A '#{tag_name}' PR", tags: [tag])
-        tag
+        create(:pull_request, title: "A '#{tag_name}' PR", channels: [tag.channel])
       end
 
       (2..5).each do |number|
         create(
           :pull_request,
           title: "A PR with multiple tags",
-          tags: all_tags.sample(number),
+          channels: Channel.all.sample(number),
         )
       end
     end
