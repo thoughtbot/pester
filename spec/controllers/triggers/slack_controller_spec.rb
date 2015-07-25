@@ -26,15 +26,15 @@ describe Triggers::SlackController do
 
   def slash_command_payload
     {
-      "token"=>"JrYJkSSvJB68Wmh4KDSBnEL4",
-      "team_id"=>"T024HFHU3",
-      "team_domain"=>"thoughtbot",
-      "channel_id"=>"C0415Q26Q",
-      "channel_name"=>"beggar-test",
-      "user_id"=>"U02UQMU1P",
-      "user_name"=>"grayson",
-      "command"=>"/beg",
-      "text"=>"https://github.com/thoughtbot/beggar/82",
+      "token" => "JrYJkSSvJB68Wmh4KDSBnEL4",
+      "team_id" => "T024HFHU3",
+      "team_domain" => "thoughtbot",
+      "channel_id" => "C0415Q26Q",
+      "channel_name" => "beggar-test",
+      "user_id" => "U02UQMU1P",
+      "user_name" => "grayson",
+      "command" => "/beg",
+      "text" => "https://github.com/thoughtbot/beggar/82",
     }
   end
 end
