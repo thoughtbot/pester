@@ -4,32 +4,27 @@ describe WebhookNotifier do
   describe "#send_notification" do
     context "when given a pull request with channels" do
       it "sends a post to each of the webhook url" do
-        channel1 = build_stubbed(
-          :channel,
-          webhook_url: "http://example.com/webhook",
-        )
-        channel2 = build_stubbed(
-          :channel,
-          webhook_url: "https://example.com/webhook2",
-        )
+        webhook_url = "http://example.com/webhook"
+        allow(ENV).to receive(:fetch).
+          with("SLACK_POST_WEBHOOK_URL").
+          and_return(webhook_url)
+        channels = [
+          build_stubbed(:channel, name: "channel_1"),
+          build_stubbed(:channel, name: "channel_2"),
+        ]
+        request_stubs = [
+          stub_request(:post, webhook_url).with(body: /"channel":"channel_1"/),
+          stub_request(:post, webhook_url).with(body: /"channel":"channel_2"/),
+        ]
 
-        pull_request = double(
-          :pull_request,
-          channels: [channel1, channel2]
-        ).as_null_object
-
-        request_stub = stub_request(
-          :post, channel1.webhook_url
-        ).with(body: /.*/)
-        request_stub2 = stub_request(
-          :post, channel2.webhook_url
-        ).with(body: /.*/)
+        pull_request = double(:pull_request, channels: channels).as_null_object
 
         notifier = WebhookNotifier.new(pull_request)
         notifier.send_notification
 
-        expect(request_stub).to have_been_requested
-        expect(request_stub2).to have_been_requested
+        request_stubs.each do |request_stub|
+          expect(request_stub).to have_been_requested
+        end
       end
     end
   end

@@ -52,13 +52,11 @@ describe GithubPayloadsController do
       end
 
       it "posts to slack" do
-        create(
-          :channel,
-          name: "ruby",
-          webhook_url: "https://google.com/",
-          tag_name: "rails",
-        )
-        request_stub = stub_request(:post, "https://google.com/").with(body: /.*/)
+        create(:channel, name: "ruby", tag_name: "rails")
+        request_stub = stub_request(
+          :post,
+          ENV.fetch("SLACK_POST_WEBHOOK_URL")
+        ).with(body: /"channel":"ruby"/)
 
         send_pull_request_payload(action: "opened", body: "A request #rails")
 

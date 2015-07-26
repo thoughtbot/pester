@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :channel do
     sequence(:name) { |n| "channel#{n}" }
-    webhook_url "http://example.com/home"
 
     transient do
       tag_name nil

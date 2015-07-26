@@ -7,9 +7,7 @@ class WebhookNotifier
   end
 
   def send_notification
-    channels.each do |channel|
-      send_webook_post(channel)
-    end
+    channels.each { |channel| send_webook_post(channel) }
   end
 
   def body(channel)
@@ -36,7 +34,7 @@ class WebhookNotifier
   end
 
   def send_webook_post(channel)
-    uri = URI(channel.webhook_url)
+    uri = URI(ENV.fetch("SLACK_POST_WEBHOOK_URL"))
     Net::HTTP.start(
       uri.host,
       uri.port,

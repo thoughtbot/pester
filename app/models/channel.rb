@@ -1,7 +1,6 @@
 class Channel < ActiveRecord::Base
   validates :name, presence: true
-  validates :name, uniqueness: { scope: :webhook_url }
-  validates :webhook_url, presence: true
+  validates :name, uniqueness: true
 
   has_many :projects, as: :default_channel, dependent: :destroy
   has_many :tags, dependent: :destroy
