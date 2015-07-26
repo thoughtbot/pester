@@ -17,3 +17,13 @@ en:
 
   titles:
     application: Beggar
+
+  trigger:
+    slack:
+      missing_pr_link:
+        Uh oh. I couldn't find a github pull request in your command.
+      webhook_not_configured: >
+        Please set up Beggar on the repo first:
+        https://tbot-beggar.herokuapp.com/pages/setup
+      invalid_channel:
+        For now, beggar only supports specific Slack channels.

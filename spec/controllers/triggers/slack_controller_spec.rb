@@ -2,43 +2,49 @@ require "rails_helper"
 
 describe Triggers::SlackController do
   describe "POST#create" do
-    pending "verifies the team domain is thoughtbot" do
+    it "verifies the team domain is thoughtbot" do
+      allow(ENV).to receive(:fetch)
+      allow(ENV).to receive(:fetch).
+        with("SLACK_TEAM_DOMAIN").
+        and_return("thoughtbot")
       params = slash_command_payload(team_domain: "Lullabot")
 
       post :create, params
 
-      expect(response).to be_forbidden
+      expect(response.status).to eq 403
     end
 
-    pending "verifies the team id is thoughtbot's" do
-      allow(ENV).to receive(:fetch).with(:slack_team_id).and_return("abc123")
+    it "verifies the team id is thoughtbot's" do
+      allow(ENV).to receive(:fetch)
+      allow(ENV).to receive(:fetch).with("SLACK_TEAM_ID").and_return("abc123")
       params = slash_command_payload(team_id: "incorrect_team_id")
 
       post :create, params
 
-      expect(response).to be_forbidden
+      expect(response.status).to eq 403
     end
 
-    pending "verifies the correct webhook token" do
+    it "verifies the correct webhook token" do
+      allow(ENV).to receive(:fetch)
       allow(ENV).to receive(:fetch).
-        with(:slack_webhook_token).
+        with("SLACK_WEBHOOK_TOKEN").
         and_return("abc123")
       params = slash_command_payload(token: "incorrect_token")
 
       post :create, params
 
-      expect(response).to be_forbidden
+      expect(response.status).to eq 403
     end
 
-    pending "only responds to the '/beg' command" do
+    it "only responds to the '/beg' command" do
       params = slash_command_payload(command: "/foobar")
 
       post :create, params
 
-      expect(response).to be_forbidden
+      expect(response.status).to eq 403
     end
 
-    pending "checks for a valid github link" do
+    it "checks for a valid github link" do
       params = slash_command_payload(text: "link not present")
 
       post :create, params
@@ -131,6 +137,10 @@ describe Triggers::SlackController do
         end
       end
     end
+  end
+
+  def stub_pr_status_api_response(pull_request_url, status)
+
   end
 
   def slash_command_payload(options)
