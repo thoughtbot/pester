@@ -2,8 +2,7 @@ module Triggers
   class SlackController < ApplicationController
     skip_before_filter :ensure_thoughtbot_team
 
-    before_filter :ensure_thoughtbot_team
-    before_filter :only_respond_to_beg_command
+    before_filter :ensure_expected_parameters
 
     def create
       render status: :ok, text: t("trigger.slack.missing_pr_link")
@@ -11,17 +10,24 @@ module Triggers
 
     private
 
-    def ensure_thoughtbot_team
-      if params[:team_domain] != ENV.fetch("SLACK_TEAM_DOMAIN") &&
-        params[:team_id] != ENV.fetch("SLACK_TEAM_ID")
+    def ensure_expected_parameters
+      unless all_expected_parameters_correct?
         forbidden
       end
     end
 
-    def only_respond_to_beg_command
-      unless params[:command] == "/beg"
-        forbidden
+    def all_expected_parameters_correct?
+      expected_parameters.all? do |param, expected_value|
+        params[param] == expected_value
       end
+    end
+
+    def expected_parameters
+      {
+        command: "/beg",
+        team_domain: ENV.fetch("SLACK_TEAM_DOMAIN"),
+        team_id: ENV.fetch("SLACK_TEAM_ID"),
+      }
     end
 
     def forbidden
