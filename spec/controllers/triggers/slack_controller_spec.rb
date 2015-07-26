@@ -62,6 +62,11 @@ describe Triggers::SlackController do
     end
 
     context "with a valid github PR link" do
+      context "when beggar already knows about the PR" do
+        it "tells the user if the PR is already being begged for"
+        it "sets the PR to 'needs review' if it's not already"
+      end
+
       context "when the PR is closed" do
         it "warns the user and does not start begging" do
           project = create(:project)
@@ -92,12 +97,29 @@ describe Triggers::SlackController do
         it "responds with a success message" do
           project = create(:project)
           pull_request_url = project.github_url + "/pull/82"
-          stub_pr_status_api_response(pull_request_url, :open)
           params = slash_command_payload(text: pull_request_url)
 
           post :create, params
 
           expect(response.body).to eq(t("trigger.slack.success"))
+        end
+
+        it "extracts information from the pull request" do
+          project = create(:project)
+          pull_request_url = project.github_url + "/pull/82"
+          params = slash_command_payload(text: pull_request_url)
+
+          post :create, params
+
+          pr = PullRequest.last
+          expect(pr.title).to eq("Move recipient_interceptor to :staging gem group")
+          expect(pr.user_name).to eq("delphaber")
+          expect(pr.user_github_url).to eq("https://api.github.com/users/delphaber")
+          expect(pr.repo_name).to eq("https://api.github.com/users/delphaber")
+          expect(pr.repo_github_url).to eq("https://api.github.com/users/delphaber")
+          expect(pr.additions).to eq("https://api.github.com/users/delphaber")
+          expect(pr.deletions).to eq("https://api.github.com/users/delphaber")
+          expect(pr.avatar_url).to eq("https://api.github.com/users/delphaber")
         end
       end
 
