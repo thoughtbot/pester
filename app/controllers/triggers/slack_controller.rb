@@ -66,6 +66,7 @@ module Triggers
         command: "/beg",
         team_domain: ENV.fetch("SLACK_TEAM_DOMAIN"),
         team_id: ENV.fetch("SLACK_TEAM_ID"),
+        token: ENV.fetch("SLACK_WEBHOOK_TOKEN"),
       }
     end
 

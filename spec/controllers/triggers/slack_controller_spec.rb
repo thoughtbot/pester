@@ -147,9 +147,9 @@ describe Triggers::SlackController do
 
   def slash_command_payload(options)
     {
-      token: "JrYJkSSvJB68Wmh4KDSBnEL4",
-      team_id: "T024HFHU3",
-      team_domain: "thoughtbot",
+      token: ENV.fetch("SLACK_WEBHOOK_TOKEN"),
+      team_id: ENV.fetch("SLACK_TEAM_ID"),
+      team_domain: ENV.fetch("SLACK_TEAM_DOMAIN"),
       channel_id: "C0415Q26Q",
       channel_name: "beggar-test",
       user_id: "U02UQMU1P",
