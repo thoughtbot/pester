@@ -1,8 +1,7 @@
 # https://circleci.com/docs/config-sample
 machine:
-  environment:
-    SECRET_KEY_BASE: secret_key_base
-    GITHUB_SECRET_KEY: github_secret
+  pre:
+    - cp ./$CIRCLE_PROJECT_REPONAME/.sample.env ./$CIRCLE_PROJECT_REPONAME/.env
   timezone:
     America/New_York
 deployment:
