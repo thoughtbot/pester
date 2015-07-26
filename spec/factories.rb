@@ -16,7 +16,7 @@ FactoryGirl.define do
 
   factory :project do
     sequence(:name) { |n| "project#{n}" }
-    sequence(:github_url) { |n| "http://example.com/thoughtbot/project#{n}" }
+    sequence(:github_url) { |n| "http://github.com/thoughtbot/project#{n}" }
     association :default_channel, factory: :channel
   end
 

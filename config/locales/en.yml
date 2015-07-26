@@ -25,5 +25,6 @@ en:
       webhook_not_configured: >
         Please set up Beggar on the repo first:
         https://tbot-beggar.herokuapp.com/pages/setup
-      invalid_channel:
-        For now, beggar only supports specific Slack channels.
+      success: Got it! I'll start begging for reviews.
+      pull_request_closed:
+        Sorry - I can only beg for reviews on *open* PRs.

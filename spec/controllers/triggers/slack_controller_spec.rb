@@ -52,7 +52,7 @@ describe Triggers::SlackController do
       expect(response.body).to eq(t("trigger.slack.missing_pr_link"))
     end
 
-    pending "warns if the project does not have beggar set up" do
+    it "warns if the project does not have beggar set up" do
       pull_request_url = "https://github.com/thoughtbot/beggar/pull/82"
       params = slash_command_payload(text: pull_request_url)
 
@@ -63,7 +63,7 @@ describe Triggers::SlackController do
 
     context "with a valid github PR link" do
       context "when the PR is closed" do
-        pending "warns the user and does not start begging" do
+        it "warns the user and does not start begging" do
           project = create(:project)
           pull_request_url = project.github_url + "/pull/82"
           stub_pr_status_api_response(pull_request_url, :closed)
@@ -76,7 +76,7 @@ describe Triggers::SlackController do
       end
 
       context "when the PR is open" do
-        pending "creates a PullRequest with status 'needs review'" do
+        it "creates a PullRequest with status 'needs review'" do
           project = create(:project)
           pull_request_url = project.github_url + "/pull/82"
           stub_pr_status_api_response(pull_request_url, :open)
@@ -86,10 +86,10 @@ describe Triggers::SlackController do
 
           created_pr = PullRequest.last
           expect(created_pr.github_url).to eq(pull_request_url)
-          expect(created_pr.status).to eq(pull_request_url)
+          expect(created_pr.status).to eq("needs review")
         end
 
-        pending "responds with a success message" do
+        it "responds with a success message" do
           project = create(:project)
           pull_request_url = project.github_url + "/pull/82"
           stub_pr_status_api_response(pull_request_url, :open)
@@ -102,45 +102,47 @@ describe Triggers::SlackController do
       end
 
       context "when the channel exists" do
-        pending "uses the existing channel to beg on" do
+        it "uses the existing channel to beg on" do
           project = create(:project)
           pull_request_url = project.github_url + "/pull/82"
           channel = create(:channel)
           stub_pr_status_api_response(pull_request_url, :open)
           params = slash_command_payload(
             text: pull_request_url,
-            channel: channel.name,
+            channel_name: channel.name,
           )
 
           post :create, params
 
           pull_request = PullRequest.last
-          expect(pull_request.channel).to eq(channel)
+          expect(pull_request.channels).to eq([channel])
         end
       end
 
       context "when the channel does not exist" do
-        it "creates a new record to match the channel name from the request"
-
-        pending "STOPGAP warns the user and does not create the PR" do
+        it "creates a new record to match the channel name from the request" do
+          channel_name = "foobar"
           project = create(:project)
           pull_request_url = project.github_url + "/pull/82"
           stub_pr_status_api_response(pull_request_url, :open)
           params = slash_command_payload(
             text: pull_request_url,
-            channel: "foobar",
+            channel_name: channel_name,
           )
 
-          post :create, params
+          expect { post :create, params }.to change(Channel, :count).by(1)
 
-          expect(response.body).to eq(t("trigger.slack.invalid_channel"))
+          pull_request = PullRequest.last
+          expect(pull_request.channels.map(&:name)).to eq([channel_name])
         end
       end
     end
   end
 
   def stub_pr_status_api_response(pull_request_url, status)
-
+    allow(GithubApi).to receive(:pull_request_status).
+      with(pull_request_url).
+      and_return(status)
   end
 
   def slash_command_payload(options)
