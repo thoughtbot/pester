@@ -24,7 +24,7 @@ en:
         Uh oh. I couldn't find a github pull request in your command.
       webhook_not_configured: >
         Please set up Beggar on the repo first:
-        https://tbot-beggar.herokuapp.com/pages/setup
+        <https://tbot-beggar.herokuapp.com/pages/setup>
       success: Got it! I'll start begging for reviews.
       pull_request_closed:
         Sorry - I can only beg for reviews on *open* PRs.
