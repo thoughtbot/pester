@@ -28,7 +28,7 @@ class WebhookNotifier
   private
 
   def title_text
-    "@PR #{repo_name} (#{tags_string}) (#{statistics_strings}) - #{title_link}"
+    ":pr: @PR #{repo_name} (#{tags_string}) (#{statistics_strings}) - #{title_link}"
   end
 
   def statistics_strings

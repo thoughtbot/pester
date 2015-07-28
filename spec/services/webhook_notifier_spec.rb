@@ -51,7 +51,7 @@ describe WebhookNotifier do
       notifier = WebhookNotifier.new(pull_request)
 
       expect(JSON.parse(notifier.body(channel))["text"]).to eq(
-        "@PR thoughtbot/pr-tool (#code, #rails) (+20, -2) - <https://github.com/thoughtbot/pr-tool/pulls/1|Add Slack Integration>"
+        ":pr: @PR thoughtbot/pr-tool (#code, #rails) (+20, -2) - <https://github.com/thoughtbot/pr-tool/pulls/1|Add Slack Integration>"
       )
     end
 
