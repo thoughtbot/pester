@@ -55,9 +55,6 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
-    airbrake (4.3.0)
-      builder
-      multi_json
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (6.0.0)
@@ -323,7 +320,6 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
-  airbrake
   awesome_print
   bourbon
   bundler-audit

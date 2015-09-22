@@ -3,7 +3,6 @@ source "https://rubygems.org"
 ruby "2.2.1"
 
 gem "activeadmin", github: "activeadmin"
-gem "airbrake"
 gem "awesome_print"
 gem "bourbon"
 gem "coffee-rails"
