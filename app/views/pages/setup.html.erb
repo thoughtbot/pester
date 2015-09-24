@@ -22,20 +22,10 @@
       <p>Beggar is a tool to help with getting pull request reviews. Once you have set up Beggar on your repo, any new pull request will automatically be added to Beggar. It will also automatically be posted to the correct Slack room based on the tags you've provided.</p>
       <p>To make sure your PR goes to the correct place, your PR description should include tags like #rails #javascript #design. Beggar will parse and send to all the appropriate rooms!</p>
       <p>Tags you can use currently:</p>
-
       <ul>
-        <li>android</li>
-        <li>angular</li>
-        <li>code</li>
-        <li>design</li>
-        <li>ember</li>
-        <li>haskell</li>
-        <li>ios</li>
-        <li>javascript</li>
-        <li>objective-c</li>
-        <li>rails</li>
-        <li>ruby</li>
-        <li>swift</li>
+        <% all_tag_names.each do |tag| %>
+          <li><%= tag %></li>
+        <% end %>
       </ul>
     </section>
 
@@ -57,12 +47,6 @@
       <ul>
         <li>
           Check out the repo on <a href="https://github.com/thoughtbot/beggar">GitHub</a>.
-        </li>
-        <li>
-          Grab a story on <a href="https://switchitup.herokuapp.com/pr-tool/stories">Switchboard</a>.
-        </li>
-        <li>
-          Join the #pr-tool Slack channel.
         </li>
       </ul>
     </section>

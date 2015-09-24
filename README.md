@@ -6,38 +6,22 @@ CI](https://circleci.com/gh/thoughtbot/beggar.svg?style=svg&circle-token=07d9bd8
 ### What is beggar?
 
 Beggar is a tool to help with getting pull request reviews. Once you have set up
-beggar on your repo, any new pull request will automatically be added to beggar.
-It will also automatically be posted to the correct Slack room based on the tags
-you've provided.
+Beggar on your repo, new pull requests will be posted to Beggar according to
+their tags. These tags will also be used to determine which Slack room Beggar
+will post to.
+
+If the PR does not have a "Sign off" of "LGTM", it will be reposted to the same
+rooms again after 30 minutes.
 
 To make sure your PR goes to the correct place, your PR description should
-include tags like #rails #javascript #design. Beggar will parse and send to all
-the appropriate rooms!
+include tags like `#rails #javascript #design`. Beggar will parse and send to
+all the appropriate rooms!
 
-Tags you can use currently:
+Beggar also provides a web interface that allows you to view open PRs for your
+group and filter them by tag. This makes it very easy to grab a pull request in
+your downtime for whatever tag you prefer.
 
-* android
-* angular
-* code
-* design
-* ember
-* haskell
-* ios
-* javascript
-* objective-c
-* rails
-* react
-* ruby
-* swift
-
-We have a web ui that will allow you to view open PRs. You can filter this by
-tag: https://tbot.io/beggar
-
-### How to use beggar for your project
-
-Follow these instructions: http://tbot-beggar.herokuapp.com/pages/setup
-
-### Getting Started
+### Local Development
 
 After you have cloned this repo, run this setup script to set up your machine
 with the necessary dependencies to run and test this app:
