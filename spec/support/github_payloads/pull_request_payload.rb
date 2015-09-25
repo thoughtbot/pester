@@ -5,7 +5,9 @@ def pull_request_payload(
   user_name: "someone_else",
   avatar_url: "http://avatar.com",
   additions: 5,
-  deletions: 10
+  deletions: 10,
+  comments: 0,
+  review_comments: 1
 )
 <<-EOS
 {
@@ -306,8 +308,8 @@ def pull_request_payload(
       "mergeable":true,
       "mergeable_state":"clean",
       "merged_by":null,
-      "comments":0,
-      "review_comments":1,
+      "comments":#{comments},
+      "review_comments":#{review_comments},
       "commits":1,
       "additions":#{additions},
       "deletions":#{deletions},

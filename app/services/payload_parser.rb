@@ -31,15 +31,16 @@ class PayloadParser
 
   def params
     {
-      github_url: github_url,
-      repo_name: repo_name,
-      repo_github_url: repo_github_url,
-      title: title,
-      user_name: user_name,
-      user_github_url: user_github_url,
-      avatar_url: avatar_url,
       additions: additions,
+      avatar_url: avatar_url,
+      comment_count: comment_count,
       deletions: deletions,
+      github_url: github_url,
+      repo_github_url: repo_github_url,
+      repo_name: repo_name,
+      title: title,
+      user_github_url: user_github_url,
+      user_name: user_name,
     }
   end
 
@@ -75,6 +76,13 @@ class PayloadParser
 
   def deletions
     pull_request["deletions"]
+  end
+
+  def comment_count
+    [
+      pull_request["comments"],
+      pull_request["review_comments"],
+    ].sum
   end
 
   def pull_request

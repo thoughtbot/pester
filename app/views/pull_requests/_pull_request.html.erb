@@ -27,7 +27,7 @@
   <div class="table-list-cell hide-mobile">
     <div class="comment-count">
       <%= embedded_svg "svg/comment.svg" %>
-      <span class="dummy">1</span>
+      <span data-role="comment-count"><%= pull_request.comment_count %></span>
     </div>
   </div>
 </li>

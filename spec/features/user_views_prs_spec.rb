@@ -35,6 +35,7 @@ feature "User views PRs" do
        user_github_url: "https://github.com/joelq",
        github_url: "https://github.com/org/repo/pulls/123",
        avatar_url: "http://myavatar.com",
+       comment_count: 3,
     )
 
     visit root_path
@@ -42,6 +43,7 @@ feature "User views PRs" do
     expect(page).to have_content("#123 opened about 1 hour ago by JoelQ")
     expect(page).to have_link("JoelQ", href: "https://github.com/joelq")
     expect(page).to have_avatar("http://myavatar.com")
+    expect(page).to have_selector("[data-role='comment-count']", text: "3")
   end
 
   scenario "viewing tags for the current pr" do

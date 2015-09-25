@@ -42,5 +42,15 @@ describe PayloadParser do
       expect(parser.params[:additions]).to eq(1)
       expect(parser.params[:deletions]).to eq(20)
     end
+
+    it "calculates the number of comments" do
+      payload = JSON.parse(
+        pull_request_payload(comments: 2, review_comments: 3)
+      )
+
+      parser = PayloadParser.new(payload, nil)
+
+      expect(parser.params[:comment_count]).to eq(5)
+    end
   end
 end
