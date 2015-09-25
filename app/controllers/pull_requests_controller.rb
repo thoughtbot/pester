@@ -1,6 +1,13 @@
 class PullRequestsController < ApplicationController
   helper_method :grouped_pull_requests, :tags, :tags_to_filter_by
 
+  def index
+    respond_to do |format|
+      format.html
+      format.json { render json: pull_requests }
+    end
+  end
+
   private
 
   def grouped_pull_requests

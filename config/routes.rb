@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback", to: "sessions#create"
   get "/auth/githubteammember", as: "githubteammember_auth"
   root to: "pull_requests#index"
+
+  resources :pull_requests, only: :index
 end

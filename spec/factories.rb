@@ -40,6 +40,20 @@ FactoryGirl.define do
     trait :stale do
       updated_at { 31.minutes.ago }
     end
+
+    transient do
+      tag_names []
+    end
+
+    after(:create) do |pull_request, evaluator|
+      evaluator.tag_names.each do |tag_name|
+        create(
+          :channel,
+          tag_name: tag_name,
+          active_pull_requests: [pull_request]
+        )
+      end
+    end
   end
 
   factory :tag do
