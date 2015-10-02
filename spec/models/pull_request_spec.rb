@@ -10,18 +10,18 @@ describe PullRequest do
   it { should validate_presence_of(:user_github_url) }
   it { should validate_presence_of(:avatar_url) }
 
-  it { should have_and_belong_to_many(:channels) }
+  it { should have_many(:channels).through(:tags) }
   it { should have_and_belong_to_many(:tags) }
 
   describe ".for_tag" do
     it "returns all the pull requests for a matching tag name" do
-      ruby = create(:channel, tag_name: "ruby")
-      javascript = create(:channel, tag_name: "javascript")
-      osx = create(:channel, tag_name: "osx")
+      ruby = create(:tag, name: "ruby")
+      javascript = create(:tag, name: "javascript")
+      osx = create(:tag, name: "osx")
 
-      ruby_pr = create(:pull_request, channels: [ruby])
-      javascript_pr = create(:pull_request, channels: [javascript])
-      _osx_pr = create(:pull_request, channels: [osx])
+      ruby_pr = create(:pull_request, tags: [ruby])
+      javascript_pr = create(:pull_request, tags: [javascript])
+      _osx_pr = create(:pull_request, tags: [osx])
 
       matching_prs = PullRequest.for_tags(["ruby", "javascript"])
 

@@ -31,28 +31,7 @@ class CreateNewPr
   end
 
   def pull_request_params
-    payload_parser.params.merge(
-      channels: channels,
-      tags: tags,
-    )
-  end
-
-  def channels
-    [tag_channels, project_channels].flatten.compact
-  end
-
-  def project_channels
-    @projects ||= begin
-      projects = ProjectMatcher.match(payload_parser.repo_github_url)
-      unique_channels(list: projects, method: :default_channel)
-    end
-  end
-
-  def tag_channels
-    @tag_channels ||= unique_channels(
-      list: tag_names,
-      method: Channel.method(:with_tag_name),
-    )
+    payload_parser.params.merge(tags: tags)
   end
 
   def tags
@@ -65,9 +44,5 @@ class CreateNewPr
 
   def post_to_slack(pull_request)
     WebhookNotifier.new(pull_request).send_notification
-  end
-
-  def unique_channels(list:, method:)
-    list.map(&method).compact.uniq
   end
 end

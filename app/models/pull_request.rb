@@ -10,8 +10,8 @@ class PullRequest < ActiveRecord::Base
   validates :user_github_url, presence: true
   validates :avatar_url, presence: true
 
-  has_and_belongs_to_many :channels
   has_and_belongs_to_many :tags
+  has_many :channels, through: :tags
 
   time_for_a_boolean :reposted
 
@@ -21,8 +21,7 @@ class PullRequest < ActiveRecord::Base
 
   def self.for_tags(tag_names)
     if tag_names.present?
-      joins(channels: :tags).
-        where(tags: { name: tag_names })
+      joins(:tags).where(tags: { name: tag_names })
     else
       all
     end

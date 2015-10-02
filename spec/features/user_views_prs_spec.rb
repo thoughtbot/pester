@@ -71,18 +71,18 @@ feature "User views PRs" do
   end
 
   scenario "Sees tags with active pull requests" do
-    rails = channel("rails")
-    ember = channel("ember")
+    rails = tag("rails")
+    ember = tag("ember")
     create(
       :pull_request,
       title: "An Ember PR",
-      channels: [ember],
+      tags: [ember],
       status: "completed"
     )
     create(
       :pull_request,
       title: "A Rails PR",
-      channels: [rails],
+      tags: [rails],
       status: "needs review"
     )
 
@@ -136,11 +136,11 @@ feature "User views PRs" do
   private
 
   def create_pull_requests_with_tags
-    ember = channel("ember")
-    rails = channel("rails")
-    create(:pull_request, title: "An Ember PR", channels: [ember])
-    create(:pull_request, title: "A Rails PR", channels: [rails])
-    create(:pull_request, title: "A long pr", channels: [rails, ember])
+    ember = tag("ember")
+    rails = tag("rails")
+    create(:pull_request, title: "An Ember PR", tags: [ember])
+    create(:pull_request, title: "A Rails PR", tags: [rails])
+    create(:pull_request, title: "A long pr", tags: [rails, ember])
   end
 
   def have_avatar(url)
@@ -149,10 +149,6 @@ feature "User views PRs" do
 
   def have_tag(tag_name)
     have_css("[data-role='tag']", text: tag_name)
-  end
-
-  def channel(name)
-    create(:channel, name: name, tag_name: name)
   end
 
   def tag(name)

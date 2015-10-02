@@ -47,11 +47,9 @@ FactoryGirl.define do
 
     after(:create) do |pull_request, evaluator|
       evaluator.tag_names.each do |tag_name|
-        create(
-          :channel,
-          tag_name: tag_name,
-          active_pull_requests: [pull_request]
-        )
+        unless Tag.exists?(name: tag_name)
+          create(:tag, name: tag_name, pull_requests: [pull_request])
+        end
       end
     end
   end

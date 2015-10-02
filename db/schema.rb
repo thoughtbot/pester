@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150925165001) do
+ActiveRecord::Schema.define(version: 20151002193350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,13 +22,6 @@ ActiveRecord::Schema.define(version: 20150925165001) do
   end
 
   add_index "channels", ["name"], name: "index_channels_on_name", using: :btree
-
-  create_table "channels_pull_requests", force: :cascade do |t|
-    t.integer "channel_id"
-    t.integer "pull_request_id"
-  end
-
-  add_index "channels_pull_requests", ["channel_id", "pull_request_id"], name: "index_channels_pull_requests_on_channel_id_and_pull_request_id", unique: true, using: :btree
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false

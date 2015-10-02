@@ -5,7 +5,10 @@ class Channel < ActiveRecord::Base
 
   has_many :projects, as: :default_channel, dependent: :destroy
   has_many :tags, dependent: :destroy
-  has_and_belongs_to_many :active_pull_requests, -> { active }, class_name: "PullRequest"
+  has_many :active_pull_requests,
+    -> { active },
+    through: :tags,
+    source: :pull_requests
 
   def self.with_active_pull_requests
     joins(:active_pull_requests).uniq
