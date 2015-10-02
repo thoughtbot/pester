@@ -3,9 +3,15 @@ require "rails_helper"
 describe PullRequest do
   it { should validate_presence_of(:github_url) }
   it { should validate_presence_of(:repo_name) }
+  it { should validate_presence_of(:repo_github_url) }
   it { should validate_presence_of(:status) }
+  it { should validate_presence_of(:title) }
+  it { should validate_presence_of(:user_name) }
+  it { should validate_presence_of(:user_github_url) }
+  it { should validate_presence_of(:avatar_url) }
 
   it { should have_and_belong_to_many(:channels) }
+  it { should have_and_belong_to_many(:tags) }
 
   describe ".for_tag" do
     it "returns all the pull requests for a matching tag name" do
