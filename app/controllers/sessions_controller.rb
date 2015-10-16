@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if auth_hash.credentials.thoughtbot_team_member?
+    if auth_hash.credentials.team_member?
       session[:github_username] = github_username
       redirect_to root_path
     else

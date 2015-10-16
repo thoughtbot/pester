@@ -5,6 +5,9 @@ machine:
     GITHUB_SECRET_KEY: github_secret
   timezone:
     America/New_York
+checkout:
+  post:
+    - bin/setup
 deployment:
   production:
     branch: master

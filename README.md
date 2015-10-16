@@ -23,6 +23,14 @@ Beggar also provides a web interface that allows you to view open PRs for your
 group and filter them by tag. This makes it very easy to grab a pull request in
 your downtime for whatever tag you prefer.
 
+### Authentication
+
+Beggar uses GitHub teams for controlling access to the web interface. When
+setting up the app, you should set the `GITHUB_TEAM_ID` environment variable to
+the team id that will have access.
+
+There is no User model and users are not tracked in anyway.
+
 ### Local Development
 
 After you have cloned this repo, run this setup script to set up your machine
