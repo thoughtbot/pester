@@ -27,6 +27,9 @@
           <li><%= tag %></li>
         <% end %>
       </ul>
+
+      <p>Any comment containing <code>LGTM</code> will consider the PR closed.</p>
+      <p>Any comment containing <code>NRR</code> (needs re-review) will kick it back to "Needs Review".</p>
     </section>
 
     <section>
@@ -37,8 +40,6 @@
         <li>Enter <code><%= ENV["GITHUB_SECRET_KEY"] %></code> for the secret.</li>
         <li>Select <code>Send me everything</code>, and submit.</li>
         <li>Submit a PR! It will be added to the Beggar UI, and if given a <code>#tag</code> in the description, will be posted to the appropriate Slack channel.</li>
-        <p>Any comment containing <code>LGTM</code> will consider the PR closed.</p>
-        <p>Any comment containing <code>NRR</code> (needs re-review) will kick it back to "Needs Review".</p>
       </ol>
     </section>
 
