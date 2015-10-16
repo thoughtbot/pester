@@ -1,5 +1,7 @@
 # Beggar
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 [![Circle
 CI](https://circleci.com/gh/thoughtbot/beggar.svg?style=svg&circle-token=07d9bd80401d852967891e169b8ef64ef36e649f)](https://circleci.com/gh/thoughtbot/beggar)
 
