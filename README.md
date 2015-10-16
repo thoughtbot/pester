@@ -45,6 +45,15 @@ is [purposefully excluded from the project's `Gemfile`][exclude].
 [foreman]: https://github.com/ddollar/foreman
 [exclude]: https://github.com/ddollar/foreman/pull/437#issuecomment-41110407
 
+## Contributing
+
+See the [CONTRIBUTING] document.
+Thank you, [contributors]!
+
+  [CONTRIBUTING]: CONTRIBUTING.md
+  [contributors]: https://github.com/thoughtbot/beggar/graphs/contributors
+
+
 ### Guidelines
 
 Use the following guides for getting things done, programming well, and
@@ -52,4 +61,31 @@ programming in style.
 
 * [Protocol](http://github.com/thoughtbot/guides/blob/master/protocol)
 * [Best Practices](http://github.com/thoughtbot/guides/blob/master/best-practices)
-* [Style](http://github.com/thoughtbot/guides/blob/master/style)
+
+## License
+
+Beggar is Copyright (c) 2015 thoughtbot, inc.
+It is free software, and may be redistributed
+under the terms specified in the [LICENSE] file.
+
+  [LICENSE]: /LICENSE [Style](http://github.com/thoughtbot/guides/blob/master/style)
+
+## About
+
+Beggar is maintained by [Jason Draper], [Christian Reuter], and [Melissa Xie].
+
+  [Jason Draper]: http://github.com/drapergeek
+  [Christian Reuter]: http://github.com/creuter
+  [Melissa Xie]: https://github.com/mxie
+
+![thoughtbot](https://thoughtbot.com/logo.png)
+
+Beggar is maintained and funded by thoughtbot, inc.
+The names and logos for thoughtbot are trademarks of thoughtbot, inc.
+
+We love open source software!
+See [our other projects][community]
+or [hire us][hire] to help build your product.
+
+  [community]: https://thoughtbot.com/community?utm_source=github
+  [hire]: https://thoughtbot.com/hire-us?utm_source=github
