@@ -8,14 +8,14 @@ if Rails.env.development?
       tag_names = ["Ember", "Rails", "Objective-C", "Swift", "Design"]
       tag_names.map do |tag_name|
         tag = create(:tag, name: tag_name)
-        create(:pull_request, title: "A '#{tag_name}' PR", channels: [tag.channel])
+        create(:pull_request, title: "A '#{tag_name}' PR", tags: [tag])
       end
 
       (2..5).each do |number|
         create(
           :pull_request,
           title: "A PR with multiple tags",
-          channels: Channel.all.sample(number),
+          tags: Tag.all.sample(number),
         )
       end
     end
