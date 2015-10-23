@@ -3,26 +3,11 @@
   background-color: $blue;
 
   .container {
-    @include align-items(center);
-    @include display(flex);
-    @include justify-content(space-between);
-  }
-}
-
-.page-header-nav-link {
-  color: rgba(white, 0.5);
-  font-size: $medium-font-size;
-  font-weight: 600;
-  position: relative;
-  text-transform: uppercase;
-
-  &:hover,
-  &:focus {
-    color: white;
-  }
-
-  &:active {
-    top: 1px;
+    @include media($medium-screen-up) {
+      @include align-items(center);
+      @include display(flex);
+      @include justify-content(space-between);
+    }
   }
 }
 
@@ -31,7 +16,7 @@
   font-family: $decorative-font-family;
 
   a {
-    color: white;
+    color: $white;
     display: inline-block;
     font-family: $decorative-font-family;
     position: relative;
@@ -40,7 +25,7 @@
     &:hover,
     &:focus {
       @include transform(scale(1.025));
-      color: white;
+      color: $white;
     }
 
     &:active {
@@ -51,10 +36,40 @@
 }
 
 .page-header-nav {
-  text-align: right;
+  margin-top: 1em;
 
-  a {
+  @include media($medium-screen-up) {
+    margin-top: 0;
+    text-align: right;
+  }
+}
+
+.page-header-nav-item {
+  display: inline-block;
+  font-size: $medium-font-size;
+
+  @include media($medium-screen-up) {
+    text-align: right;
+  }
+
+  + .page-header-nav-item {
     margin-left: 2em;
-    white-space: nowrap;
+  }
+}
+
+.page-header-nav-link {
+  color: $transparent-white;
+  font-weight: 600;
+  position: relative;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    color: $white;
+  }
+
+  &:active {
+    top: 1px;
   }
 }

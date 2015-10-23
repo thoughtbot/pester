@@ -4,8 +4,17 @@
       <%= link_to "Beggar", root_url %>
     </h1>
     <nav class="page-header-nav">
-      <%= link_to "Getting Started?", page_path("setup"), class: "page-header-nav-link" %>
-      <%= link_to "Sign Out", session_path, method: :delete, class: "page-header-nav-link" %>
+      <ul>
+        <li class="page-header-nav-item">
+          <%= link_to "Getting Started?", page_path("setup"), class: "page-header-nav-link" %>
+        </li>
+        <li class="page-header-nav-item">
+          <%= link_to "Admin", admin_root_path, class: "page-header-nav-link" %>
+        </li>
+        <li class="page-header-nav-item">
+          <%= link_to "Sign Out", session_path, method: :delete, class: "page-header-nav-link" %>
+        </li>
+      </ul>
     </nav>
   </div>
 </header>
