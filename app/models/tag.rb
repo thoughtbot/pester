@@ -12,6 +12,12 @@ class Tag < ActiveRecord::Base
 
   delegate :count, to: :pull_requests, prefix: true
 
+  def self.with_active_pull_requests
+    joins(:pull_requests).
+      merge(PullRequest.active).
+      uniq
+  end
+
   private
 
   def normalize_name

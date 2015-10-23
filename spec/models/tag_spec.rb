@@ -20,4 +20,15 @@ describe Tag do
     tag = create(:tag, name: "UPCASE")
     expect(tag.reload.name).to eq("upcase")
   end
+
+  describe ".with_active_pull_requests" do
+    it "returns a unique list of active pull requests" do
+      rails_tag = create(:tag, name: "rails")
+      ember_tag = create(:tag, name: "ember")
+      create(:pull_request, status: "in progress", tags: [ember_tag])
+      create(:pull_request, status: "completed", tags: [rails_tag])
+
+      expect(Tag.with_active_pull_requests).to eq([ember_tag])
+    end
+  end
 end

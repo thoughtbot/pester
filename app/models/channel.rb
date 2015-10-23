@@ -10,10 +10,6 @@ class Channel < ActiveRecord::Base
     through: :tags,
     source: :pull_requests
 
-  def self.with_active_pull_requests
-    joins(:active_pull_requests).uniq
-  end
-
   def self.with_tag_name(tag_names)
     joins(:tags).find_by(tags: { name: tag_names })
   end
