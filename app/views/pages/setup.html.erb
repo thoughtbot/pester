@@ -19,26 +19,47 @@
   <div class="content">
     <section>
       <h2>What is Beggar?</h2>
-      <p>Beggar is a tool to help with getting pull request reviews. Once you have set up Beggar on your repo, any new pull request will automatically be added to Beggar. It will also automatically be posted to the correct Slack room based on the tags you've provided.</p>
-      <p>To make sure your PR goes to the correct place, your PR description should include tags like #rails #javascript #design. Beggar will parse and send to all the appropriate rooms!</p>
-      <p>Tags you can use currently:</p>
-      <ul>
-        <% all_tag_names.each do |tag| %>
-          <li><%= tag %></li>
-        <% end %>
-      </ul>
+      <p>Beggar is a tool to help get your pull requests reviewed. Once
+      configured, pull requests with a matching <code>#tag</code> will be added
+      to the Beggar UI and the appropriate Slack channel.</p>
+      <p>New PRs have a "Needs Review" status. Once there are one or more
+      comments, it will be moved to to "In Progress".</p>
+      <p>Any comment containing <code>LGTM</code> will consider the PR
+      closed.</p>
+      <p>Any comment containing <code>NRR</code> (needs re-review) will kick
+      it back to "Needs Review".</p>
     </section>
 
     <section>
-      <h2>Setup: Add the Webhook</h2>
+      <h2>Setup: Tags and Channels</h2>
+      <p>Configure tags and channels in the <%= link_to "Admin Panel", admin_root_path %>.</p>
+      <p>The currently-enabled tags and their associated channels are:</p>
+      <table>
+        <tr>
+          <th>Tag</th>
+          <th>Slack Channel</th>
+        </tr>
+        <% all_tags_channels.each do |tag, channel| %>
+          <tr>
+            <td>#<%= tag %></td>
+            <td><%= channel %></td>
+          </tr>
+        <% end %>
+      </table>
+    </section>
+
+    <section>
+      <h2>Setup: Add the Webhook to your GitHub repo</h2>
       <ol>
         <li>Visit <code>https://github.com/$ORGANIZATION/$REPO/settings/hooks/new</code>.</li>
         <li>Enter <code><%= ENV["WEBHOOK_URL"] %></code> for the Payload URL.</li>
         <li>Enter <code><%= ENV["GITHUB_SECRET_KEY"] %></code> for the secret.</li>
         <li>Select <code>Send me everything</code>, and submit.</li>
-        <li>Submit a PR! It will be added to the Beggar UI, and if given a <code>#tag</code> in the description, will be posted to the appropriate Slack channel.</li>
-        <p>Any comment containing <code>LGTM</code> will consider the PR closed.</p>
-        <p>Any comment containing <code>NRR</code> (needs re-review) will kick it back to "Needs Review".</p>
+        <li>
+          <p>Submit a PR! When given a matching <code>#tag</code> in the
+          description, it will be posted to both the Beggar UI and its
+          associated Slack channel.</p>
+        </li>
       </ol>
     </section>
 

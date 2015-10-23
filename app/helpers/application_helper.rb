@@ -5,7 +5,7 @@ module ApplicationHelper
     render file: file.pathname
   end
 
-  def all_tag_names
-    Tag.order(:name).pluck("DISTINCT name")
+  def all_tags_channels
+    Tag.joins(:channel).order(:name).pluck("tags.name", "channels.name")
   end
 end
