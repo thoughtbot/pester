@@ -8,7 +8,7 @@ module TagsHelper
   end
 
   def tag_classes(tag)
-    classes = ["tag-toggle", tag]
+    classes = ["tag-toggle", tag.downcase]
 
     if active_tag?(tag)
       classes << "is-active"
