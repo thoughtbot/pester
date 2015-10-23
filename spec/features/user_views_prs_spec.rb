@@ -49,13 +49,13 @@ feature "User views PRs" do
   scenario "viewing tags for the current pr" do
     create(
       :pull_request,
-      tags: [tag("Rails"), tag("Ember")],
+      tags: [tag("rails"), tag("ember")],
     )
 
     visit root_path
 
-    expect(page).to have_tag("Rails")
-    expect(page).to have_tag("Ember")
+    expect(page).to have_tag("rails")
+    expect(page).to have_tag("ember")
   end
 
   scenario "Does not see completed PRs" do
@@ -89,8 +89,8 @@ feature "User views PRs" do
     visit root_path
 
     within(".tags") do
-      expect(page).to have_content("Rails")
-      expect(page).not_to have_content("Ember")
+      expect(page).to have_content("rails")
+      expect(page).not_to have_content("ember")
       expect(page).to have_selector("[data-role='pr-count']", text: "1")
     end
   end
@@ -100,7 +100,7 @@ feature "User views PRs" do
 
     visit root_path
     within(".tags") do
-      click_on "Ember"
+      click_on "ember"
     end
 
     expect(page).to have_content("An Ember PR")
@@ -113,7 +113,7 @@ feature "User views PRs" do
 
     visit root_path(tags: "ember")
     within(".tags") do
-      click_on "Rails"
+      click_on "rails"
     end
 
     expect(page).to have_content("An Ember PR")
@@ -126,7 +126,7 @@ feature "User views PRs" do
 
     visit root_path(tags: "ember,rails")
     within(".tags") do
-      click_on "Ember"
+      click_on "ember"
     end
 
     expect(page).not_to have_content("An Ember PR")

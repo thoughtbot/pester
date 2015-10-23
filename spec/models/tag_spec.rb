@@ -15,4 +15,9 @@ describe Tag do
     validation_errors = new_tag.errors.full_messages
     expect(validation_errors).to include("Name has already been taken")
   end
+
+  it "downcases the tag name before saving" do
+    tag = create(:tag, name: "UPCASE")
+    expect(tag.reload.name).to eq("upcase")
+  end
 end
