@@ -19,14 +19,17 @@
   <div class="content">
     <section>
       <h2>What is Beggar?</h2>
-      <p>Beggar is a tool to help with getting pull request reviews. Once you have set up Beggar on your repo, any new pull request will automatically be added to Beggar. It will also automatically be posted to the correct Slack room based on the tags you've provided.</p>
-      <p>To make sure your PR goes to the correct place, your PR description should include tags like #rails #javascript #design. Beggar will parse and send to all the appropriate rooms!</p>
+      <p>Beggar is a tool to help with getting pull request reviews. Once you have set up Beggar on your repo, any new pull request will automatically be added to Beggar. It will also automatically be posted to the correct Slack channel based on the tags you've provided.</p>
+      <p>To make sure your PR goes to the correct place, your PR description should include tags like #rails #javascript #design. Beggar will parse and send to all the appropriate channels!</p>
       <p>Tags you can use currently:</p>
       <ul>
         <% all_tag_names.each do |tag| %>
           <li><%= tag %></li>
         <% end %>
       </ul>
+
+      <p>Any comment containing <code>LGTM</code> will consider the PR closed.</p>
+      <p>Any comment containing <code>NRR</code> (needs re-review) will kick it back to "Needs Review".</p>
     </section>
 
     <section>
@@ -37,8 +40,6 @@
         <li>Enter <code><%= ENV["GITHUB_SECRET_KEY"] %></code> for the secret.</li>
         <li>Select <code>Send me everything</code>, and submit.</li>
         <li>Submit a PR! It will be added to the Beggar UI, and if given a <code>#tag</code> in the description, will be posted to the appropriate Slack channel.</li>
-        <p>Any comment containing <code>LGTM</code> will consider the PR closed.</p>
-        <p>Any comment containing <code>NRR</code> (needs re-review) will kick it back to "Needs Review".</p>
       </ol>
     </section>
 
