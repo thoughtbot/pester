@@ -91,6 +91,7 @@ feature "User views PRs" do
     within(".tags") do
       expect(page).to have_content("Rails")
       expect(page).not_to have_content("Ember")
+      expect(page).to have_selector("[data-role='pr-count']", text: "1")
     end
   end
 

@@ -1,6 +1,6 @@
 <li>
   <%= link_to(toggle_tag_on_path(tag.name), class: tag_classes(tag.name)) do %>
     <%= tag.name.titleize %>
-    <span class="tag-badge dummy">3</span>
+    <span class="tag-badge" data-role="pr-count"><%= tag.pull_requests_count %></span>
   <% end %>
 </li>
