@@ -54,7 +54,13 @@
         <li>Visit <code>https://github.com/$ORGANIZATION/$REPO/settings/hooks/new</code>.</li>
         <li>Enter <code><%= ENV["WEBHOOK_URL"] %></code> for the Payload URL.</li>
         <li>Enter <code><%= ENV["GITHUB_SECRET_KEY"] %></code> for the secret.</li>
-        <li>Select <code>Send me everything</code>, and submit.</li>
+        <li>Select following event types under "Let me select individual events":
+          <ul>
+            <li><code>Issue comment</code></li>
+            <li><code>Pull Request</code></li>
+            <li><code>Pull Request review comment</code></li>
+          </ul>
+        <li>Submit the webhook.</li>
         <li>
           <p>Submit a PR! When given a matching <code>#tag</code> in the
           description, it will be posted to both the Beggar UI and its
