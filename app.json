@@ -18,6 +18,10 @@
       "generator": "secret",
       "required": true
     },
+    "GITHUB_TEAM_ID": {
+      "description": "The ID of the GitHub team that will have access to the application.",
+      "required": true
+    },
     "WEBHOOK_URL": {
       "description": "Where users should send their github payloads",
       "value": "https://<your-app-name>.herokuapp.com/github_payloads",
