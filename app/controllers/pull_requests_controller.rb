@@ -16,7 +16,10 @@ class PullRequestsController < ApplicationController
   end
 
   def pull_requests
-    @pull_requests ||= PullRequest.for_tags(tags_to_filter_by).active
+    @pull_requests ||= PullRequest.
+      for_tags(tags_to_filter_by).
+      active.
+      uniq
   end
 
   def tags

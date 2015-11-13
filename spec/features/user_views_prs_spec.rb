@@ -116,9 +116,9 @@ feature "User views PRs" do
       click_on "rails"
     end
 
-    expect(page).to have_content("An Ember PR")
-    expect(page).to have_content("A Rails PR")
-    expect(page).to have_content("A long pr")
+    expect(page).to have_content("An Ember PR", count: 1)
+    expect(page).to have_content("A Rails PR", count: 1)
+    expect(page).to have_content("A long pr", count: 1)
   end
 
   scenario "Can remove a tag from filtered tags" do
