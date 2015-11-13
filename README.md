@@ -53,14 +53,33 @@ is [purposefully excluded from the project's `Gemfile`][exclude].
 [foreman]: https://github.com/ddollar/foreman
 [exclude]: https://github.com/ddollar/foreman/pull/437#issuecomment-41110407
 
-## Contributing
+### Configure Beggar on your local development environment
 
-See the [CONTRIBUTING] document.
-Thank you, [contributors]!
+After cloning the repository, run the setup script
 
-  [CONTRIBUTING]: CONTRIBUTING.md
-  [contributors]: https://github.com/thoughtbot/beggar/graphs/contributors
+./bin/setup
 
+Sign up for a free ngrok account and create a ~/.ngrok file with the following:
+
+auth_token: <your-token>
+
+Launch ngrok with a custom subdomain on port 5000.
+
+ngrok -subdomain=<your-initials>-beggar 5000
+
+Log into your GitHub account and go to your application settings.
+
+Under the Developer applications panel - Click on "Register new application" and fill in the details:
+
+Application Name: Beggar Development
+Homepage URL: https://<your-initials>-beggar.ngrok.com
+Authorization Callback URL: http://<your-initials>-beggar.ngrok.com/auth/githubteammember
+On the confirmation screen, copy the Client ID and Client Secret to GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET in the .env file.
+![OAuth application settings](OAuth_Application_Settings.png)
+
+Run `foreman start`. Foreman will start the web server and the resque background job queue.
+NOTE: rails server will not load the appropriate environment variables
+and you'll get a "Missing secret_key_base for 'development' environment" error.
 
 ### Guidelines
 
@@ -77,6 +96,16 @@ It is free software, and may be redistributed
 under the terms specified in the [LICENSE] file.
 
   [LICENSE]: /LICENSE [Style](http://github.com/thoughtbot/guides/blob/master/style)
+
+## Contributing
+
+See the [CONTRIBUTING] document.
+Thank you, [contributors]!
+
+  [CONTRIBUTING]: CONTRIBUTING.md
+  [contributors]: https://github.com/thoughtbot/beggar/graphs/contributors
+
+=======
 
 ## About
 
