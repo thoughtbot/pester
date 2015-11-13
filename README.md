@@ -4,6 +4,8 @@
 
 [![Circle CI](https://circleci.com/gh/thoughtbot/beggar/tree/master.svg?style=svg&circle-token=07d9bd80401d852967891e169b8ef64ef36e649f)](https://circleci.com/gh/thoughtbot/beggar/tree/master)
 
+[![Code Climate](https://codeclimate.com/repos/5646125569568073e50002ca/badges/ed7a06e73f8d74dfc911/gpa.svg)](https://codeclimate.com/repos/5646125569568073e50002ca/feed)
+
 ### What is beggar?
 
 Beggar is a tool to help with getting pull request reviews. Once you have set up
