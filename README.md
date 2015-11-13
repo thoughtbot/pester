@@ -69,6 +69,7 @@ programming in style.
 
 * [Protocol](http://github.com/thoughtbot/guides/blob/master/protocol)
 * [Best Practices](http://github.com/thoughtbot/guides/blob/master/best-practices)
+* [Style](http://github.com/thoughtbot/guides/blob/master/style)
 
 ## License
 
@@ -76,7 +77,7 @@ Beggar is Copyright (c) 2015 thoughtbot, inc.
 It is free software, and may be redistributed
 under the terms specified in the [LICENSE] file.
 
-  [LICENSE]: /LICENSE [Style](http://github.com/thoughtbot/guides/blob/master/style)
+  [LICENSE]: /LICENSE
 
 ## About
 
