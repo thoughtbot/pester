@@ -1,5 +1,5 @@
 class PullRequest < ActiveRecord::Base
-  REPOST_THRESHOLD = 30
+  REPOST_THRESHOLD = ENV.fetch("REPOST_THRESHOLD").to_i
 
   validates :github_url, presence: true, uniqueness: true
   validates :repo_name, presence: true

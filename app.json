@@ -22,6 +22,11 @@
       "description": "The ID of the GitHub team that will have access to the application.",
       "required": true
     },
+    "REPOST_THRESHOLD": {
+      "description": "The time threshold to determine when to repost the PR.",
+      "required": true,
+      "value": 30
+    },
     "WEBHOOK_URL": {
       "description": "Where users should send their github payloads",
       "value": "https://<your-app-name>.herokuapp.com/github_payloads",

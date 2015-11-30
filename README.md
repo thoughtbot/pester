@@ -14,7 +14,8 @@ their tags. These tags will also be used to determine which Slack room Beggar
 will post to.
 
 If the PR does not have a "Sign off" of "LGTM", it will be reposted to the same
-rooms again after 30 minutes.
+rooms again after 30 minutes. The time threshold to repost can be configured
+using the ENV var, `REPOST_THRESHOLD`.
 
 To make sure your PR goes to the correct place, your PR description should
 include tags like `#rails #javascript #design`. Beggar will parse and send to
