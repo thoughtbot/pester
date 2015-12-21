@@ -31,11 +31,4 @@ if ! command -v foreman > /dev/null; then
   printf 'See https://github.com/ddollar/foreman for install instructions.\n'
 fi
 
-if [ -z "$CI" ]; then
-  if git config --local remote.production.fetch; then
-    git remote remove production
-  fi
-
-  git remote add production git@heroku.com:tbot-pester.git
-  heroku join --app tbot-pester
-fi
+printf 'Be sure to add a Git remote for your Heroku app for deployment'
