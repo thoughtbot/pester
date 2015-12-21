@@ -15,6 +15,6 @@ deployment:
   production:
     branch: master
     commands:
-      - git push -f git@heroku.com:tbot-beggar.git $CIRCLE_SHA1:master
-      - heroku run rake db:migrate --app tbot-beggar
-      - heroku restart --app tbot-beggar
+      - git push -f git@heroku.com:tbot-pester.git $CIRCLE_SHA1:master
+      - heroku run rake db:migrate --app tbot-pester
+      - heroku restart --app tbot-pester

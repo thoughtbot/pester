@@ -3,7 +3,7 @@ require "services/project_matcher"
 
 describe ProjectMatcher do
   it "matches when a project has the same github repo name as provided text" do
-    url = "http://example.com/thoughtbot/beggar"
+    url = "http://example.com/thoughtbot/pester"
     create(:project, github_url: url)
 
     result = ProjectMatcher.match(url)

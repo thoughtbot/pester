@@ -36,6 +36,6 @@ if [ -z "$CI" ]; then
     git remote remove production
   fi
 
-  git remote add production git@heroku.com:tbot-beggar.git
-  heroku join --app tbot-beggar
+  git remote add production git@heroku.com:tbot-pester.git
+  heroku join --app tbot-pester
 fi

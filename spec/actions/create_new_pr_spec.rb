@@ -17,7 +17,7 @@ describe CreateNewPr do
 
     context "when there is a project" do
       it "is true with tags" do
-        project_url = "http://example.com/thoughtbot/beggar"
+        project_url = "http://example.com/thoughtbot/pester"
         create(:project, github_url: project_url)
         parser = double(
           :parser,
@@ -30,7 +30,7 @@ describe CreateNewPr do
       end
 
       it "is true without tags" do
-        project_url = "https://github.com/thoughtbot/beggar"
+        project_url = "https://github.com/thoughtbot/pester"
         create(:project, github_url: project_url)
         parser = double(
           :parser,
