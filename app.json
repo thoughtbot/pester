@@ -25,7 +25,7 @@
     "REPOST_THRESHOLD": {
       "description": "The time threshold to determine when to repost the PR.",
       "required": true,
-      "value": 30
+      "value": "30"
     },
     "WEBHOOK_URL": {
       "description": "Where users should send their github payloads",
