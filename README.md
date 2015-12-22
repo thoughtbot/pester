@@ -1,4 +1,4 @@
-# PesteR
+# Pester
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
@@ -6,11 +6,11 @@
 
 [![Code Climate](https://codeclimate.com/repos/5646125569568073e50002ca/badges/ed7a06e73f8d74dfc911/gpa.svg)](https://codeclimate.com/repos/5646125569568073e50002ca/feed)
 
-### What is PesteR?
+### What is Pester?
 
-PesteR is a tool to help with getting pull request reviews. Once you have set up
-PesteR on your repo, new pull requests will be posted to PesteR according to
-their tags. These tags will also be used to determine which Slack room PesteR
+Pester is a tool to help with getting pull request reviews. Once you have set up
+Pester on your repo, new pull requests will be posted to Pester according to
+their tags. These tags will also be used to determine which Slack room Pester
 will post to.
 
 If the PR does not have a "Sign off" of "LGTM", it will be reposted to the same
@@ -18,16 +18,16 @@ rooms again after 30 minutes. The time threshold to repost can be configured
 using the ENV var, `REPOST_THRESHOLD`.
 
 To make sure your PR goes to the correct place, your PR description should
-include tags like `#rails #javascript #design`. PesteR will parse and send to
+include tags like `#rails #javascript #design`. Pester will parse and send to
 all the appropriate rooms!
 
-PesteR also provides a web interface that allows you to view open PRs for your
+Pester also provides a web interface that allows you to view open PRs for your
 group and filter them by tag. This makes it very easy to grab a pull request in
 your downtime for whatever tag you prefer.
 
 ### Authentication
 
-PesteR uses GitHub teams for controlling access to the web interface. When
+Pester uses GitHub teams for controlling access to the web interface. When
 setting up the app, you should set the `GITHUB_TEAM_ID` environment variable to
 the team id that will have access.
 
@@ -75,7 +75,7 @@ programming in style.
 
 ## License
 
-PesteR is Copyright (c) 2015 thoughtbot, inc.
+Pester is Copyright (c) 2015 thoughtbot, inc.
 It is free software, and may be redistributed
 under the terms specified in the [LICENSE] file.
 
@@ -83,7 +83,7 @@ under the terms specified in the [LICENSE] file.
 
 ## About
 
-PesteR is maintained by [Jason Draper], [Christian Reuter], and [Melissa Xie].
+Pester is maintained by [Jason Draper], [Christian Reuter], and [Melissa Xie].
 
   [Jason Draper]: http://github.com/drapergeek
   [Christian Reuter]: http://github.com/creuter
@@ -91,7 +91,7 @@ PesteR is maintained by [Jason Draper], [Christian Reuter], and [Melissa Xie].
 
 ![thoughtbot](https://thoughtbot.com/logo.png)
 
-PesteR is maintained and funded by thoughtbot, inc.
+Pester is maintained and funded by thoughtbot, inc.
 The names and logos for thoughtbot are trademarks of thoughtbot, inc.
 
 We love open source software!

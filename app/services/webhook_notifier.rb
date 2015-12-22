@@ -1,5 +1,5 @@
 class WebhookNotifier
-  BOT_NAME = "PesteR"
+  BOT_NAME = "Pester"
   ICON_URL = "http://tbot-pester.herokuapp.com/pester-slack-icon.png"
 
   def initialize(pull_request)

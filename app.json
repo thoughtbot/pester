@@ -1,5 +1,5 @@
 {
-  "name": "PesteR",
+  "name": "Pester",
   "description": "A tool to help teams with pull request code reviews.",
   "repository": "https://github.com/thoughtbot/pester",
   "logo": "https://raw.githubusercontent.com/thoughtbot/pester/master/public/pester-slack-icon.png",
