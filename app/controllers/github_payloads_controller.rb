@@ -1,6 +1,6 @@
 class GithubPayloadsController < ApplicationController
   before_action VerifyGithubSignature.new(ENV["GITHUB_SECRET_KEY"])
-  skip_before_filter :ensure_thoughtbot_team
+  skip_before_filter :ensure_team_member
 
   def create
     action_matching(parser, pull_request).call
