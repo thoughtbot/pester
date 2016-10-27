@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_filter :ensure_thoughtbot_team
+  skip_before_filter :ensure_team_member
 
   def new
 
@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
       session[:github_username] = github_username
       redirect_to root_path
     else
-      flash[:error] = "You cannot access this site unless you are a member of the thoughtbot team"
+      flash[:error] = "You cannot access this site" \
+                      "unless you are a member of the team"
       redirect_to root_path
     end
   end
