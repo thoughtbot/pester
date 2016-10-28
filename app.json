@@ -10,7 +10,7 @@
       "required": true
     },
     "GITHUB_CLIENT_SECRET": {
-      "description": "The GitHub client secrety for your app: https://github.com/settings/applications/new",
+      "description": "The GitHub client secret for your app: https://github.com/settings/applications/new",
       "required": true
     },
     "GITHUB_SECRET_KEY": {
