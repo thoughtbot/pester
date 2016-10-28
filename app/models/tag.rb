@@ -10,12 +10,14 @@ class Tag < ActiveRecord::Base
 
   has_and_belongs_to_many :pull_requests
 
-  delegate :count, to: :pull_requests, prefix: true
-
   def self.with_active_pull_requests
     joins(:pull_requests).
       merge(PullRequest.active).
       uniq
+  end
+
+  def pull_requests_count
+    pull_requests.active.count
   end
 
   private
