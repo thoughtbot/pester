@@ -33,6 +33,19 @@ the team id that will have access.
 
 There is no User model and users are not tracked in anyway.
 
+While creating a new app in the GitHub, you should specify the following url as
+an application callback url:
+
+    https://<your-host>/auth/githubteammember/callback
+
+The easiest way to get the `GITHUB_TEAM_ID` is to use the GitHub API:
+
+    % curl -H "Authorization: token <your-authorization-token>" https://api.github.com/orgs/<your-organization>/teams
+
+The authorization token can be created [on this GitHub page].
+
+[on this GitHub page]: https://github.com/settings/tokens
+
 ### Local Development
 
 After you have cloned this repo, run this setup script to set up your machine
