@@ -13,6 +13,15 @@ describe PullRequest do
   it { should have_many(:channels).through(:tags) }
   it { should have_and_belong_to_many(:tags) }
 
+  describe ".active" do
+    it "returns active pull requests" do
+      active = create(:pull_request, status: "in progress")
+      _completed = create(:pull_request, status: "completed")
+
+      expect(PullRequest.active).to eq([active])
+    end
+  end
+
   describe ".for_tag" do
     it "returns all the pull requests for a matching tag name" do
       ruby = create(:tag, name: "ruby")
