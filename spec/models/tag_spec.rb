@@ -31,14 +31,4 @@ describe Tag do
       expect(Tag.with_active_pull_requests).to eq([ember_tag])
     end
   end
-
-  describe "#pull_requests_count" do
-    it "returns a number of active pull requests" do
-      rails_tag = create(:tag, name: "rails")
-      create(:pull_request, status: "in progress", tags: [rails_tag])
-      create(:pull_request, status: "completed", tags: [rails_tag])
-
-      expect(rails_tag.pull_requests_count).to eq(1)
-    end
-  end
 end
