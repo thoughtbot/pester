@@ -102,7 +102,7 @@ Pester is maintained by [Jason Draper], [Christian Reuter], and [Melissa Xie].
   [Christian Reuter]: http://github.com/creuter
   [Melissa Xie]: https://github.com/mxie
 
-![thoughtbot](https://thoughtbot.com/logo.png)
+![thoughtbot](http://presskit.thoughtbot.com/images/thoughtbot-logo-for-readmes.svg)
 
 Pester is maintained and funded by thoughtbot, inc.
 The names and logos for thoughtbot are trademarks of thoughtbot, inc.
