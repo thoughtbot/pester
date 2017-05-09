@@ -20,7 +20,7 @@
 
   <div class="table-list-cell hide-mobile">
     <% pull_request.tags.each do |tag| %>
-      <span class="tag <%= tag.name %>" data-role="tag"><%= tag.name %></span>
+      <span class="tag <%= tag.name.downcase %>" data-role="tag"><%= tag.name %></span>
     <% end %>
   </div>
 
