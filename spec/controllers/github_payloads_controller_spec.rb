@@ -67,13 +67,26 @@ describe GithubPayloadsController do
     end
 
     describe "when the action is 'created'" do
-      it "it updates the PullRequest's status to 'in progress'" do
-        pr_url = "https://github.com/org/repo/pulls/123"
-        create(:pull_request, github_url: pr_url)
+      context "when the comment is 'pull_request_review_comment'" do
+        it "it updates the PullRequest's status to 'in progress'" do
+          pr_url = "https://github.com/org/repo/pulls/123"
+          create(:pull_request, github_url: pr_url)
 
-        send_pull_request_review_payload(github_url: pr_url)
+          send_pull_request_review_payload(github_url: pr_url)
 
-        expect(last_pull_request.status).to eq("in progress")
+          expect(last_pull_request.status).to eq("in progress")
+        end
+      end
+
+      context "when the comment is 'issue_comment'" do
+        it "it updates the PullRequest's status to 'in progress'" do
+          pr_url = "https://github.com/org/repo/pulls/123"
+          create(:pull_request, github_url: pr_url)
+
+          send_issue_comment(github_url: pr_url, body: "can I take this?")
+
+          expect(last_pull_request.status).to eq("in progress")
+        end
       end
 
       it "does not throw an exception when there is no matching pr" do

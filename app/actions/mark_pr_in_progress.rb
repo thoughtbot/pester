@@ -7,9 +7,14 @@ class MarkPrInProgress
   end
 
   def self.matches(parser, _pull_request)
-    parser.event_type == "pull_request_review_comment" &&
+    comments?(parser.event_type) &&
       EXCLUDED_USERS.exclude?(parser.comment_user_login)
   end
+
+  def self.comments?(event_type)
+    ["pull_request_review_comment", "issue_comment"].include?(event_type)
+  end
+  private_class_method :comments?
 
   def call
     pull_request.update(status: "in progress")
