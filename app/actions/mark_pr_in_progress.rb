@@ -7,7 +7,7 @@ class MarkPrInProgress
   end
 
   def self.matches(parser, _pull_request)
-    parser.event_type == "pull_request_review_comment" &&
+    parser.event_type =~ /.*_comment$/ &&
       EXCLUDED_USERS.exclude?(parser.comment_user_login)
   end
 
