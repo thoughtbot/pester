@@ -1,6 +1,6 @@
 .comment-count {
-  @include align-items(center);
-  @include display(flex);
+  align-items: center;
+  display: flex;
 
   span {
     color: $light-font-color;

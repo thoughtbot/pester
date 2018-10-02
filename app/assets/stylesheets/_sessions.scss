@@ -1,9 +1,9 @@
 .sessions {
-  @include align-items(center);
-  @include display(flex);
-  @include flex-direction(column);
-  @include justify-content(center);
-  @include size(100vw 100vh);
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @include size(100vw, 100vh);
   background-color: $dark-blue;
   font-size: 1.25em;
 }
@@ -16,9 +16,9 @@
 }
 
 .sign-in-link {
-  @include align-items(center);
-  @include display(flex);
-  @include transition;
+  align-items: center;
+  display: flex;
+  transition: border-color;
   background-color: $base-link-color;
   border-radius: $base-border-radius;
   border: 1px solid $darker-blue;
@@ -44,7 +44,7 @@
   }
 
   svg {
-    @include transition;
+    transition: border-color;
     fill: $dark-blue;
     margin-right: 1em;
   }

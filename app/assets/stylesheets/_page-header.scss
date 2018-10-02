@@ -4,9 +4,9 @@
 
   .container {
     @include media($medium-screen-up) {
-      @include align-items(center);
-      @include display(flex);
-      @include justify-content(space-between);
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
     }
   }
 }
@@ -24,7 +24,7 @@
 
     &:hover,
     &:focus {
-      @include transform(scale(1.025));
+      transform: scale(1.025);
       color: $white;
     }
 

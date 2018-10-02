@@ -8,8 +8,8 @@
 }
 
 .table-list-item {
-  @include align-items(space-between);
-  @include display(flex);
+  align-items: space-between;
+  display: flex;
   @include padding(null em(12));
 
   &:first-child {
@@ -30,14 +30,14 @@
 }
 
 .table-list-cell {
-  @include align-items(center);
-  @include display(flex);
+  align-items: center;
+  display: flex;
   padding: 1em em(12);
 
   &.stacked {
-    @include align-items(flex-start);
-    @include flex(1);
-    @include flex-direction(column);
+    align-items: flex-start;
+    flex: 1;
+    flex-direction: column;
   }
 }
 

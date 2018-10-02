@@ -14,8 +14,8 @@ $tags: (
 );
 
 .tags {
-  @include display(flex);
-  @include flex-wrap(wrap);
+  display: flex;
+  flex-wrap: wrap;
   margin-bottom: -0.5em;
 
   li {
@@ -51,7 +51,7 @@ $tags: (
 }
 
 .tag-toggle {
-  @include transition(background, 0.15s);
+  transition: background, 0.15s;
   @extend %tag-base;
   border-color: $darker-blue;
   position: relative;
