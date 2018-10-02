@@ -206,13 +206,13 @@ GEM
     omniauth (1.8.1)
       hashie (>= 3.4.6, < 3.6.0)
       rack (>= 1.6.2, < 3)
-    omniauth-github (1.1.2)
-      omniauth (~> 1.0)
-      omniauth-oauth2 (~> 1.1)
+    omniauth-github (1.3.0)
+      omniauth (~> 1.5)
+      omniauth-oauth2 (>= 1.4.0, < 2.0)
     omniauth-github-team-member (2.0.1)
       omniauth-github
-    omniauth-oauth2 (1.3.1)
-      oauth2 (~> 1.0)
+    omniauth-oauth2 (1.5.0)
+      oauth2 (~> 1.1)
       omniauth (~> 1.2)
     parser (2.5.1.2)
       ast (~> 2.4.0)
@@ -373,7 +373,7 @@ DEPENDENCIES
   normalize-rails
   omniauth
   omniauth-github-team-member
-  omniauth-oauth2 (~> 1.3.1)
+  omniauth-oauth2
   pg
   pry-rails
   puma
