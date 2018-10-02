@@ -1,10 +1,10 @@
 if Rails.env.development? || Rails.env.test?
-  require "factory_girl"
+  require "factory_bot"
 
   namespace :dev do
     desc "Seed data for development environment"
     task prime: "db:setup" do
-      include FactoryGirl::Syntax::Methods
+      include FactoryBot::Syntax::Methods
       tag_names = ["Ember", "Rails", "Objective-C", "Swift", "Design"]
       tag_names.map do |tag_name|
         tag = create(:tag, name: tag_name)

@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe Project do
-  subject { FactoryGirl.build(:project) }
+  subject { FactoryBot.build(:project) }
   it { should validate_presence_of(:name) }
   it { should validate_uniqueness_of(:name) }
   it { should validate_presence_of(:default_channel) }

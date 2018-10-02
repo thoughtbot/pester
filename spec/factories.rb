@@ -1,10 +1,10 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :channel do
     sequence(:name) { |n| "channel#{n}" }
-    webhook_url "http://example.com/home"
+    webhook_url { "http://example.com/home" }
 
     transient do
-      tag_name nil
+      tag_name { nil }
     end
 
     after :create do |channel, evaluator|
@@ -24,17 +24,17 @@ FactoryGirl.define do
     sequence(:github_url) {|n| "https://github.com/thoughtbot/stuff/pulls/#{n}"}
     repo_github_url { "https://github.com/#{repo_name}" }
     sequence(:repo_name) { |n| "thoughtbot/stuff-#{n}" }
-    status "needs review"
-    title "Doing Stuff"
-    user_name "sgrif"
-    user_github_url "https://github.com/thoughtbot/sgrif"
+    status { "needs review" }
+    title { "Doing Stuff" }
+    user_name { "sgrif" }
+    user_github_url { "https://github.com/thoughtbot/sgrif" }
 
     trait :in_progress do
-      status "in progress"
+      status { "in progress" }
     end
 
     trait :needs_review do
-      status "needs review"
+      status { "needs review" }
     end
 
     trait :stale do
@@ -42,7 +42,7 @@ FactoryGirl.define do
     end
 
     transient do
-      tag_names []
+      tag_names { [] }
     end
 
     after(:create) do |pull_request, evaluator|
@@ -55,7 +55,7 @@ FactoryGirl.define do
   end
 
   factory :tag do
-    name "code"
+    name { "code" }
     channel
   end
 end
