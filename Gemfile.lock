@@ -266,8 +266,9 @@ GEM
       polyamorous (~> 1.2)
     recipient_interceptor (0.1.2)
       mail
-    responders (2.1.0)
-      railties (>= 4.2.0, < 5)
+    responders (2.4.0)
+      actionpack (>= 4.2.0, < 5.3)
+      railties (>= 4.2.0, < 5.3)
     rspec-core (3.4.1)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
