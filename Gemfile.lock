@@ -164,7 +164,7 @@ GEM
       railties (>= 3.2.16)
     json (2.1.0)
     jwt (1.5.2)
-    kaminari (0.16.3)
+    kaminari (0.17.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.10.0)
