@@ -382,7 +382,7 @@ DEPENDENCIES
   rails_12factor
   rake (~> 11)
   recipient_interceptor
-  rspec-rails (~> 3.0)
+  rspec-rails
   rspec_junit_formatter
   sass-rails
   shoulda-matchers
