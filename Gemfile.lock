@@ -321,7 +321,7 @@ GEM
     time_for_a_boolean (0.0.6)
       activerecord
       railties
-    timecop (0.8.0)
+    timecop (0.9.1)
     title (0.0.7)
       i18n
       rails (>= 3.1)
