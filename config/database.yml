@@ -1,6 +1,6 @@
 development: &default
   adapter: postgresql
-  database: pr-tool_development
+  database: pester_development
   encoding: utf8
   host: localhost
   min_messages: warning
@@ -9,4 +9,4 @@ development: &default
 
 test:
   <<: *default
-  database: pr-tool_test
+  database: pester_test

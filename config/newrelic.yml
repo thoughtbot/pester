@@ -1,5 +1,5 @@
 common: &default_settings
-  app_name: "pr-tool"
+  app_name: "pester"
   audit_log:
     enabled: false
   browser_monitoring:
@@ -30,5 +30,5 @@ production:
   monitor_mode: true
 staging:
   <<: *default_settings
-  app_name: "pr-tool (Staging)"
+  app_name: "pester (Staging)"
   monitor_mode: true

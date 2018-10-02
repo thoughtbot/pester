@@ -12,19 +12,19 @@ feature "User views PRs" do
   end
 
   scenario "Sees link to PR on Github" do
-    create(:pull_request, title: "Implement Stuff", github_url: "https://github.com/thoughtbot/pr-tool/pulls/1")
+    create(:pull_request, title: "Implement Stuff", github_url: "https://github.com/thoughtbot/pester/pulls/1")
 
     visit root_path
 
-    expect(page).to have_link("Implement Stuff", href: "https://github.com/thoughtbot/pr-tool/pulls/1")
+    expect(page).to have_link("Implement Stuff", href: "https://github.com/thoughtbot/pester/pulls/1")
   end
 
   scenario "Sees link to repo on Github" do
-    create(:pull_request, repo_name: "thoughtbot/pr-tool", repo_github_url: "https://github.com/thoughtbot/pr-tool")
+    create(:pull_request, repo_name: "thoughtbot/pester", repo_github_url: "https://github.com/thoughtbot/pester")
 
     visit root_path
 
-    expect(page).to have_link("thoughtbot/pr-tool", href: "https://github.com/thoughtbot/pr-tool")
+    expect(page).to have_link("thoughtbot/pester", href: "https://github.com/thoughtbot/pester")
   end
 
   scenario "Sees metadata" do
