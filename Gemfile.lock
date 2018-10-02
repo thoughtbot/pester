@@ -227,7 +227,7 @@ GEM
     rack (1.6.10)
     rack-test (0.6.3)
       rack (>= 1.0)
-    rack-timeout (0.3.2)
+    rack-timeout (0.5.1)
     rails (4.2.10)
       actionmailer (= 4.2.10)
       actionpack (= 4.2.10)
