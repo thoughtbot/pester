@@ -53,10 +53,6 @@ jobs:
           name: Database setup
           command: bin/rake db:schema:load --trace
 
-      # Lint factories
-      - type: shell
-        command: bundle exec rake factory_bot:lint
-
       # Run rspec in parallel
       - type: shell
         command: |
