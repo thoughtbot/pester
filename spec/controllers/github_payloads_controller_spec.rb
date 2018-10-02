@@ -125,7 +125,7 @@ describe GithubPayloadsController do
 
       context 'the GitHub secret does not match the project' do
         it 'returns a 401' do
-          post :create, github_payload: JSON.parse(pull_request_payload(action: "opened"))
+          post :create, params: { github_payload: JSON.parse(pull_request_payload(action: "opened")) }
 
           expect(response.status).to eq(401)
         end
@@ -161,7 +161,7 @@ describe GithubPayloadsController do
       ENV["GITHUB_SECRET_KEY"],
       body,
     )
-    post :create, github_payload: JSON.parse(body)
+    post :create, params: { github_payload: JSON.parse(body) }
   end
 
   def create_signature(secret, body)

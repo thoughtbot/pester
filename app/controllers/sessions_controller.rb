@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_filter :ensure_team_member
+  skip_before_action :ensure_team_member
 
   def new
 

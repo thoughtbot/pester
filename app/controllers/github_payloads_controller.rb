@@ -1,11 +1,11 @@
 class GithubPayloadsController < ApplicationController
   before_action VerifyGithubSignature.new(ENV["GITHUB_SECRET_KEY"])
-  skip_before_filter :ensure_team_member
+  skip_before_action :ensure_team_member
 
   def create
     action_matching(parser, pull_request).call
 
-    render nothing: true
+    head :ok
   end
 
   private
@@ -28,7 +28,11 @@ class GithubPayloadsController < ApplicationController
   end
 
   def parser
-    @_parser ||= PayloadParser.new(params[:github_payload], request.headers)
+    @_parser ||= PayloadParser.new(payload_params, request.headers)
+  end
+
+  def payload_params
+    params[:github_payload].permit!
   end
 
   def pr_params

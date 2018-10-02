@@ -13,7 +13,7 @@ class Tag < ActiveRecord::Base
   def self.with_active_pull_requests
     joins(:pull_requests).
       merge(PullRequest.active).
-      uniq
+      distinct
   end
 
   def pull_requests_count

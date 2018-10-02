@@ -5,7 +5,7 @@ class VerifyGithubSignature
 
   def before(controller)
     unless github_signature_matches?(controller.request)
-      controller.render nothing: true, status: :unauthorized
+      controller.head :unauthorized
     end
   end
 

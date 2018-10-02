@@ -1,6 +1,6 @@
 class PullRequestsController < ApplicationController
   helper_method :grouped_pull_requests, :tags, :tags_to_filter_by
-  skip_before_filter :ensure_team_member, only: :index
+  skip_before_action :ensure_team_member, only: :index
 
   def index
     respond_to do |format|
@@ -19,7 +19,7 @@ class PullRequestsController < ApplicationController
     @pull_requests ||= PullRequest.
       for_tags(tags_to_filter_by).
       active.
-      uniq
+      distinct
   end
 
   def tags
