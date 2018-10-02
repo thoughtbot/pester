@@ -2,7 +2,11 @@ source "https://rubygems.org"
 
 ruby "2.3.7"
 
-gem "activeadmin", github: "activeadmin"
+git_source(:github) do |repo_name|
+  "https://github.com/#{repo_name}.git"
+end
+
+gem "activeadmin", github: "activeadmin/activeadmin"
 gem "awesome_print"
 gem "bourbon"
 gem "coffee-rails"
