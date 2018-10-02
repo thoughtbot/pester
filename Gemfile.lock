@@ -57,6 +57,8 @@ GEM
     addressable (2.4.0)
     arbre (1.0.3)
       activesupport (>= 3.0.0)
+    archive-zip (0.7.0)
+      io-like (~> 0.3.0)
     arel (6.0.3)
     ast (2.1.0)
     awesome_print (1.6.1)
@@ -75,9 +77,14 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    capybara-webkit (1.14.0)
-      capybara (>= 2.3.0, < 2.14.0)
-      json
+    capybara-selenium (0.0.6)
+      capybara
+      selenium-webdriver
+    childprocess (0.9.0)
+      ffi (~> 1.0, >= 1.0.11)
+    chromedriver-helper (1.1.0)
+      archive-zip (~> 0.7.0)
+      nokogiri (~> 1.6)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -115,6 +122,7 @@ GEM
       railties (>= 3.0.0)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
+    ffi (1.9.25)
     flutie (2.0.0)
     formtastic (3.1.3)
       actionpack (>= 3.2.13)
@@ -149,6 +157,7 @@ GEM
       has_scope (~> 0.6.0.rc)
       railties (>= 3.2, < 5)
       responders
+    io-like (0.3.0)
     jquery-rails (4.0.5)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -271,6 +280,7 @@ GEM
       rspec-mocks (~> 3.4.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
+    rubyzip (1.2.2)
     safe_yaml (1.0.4)
     sass (3.4.20)
     sass-rails (5.0.4)
@@ -279,6 +289,9 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    selenium-webdriver (3.14.0)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.2)
     shoulda-matchers (3.0.1)
       activesupport (>= 4.0.0)
     slop (3.6.0)
@@ -332,7 +345,8 @@ DEPENDENCIES
   bourbon
   bundler-audit
   byebug
-  capybara-webkit (>= 1.2.0)
+  capybara-selenium
+  chromedriver-helper
   coffee-rails
   database_cleaner
   delayed_job_active_record
@@ -374,4 +388,4 @@ RUBY VERSION
    ruby 2.2.3p173
 
 BUNDLED WITH
-   1.16.1
+   1.16.5

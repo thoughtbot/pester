@@ -17,8 +17,8 @@ gem "neat", "~> 1.7.0"
 gem "newrelic_rpm"
 gem "normalize-rails", "~> 3.0.0"
 gem "omniauth"
-gem "omniauth-oauth2", "~> 1.3.1"
 gem "omniauth-github-team-member"
+gem "omniauth-oauth2", "~> 1.3.1"
 gem "pg"
 gem "rack-timeout"
 gem "rails"
@@ -44,7 +44,8 @@ group :development, :test do
 end
 
 group :test do
-  gem "capybara-webkit", ">= 1.2.0"
+  gem "capybara-selenium"
+  gem "chromedriver-helper"
   gem "database_cleaner"
   gem "formulaic"
   gem "launchy"
