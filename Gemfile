@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.2.3"
+ruby "2.3.7"
 
 gem "activeadmin", github: "activeadmin"
 gem "awesome_print"
