@@ -303,7 +303,7 @@ GEM
     selenium-webdriver (3.14.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
-    shoulda-matchers (3.0.1)
+    shoulda-matchers (3.1.2)
       activesupport (>= 4.0.0)
     slop (3.6.0)
     sprockets (3.7.2)
