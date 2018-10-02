@@ -286,6 +286,8 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
+    rspec_junit_formatter (0.4.1)
+      rspec-core (>= 2, < 4, != 2.12.0)
     rubyzip (1.2.2)
     safe_yaml (1.0.4)
     sass (3.4.20)
@@ -380,6 +382,7 @@ DEPENDENCIES
   rake (~> 11)
   recipient_interceptor
   rspec-rails (~> 3.0)
+  rspec_junit_formatter
   sass-rails
   shoulda-matchers
   spring

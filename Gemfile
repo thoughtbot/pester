@@ -50,6 +50,7 @@ group :test do
   gem "database_cleaner"
   gem "formulaic"
   gem "launchy"
+  gem "rspec_junit_formatter"
   gem "shoulda-matchers"
   gem "timecop"
   gem "webmock"
