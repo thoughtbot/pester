@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "activeadmin", github: "activeadmin/activeadmin"
+gem "activeadmin"
 gem "awesome_print"
 gem "bourbon"
 gem "coffee-rails"
