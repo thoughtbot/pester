@@ -156,12 +156,11 @@ describe GithubPayloadsController do
   end
 
   def send_github_request(body)
-    request.env["RAW_POST_DATA"] = body
     request.env["HTTP_X_HUB_SIGNATURE"] = create_signature(
       ENV["GITHUB_SECRET_KEY"],
       body,
     )
-    post :create, params: { github_payload: JSON.parse(body) }
+    post :create, body: body, params: { github_payload: JSON.parse(body) }
   end
 
   def create_signature(secret, body)
