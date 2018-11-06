@@ -97,7 +97,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.0.5)
+    concurrent-ruby (1.1.1)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.4)
@@ -144,13 +144,14 @@ GEM
     honeybadger (4.1.0)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
-    i18n-tasks (0.9.27)
+    i18n-tasks (0.9.28)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
       erubi
       highline (>= 2.0.0)
       i18n
       parser (>= 2.2.3.0)
+      rails-i18n
       rainbow (>= 2.2.2, < 4.0)
       terminal-table (>= 1.5.1)
     inherited_resources (1.9.0)
@@ -255,6 +256,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
+    rails-i18n (5.1.2)
+      i18n (>= 0.7, < 2)
+      railties (>= 5.0, < 6)
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
