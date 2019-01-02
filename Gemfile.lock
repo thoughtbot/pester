@@ -202,7 +202,7 @@ GEM
     neat (1.9.1)
       sass (>= 3.3)
       thor (~> 0.19)
-    newrelic_rpm (5.5.0.348)
+    newrelic_rpm (5.6.0.349)
     nio4r (2.3.1)
     nokogiri (1.9.1)
       mini_portile2 (~> 2.4.0)
