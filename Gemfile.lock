@@ -112,7 +112,7 @@ GEM
     dotenv-rails (2.7.1)
       dotenv (= 2.7.1)
       railties (>= 3.2, < 6.1)
-    email_validator (1.6.0)
+    email_validator (2.0.0)
       activemodel
     erubi (1.8.0)
     execjs (2.7.0)
