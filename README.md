@@ -68,6 +68,13 @@ is [purposefully excluded from the project's `Gemfile`][exclude].
 [foreman]: https://github.com/ddollar/foreman
 [exclude]: https://github.com/ddollar/foreman/pull/437#issuecomment-41110407
 
+## Deploying with Docker
+
+A sample [Dockerfile] is included in this repo. To get started with Docker, see the documentation [here].
+
+[here]: https://docs.docker.com/mac/
+[Dockerfile]: Dockerfile
+
 ## Contributing
 
 See the [CONTRIBUTING] document.
